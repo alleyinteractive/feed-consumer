@@ -2,10 +2,10 @@
 /**
  * Contains functions for working with meta.
  *
- * @package package_name
+ * @package feed-consumer
  */
 
-namespace Create_WordPress_Plugin;
+namespace Feed_Consumer;
 
 // Register custom meta fields.
 register_post_meta_from_defs();
@@ -36,7 +36,7 @@ function register_meta_helper(
 		throw new \InvalidArgumentException(
 			__(
 				'Object type must be one of "post", "term".',
-				'create-wordpress-plugin'
+				'feed-consumer'
 			)
 		);
 	}

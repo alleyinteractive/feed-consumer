@@ -1,26 +1,26 @@
 {
-    "name": "alleyinteractive/create-wordpress-plugin",
-    "description": "plugin_description",
+    "name": "alleyinteractive/feed-consumer",
+    "description": "Ingest external feeds and other data sources into WordPress",
     "type": "wordpress-plugin",
     "keywords": [
         "alleyinteractive",
-        "create-wordpress-plugin"
+        "feed-consumer"
     ],
-    "homepage": "https://github.com/alleyinteractive/create-wordpress-plugin",
+    "homepage": "https://github.com/alleyinteractive/feed-consumer",
     "license": "GPL-2.0-or-later",
     "authors": [
         {
-            "name": "author_name",
-            "email": "email@domain.com"
+            "name": "Sean Fisher",
+            "email": "srtfisher@gmail.com"
         }
     ],
     "require": {
-        "php": "^7.4 || ^8.0",
-        "alleyinteractive/composer-wordpress-autoloader": "^0.6"
+        "php": "^8.0",
+        "alleyinteractive/composer-wordpress-autoloader": "^1.0"
     },
     "require-dev": {
         "alleyinteractive/alley-coding-standards": "^0.3",
-        "mantle-framework/testkit": "^0.5",
+        "mantle-framework/testkit": "^0.9",
         "nunomaduro/collision": "^5.0"
     },
     "config": {
@@ -34,10 +34,10 @@
     "extra": {
         "wordpress-autoloader": {
             "autoload": {
-                "Create_WordPress_Plugin\\": "src"
+                "Feed_Consumer\\": "src"
             },
             "autoload-dev": {
-                "Create_WordPress_Plugin\\Tests\\": "tests"
+                "Feed_Consumer\\Tests\\": "tests"
             }
         }
     },

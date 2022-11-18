@@ -4,10 +4,10 @@
  *
  * To be used with the @alleyco/scaffold NPM package.
  *
- * @package package_name
+ * @package feed-consumer
  */
 
-namespace Create_WordPress_Plugin;
+namespace Feed_Consumer;
 
 // Content types and taxonomies should be included below. In order to scaffold
 // them, leave the Begin and End comments in place.

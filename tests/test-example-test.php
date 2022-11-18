@@ -1,5 +1,5 @@
 <?php
-namespace Create_WordPress_Plugin\Tests;
+namespace Feed_Consumer\Tests;
 
 /**
  * Visit {@see https://mantle.alley.co/testing/test-framework.html} to learn more.
