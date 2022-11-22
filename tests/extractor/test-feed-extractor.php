@@ -5,6 +5,8 @@ use Feed_Consumer\Extractor\Feed_Extractor;
 use Feed_Consumer\Tests\Test_Case;
 use Mantle\Testing\Mock_Http_Response;
 
+use function Mantle\Support\Helpers\tap;
+
 class Feed_Extractor_Test extends Test_Case {
 	public function test_extract_feed() {
 		$this->fake_request(
@@ -20,8 +22,12 @@ class Feed_Extractor_Test extends Test_Case {
 			]
 		);
 
-		$extractor = ( new Feed_Extractor( $processor ) )->run();
-		$data      = $extractor->data();
+		$extractor = tap(
+			new Feed_Extractor(),
+			fn ( Feed_Extractor $extractor ) => $extractor->processor( $processor ),
+		)->run();
+
+		$data = $extractor->data();
 
 		$this->assertTrue( $data->is_xml() );
 		$this->assertStringContainsString( '<channel>', $data->body() );
@@ -40,7 +46,10 @@ class Feed_Extractor_Test extends Test_Case {
 			]
 		);
 
-		$extractor = ( new Feed_Extractor( $processor ) )->run();
+		$extractor = tap(
+			new Feed_Extractor(),
+			fn ( Feed_Extractor $extractor ) => $extractor->processor( $processor ),
+		)->run();
 		$data      = $extractor->data();
 
 		$this->assertEmpty( $data->body() );
@@ -71,7 +80,12 @@ class Feed_Extractor_Test extends Test_Case {
 			]
 		);
 
-		$data = ( new Feed_Extractor( $processor ) )->run()->data();
+		$extractor = tap(
+			new Feed_Extractor(),
+			fn ( Feed_Extractor $extractor ) => $extractor->processor( $processor ),
+		)->run();
+
+		$data = $extractor->data();
 
 		$this->assertTrue( $data->is_xml() );
 		$this->assertTrue( $_SERVER['__did_auth'] );

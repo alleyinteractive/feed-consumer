@@ -29,7 +29,7 @@ class Post_Type {
 	 * Register the post type.
 	 */
 	public function register_post_type() {
-		register_post_type(
+		register_post_type( // phpcs:ignore WordPress.NamingConventions.ValidPostTypeSlug.NotStringLiteral
 			static::NAME,
 			[
 				'label'              => __( 'Feeds', 'feed-consumer' ),

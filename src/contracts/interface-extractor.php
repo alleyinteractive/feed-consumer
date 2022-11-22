@@ -7,20 +7,12 @@
 
 namespace Feed_Consumer\Contracts;
 
-use Feed_Consumer\Processor\Processor;
 use Mantle\Http_Client\Response;
 
 /**
  * Extractor Interface
  */
-interface Extractor {
-	/**
-	 * Constructor.
-	 *
-	 * @param Processor $processor Data processor instance.
-	 */
-	public function __construct( Processor $processor );
-
+interface Extractor extends With_Processor {
 	/**
 	 * Extract the data.
 	 *
@@ -34,16 +26,6 @@ interface Extractor {
 	 * @return Response
 	 */
 	public function data(): Response;
-
-	/**
-	 * Retrieve a collection of items from the response.
-	 *
-	 * Provides the extractor a way to collect the individual items of an
-	 * extraction into a large collection instead of a singular document.
-	 *
-	 * @return array
-	 */
-	// public function get_collection(): array;
 
 	/**
 	 * Getter for the cursor for the extractor.

@@ -1,18 +1,24 @@
 <?php
+/**
+ * Feed_Extraction class file
+ *
+ * @package feed-consumer
+ */
+
 namespace Feed_Consumer\Extractor;
 
-use Feed_Consumer\Contracts\Extractor;
 use Feed_Consumer\Contracts\Processor;
 use Feed_Consumer\Contracts\With_Settings;
 use Mantle\Http_Client\Pending_Request;
 use Mantle\Http_Client\Response;
+use RuntimeException;
 
 /**
  * Feed Extractor
  *
  * Used to fetch common feeds and extract the data.
  */
-class Feed_Extractor implements Extractor, With_Settings {
+class Feed_Extractor extends Extractor implements With_Settings {
 	/**
 	 * Setting for the feed URL.
 	 *
@@ -42,14 +48,6 @@ class Feed_Extractor implements Extractor, With_Settings {
 	protected $response;
 
 	/**
-	 * Constructor.
-	 *
-	 * @param Processor $processor Data processor instance.
-	 */
-	public function __construct( public Processor $processor ) {
-	}
-
-	/**
 	 * Settings to register.
 	 */
 	public function settings(): array {
@@ -63,10 +61,16 @@ class Feed_Extractor implements Extractor, With_Settings {
 	/**
 	 * Extract the data.
 	 *
+	 * @throws RuntimeException Thrown if the feed URL is not set.
+	 *
 	 * @return static
 	 */
 	public function run(): static {
 		$request = new Pending_Request();
+
+		if ( ! $this->processor ) {
+			throw new RuntimeException( 'Processor not set.' );
+		}
 
 		$settings = $this->processor->settings();
 
@@ -88,16 +92,6 @@ class Feed_Extractor implements Extractor, With_Settings {
 	public function data(): Response {
 		return $this->response;
 	}
-
-	/**
-	 * Retrieve a collection of items from the response.
-	 *
-	 * Provides the extractor a way to collect the individual items of an
-	 * extraction into a large collection instead of a singular document.
-	 *
-	 * @return array
-	 */
-	// public function get_collection(): array;
 
 	/**
 	 * Getter for the cursor for the extractor.

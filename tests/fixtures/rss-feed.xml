@@ -1,764 +1,242 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
 	xmlns:content="http://purl.org/rss/1.0/modules/content/"
 	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
 	xmlns:dc="http://purl.org/dc/elements/1.1/"
 	xmlns:atom="http://www.w3.org/2005/Atom"
 	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
 	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
-
 	xmlns:georss="http://www.georss.org/georss"
 	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
 	>
-
-<channel>
-	<title>Alley</title>
-	<atom:link href="https://alley.com/feed/" rel="self" type="application/rss+xml" />
-	<link>https://alley.com</link>
-	<description>Let&#039;s Do Launch.</description>
-	<lastBuildDate>Thu, 30 Jun 2022 18:03:48 +0000</lastBuildDate>
-	<language>en-US</language>
-	<sy:updatePeriod>
+	<channel>
+		<title>Alley</title>
+		<atom:link href="https://alley.com/feed/" rel="self" type="application/rss+xml" />
+		<link>https://alley.com</link>
+		<description>Let&#039;s Do Launch.</description>
+		<lastBuildDate>Thu, 30 Jun 2022 18:03:48 +0000</lastBuildDate>
+		<language>en-US</language>
+		<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
-	<sy:updateFrequency>
+		<sy:updateFrequency>
 	1	</sy:updateFrequency>
-	<generator>https://wordpress.org/?v=6.1.1</generator>
-
-<image>
-	<url>https://alley.com/wp-content/uploads/2018/02/alley-mark-192px.png?w=32</url>
-	<title>Alley</title>
-	<link>https://alley.com</link>
-	<width>32</width>
-	<height>32</height>
-</image>
-	<item>
-		<title> A RenderATL Welcome into the Tech World</title>
-		<link>https://alley.com/news/a-renderatl-welcome-into-the-tech-world/</link>
-
-		<dc:creator><![CDATA[Brandon Fields]]></dc:creator>
-		<pubDate>Thu, 30 Jun 2022 14:40:00 +0000</pubDate>
-				<category><![CDATA[Alley Insight]]></category>
-		<guid isPermaLink="false">https://alley.com/?p=6191</guid>
-
-					<description><![CDATA[<p>One of the reasons I love Alley is because they provide opportunities for you to attend incredible conferences like RenderATL.</p>
-<p>The post <a rel="nofollow" href="https://alley.com/news/a-renderatl-welcome-into-the-tech-world/"> A RenderATL Welcome into the Tech World</a> appeared first on <a rel="nofollow" href="https://alley.com">Alley</a>.</p>
-]]></description>
-										<content:encoded><![CDATA[
-<figure class="wp-block-video wp-block-embed is-type-video is-provider-videopress"><div class="wp-block-embed__wrapper" style="max-width:262px;margin:auto">
-<iframe title="VideoPress Video Player" aria-label='VideoPress Video Player' width='421' height='750' src='https://videopress.com/embed/cGjDDGpg?cover=1&amp;preloadContent=metadata&amp;useAverageColor=1&amp;hd=1' frameborder='0' allowfullscreen data-resize-to-parent="true" allow='clipboard-write'></iframe><script src='https://v0.wordpress.com/js/next/videopress-iframe.js?m=1658470809'></script>
-</div></figure>
-
-
-
-<p>One of the reasons I love Alley is because they provide opportunities for you to attend incredible conferences like <a href="https://www.renderatl.com/about-us">RenderATL</a>, my first technology conference in Atlanta, GA. Render was a four-day conference featuring 50+ expert speakers in tech covering software engineering practices, web3, engineering leadership, accessibility practices, and more. Its attendees and speakers were an intersectional of race, gender and age. It exceeded my expectations, the session speakers were unmatched and the food embodied southern hospitality. The only problem I had was that I could not attend every session—I’m excited to share my favorite speakers so you can follow them and make sure not to miss this next year!&nbsp;</p>
-
-
-
-<figure class="wp-block-image size-large is-resized is-style-default"><a href="https://alley.com/wp-content/uploads/2022/06/IMG_4822.jpeg"><img decoding="async" loading="lazy" src="https://alley.com/wp-content/uploads/2022/06/IMG_4822.jpeg?w=1024" alt="" class="wp-image-6194" width="346" height="260"/></a><figcaption>OTP</figcaption></figure>
-
-
-
-<figure class="wp-block-image size-large is-resized is-style-default"><a href="https://alley.com/wp-content/uploads/2022/06/IMG_4837.jpeg"><img decoding="async" loading="lazy" src="https://alley.com/wp-content/uploads/2022/06/IMG_4837.jpeg?w=1024" alt="" class="wp-image-6196" width="346" height="260"/></a><figcaption><em>Digital by Design</em> by Allison Malloy and Shawn Gandhi in West Atlanta</figcaption></figure>
-
-
-
-<figure class="wp-block-image size-large is-resized is-style-default"><a href="https://alley.com/wp-content/uploads/2022/06/IMG_4850.jpeg"><img decoding="async" loading="lazy" src="https://alley.com/wp-content/uploads/2022/06/IMG_4850.jpeg?w=768" alt="" class="wp-image-6208" width="347" height="463"/></a><figcaption><strong><em>Web3 </em></strong>by Symone B in East Atlanta</figcaption></figure>
-
-
-
-<p>Sessions were separated in three areas, East Atlanta, West Atlanta, OTP (Outside the Perimeter). OTP was outside, though it was blazing out (over 90 degrees) it was an amazing view.&nbsp;&nbsp;</p>
-
-
-
-<p>It was inclusive to all types of roles and levels, it didn&#8217;t matter if you were an engineer or a manager, the conference had something for everyone. It appeared that they made everything accessible and emphasized inclusiveness.&nbsp; Each room had its own host to keep the conversation going and energy excited for the next speaker.&nbsp; This helped the group stay connected and learning about each other. Outdoor sessions used headphones to ensure attendees could hear the speaker.</p>
-
-
-
-<p>The most notable sessions and takeaways for me included:</p>
-
-
-
-<ul><li><strong><em>When you build with integrity, accessibility becomes a default</em> </strong>by<strong> </strong>Amina Aweis about prioritizing etc…</li><li><strong><em>Digital </em></strong><em><strong>by Design</strong></em> by Allison Malloy and Shawn Gandhi of Shopify on enhancing employee experience by creating an office culture.</li><li><strong><em>Web3 </em></strong>by Symone B about the Web3 landscape and an introduction to blockchain and smart contracts.</li></ul>
-
-
-
-<figure class="wp-block-image size-large is-resized is-style-default"><a href="https://alley.com/wp-content/uploads/2022/06/IMG_4844.jpeg"><img decoding="async" loading="lazy" src="https://alley.com/wp-content/uploads/2022/06/IMG_4844.jpeg?w=768" alt="" class="wp-image-6197" width="290" height="386"/></a><figcaption>Amina Aweis &#8211; <em>When you build with integrity, accessibility becomes a default</em> </figcaption></figure>
-
-
-
-<p>It was clear RenderATL wanted you to feel taken care of, an example of this came at lunchtime. On day 2 they had a <a href="https://chefjrob.com/">Chef JRob</a>&nbsp;who was passing out different types of tacos at the OTP venue. My favorite meal was the fish and grits and all the unlimited sweet tea and lemonade.&nbsp; This conference had a true southern hospitality feel, everyone was nice, and wanted to get to know each other while there were presentations and sessions to help you in your career path.</p>
-
-
-
-<p><strong>“We strive to not only build community, but to be community.&nbsp; A community that celebrates code, culture, diversity, and equity.”</strong> &#8211; <a href="https://www.renderatl.com/about-us">Justin E. Samuels founder of&nbsp;RenderATL</a>. RenderATL is a conference that gives you the tools to take control of your journey. Just like Alley, everyone wants you to succeed.&nbsp; This experience gave me more of an insight into the tech world from different perspectives, helping me feel more comfortable in my career change into the Technology sector. I recommend RenderATL to anyone who is interested in wanting to feel more connected in the technology world.&nbsp;</p>
-<p>The post <a rel="nofollow" href="https://alley.com/news/a-renderatl-welcome-into-the-tech-world/"> A RenderATL Welcome into the Tech World</a> appeared first on <a rel="nofollow" href="https://alley.com">Alley</a>.</p>
-]]></content:encoded>
-
-
-
-			</item>
+		<generator>https://wordpress.org/?v=6.1.1</generator>
+		<image>
+			<url>https://alley.com/wp-content/uploads/2018/02/alley-mark-192px.png?w=32</url>
+			<title>Alley</title>
+			<link>https://alley.com</link>
+			<width>32</width>
+			<height>32</height>
+		</image>
 		<item>
-		<title>Alley’s Inaugural March Emoji Madness Tournament</title>
-		<link>https://alley.com/news/alleys-inaugural-march-emoji-madness-tournament/</link>
-
-		<dc:creator><![CDATA[Bridget McNulty, Brandon Fields, Sarah Rose Belok, Paige Campbell]]></dc:creator>
-		<pubDate>Fri, 06 May 2022 19:07:56 +0000</pubDate>
-				<category><![CDATA[Alley Insight]]></category>
-		<guid isPermaLink="false">https://alley.com/?p=6076</guid>
-
-					<description><![CDATA[<p>At Alley, we pride ourselves on being creative and having fun outside of the projects we work on for our clients.</p>
-<p>The post <a rel="nofollow" href="https://alley.com/news/alleys-inaugural-march-emoji-madness-tournament/">Alley’s Inaugural March Emoji Madness Tournament</a> appeared first on <a rel="nofollow" href="https://alley.com">Alley</a>.</p>
-]]></description>
-										<content:encoded><![CDATA[
-<p><strong>Take a moment to watch a short video on the creation of <a href="https://youtu.be/HdkSHPZIUa4">Emoji Madness.</a></strong><a href="https://drive.google.com/file/d/1kh4_skjPGk7rhU0G-hC-xZAQSc9SEJkf/view?usp=sharing"><strong>&nbsp;</strong></a></p>
-
-
-
-<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
-<iframe loading="lazy" title="Emoji Madness" width="500" height="281" src="https://www.youtube.com/embed/HdkSHPZIUa4?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div></figure>
-
-
-
-<p>At Alley, we pride ourselves on being creative and having fun outside of the projects we work on for our clients. We love coming up with our own internal activities that garner delight and community participation. In this spirit, we recently held our inaugural March Emoji Madness Tournament! The idea began in our Community Leaders group, composed of representatives from every Alley team who are focused on fostering community engagement across Alley.&nbsp;</p>
-
-
-
-<p>Sound like something you might want to try at your own workplace? Here are the 4 steps for kicking off an Emoji Madness bracket competition to delight your team:</p>
-
-
-
-<ol><li><strong>Determine a way to categorize your emojis for the bracket. </strong>At Alley, the Community Leaders first needed to figure out a way to categorize Alley’s <strong><em>many</em></strong> custom emojis (we have 7,149 emoji and counting at the time of this post). They ultimately broke them down into four categories: <em>Sassy</em>, <em>Weird</em>, <em>Party</em>, <em>You&#8217;re Frequently Used</em>.&nbsp;</li></ol>
-
-
-
-<ol start="2"><li><strong>Choose potential emoji contenders! </strong>This was a tough decision since as noted above, we have over 7,000 custom emojis that have been created or even custom made by our team members at Alley! We needed to narrow things down and did so by first asking our community. We posted an announcement for people to vote on what emojis should be included. After the voting was complete, we narrowed it down to the top 16 emojis per category.&nbsp; </li></ol>
-
-
-
-<figure class="wp-block-video wp-block-embed is-type-video is-provider-videopress"><div class="wp-block-embed__wrapper" style="max-width:814px;margin:auto">
-<iframe title="VideoPress Video Player" aria-label='VideoPress Video Player' width='500' height='100' src='https://videopress.com/embed/vm56vMsy?cover=1&amp;autoPlay=1&amp;loop=1&amp;preloadContent=metadata&amp;useAverageColor=1&amp;hd=1' frameborder='0' allowfullscreen data-resize-to-parent="true" allow='clipboard-write'></iframe><script src='https://v0.wordpress.com/js/next/videopress-iframe.js?m=1633526814'></script>
-</div></figure>
-
-
-
-<ol start="3"><li><strong>Create your own Bracket form. </strong>Once the categories were determined, the Community Leaders used <a href="https://brackethq.com/">Bracket HQ</a> to make our customized bracket in the style of NCAA Basketball March Madness. We created the bracket in a PDF form to make it easily editable and accessible for our team. The team members who wanted a chance at glory&nbsp; filled out their brackets.</li></ol>
-
-
-
-<figure class="wp-block-image is-style-default"><img decoding="async" src="https://lh3.googleusercontent.com/qmxTO7mrHEEQUkmbDU3YA-2lrnfKwvKkgxl1zph4pIIKYr26hHqTs3gIBreCA4sjyCkjjVMEi0LASAimMEMYYkJ5MtCCkrg4h4XoQpkOtb-UQKgDe1hZhC-l8nNLvEnvxl80y-U99I3jmmafHQ" alt=""/></figure>
-
-
-
-<ol start="4"><li><strong>Decide how an emoji champion is declared (it’s a tournament after all!).</strong> Using Slack, we threaded the matchups for every round. The Alley team emoji reacted with their favorite emoji of each pairing. Players got 1 point for every correct emoji they selected in their bracket. (i.e. Players receive 1 point for every correct emoji that makes it to the next round.) The first round of 32 is 1 point each, the sweet sixteen is 2 points each, the elite 8 is 4 points each, the final four is 8 points each, and the championship awards 16 points.&nbsp;&nbsp;</li></ol>
-
-
-
-<p>…And so the madness began! It started on March 14th and concluded on April 4th when :party-dead: was deemed the champion of our inaugural March Emoji Madness Tournament.&nbsp;</p>
-
-
-
-<figure class="wp-block-video wp-block-embed is-type-video is-provider-videopress"><div class="wp-block-embed__wrapper">
-<iframe title="VideoPress Video Player" aria-label='VideoPress Video Player' width='500' height='93' src='https://videopress.com/embed/ZxXHuj6c?cover=1&amp;preloadContent=metadata&amp;useAverageColor=1&amp;hd=1' frameborder='0' allowfullscreen data-resize-to-parent="true" allow='clipboard-write'></iframe><script src='https://v0.wordpress.com/js/next/videopress-iframe.js?m=1633526814'></script>
-</div></figure>
-
-
-
-<p>Agile Process Leader Jaime Allpress had the bracket with the most points and won an increase to her monthly lunch stipend &#8211; you go Jaime A!&nbsp;&nbsp;&nbsp;</p>
-
-
-
-<p>The Emoji Madness Tournament started out as a fun idea amongst our Community Leaders and launched into an energizing Alley-wide competition that we’re sure has become an annual event. It allowed us to showcase our custom emojis, celebrate the creativity put into making them, and appreciate the people behind the emojis in the process!</p>
-
-
-
-<p>We hope you give it a try at your own company. If and when you try it, tell us what you think on <a href="https://twitter.com/alleyco">Twitter</a> or <a href="https://www.linkedin.com/company/alley-interactive/mycompany/verification/?viewAsMember=true">LinkedIn</a>!</p>
-
-
-
-<p class="has-pale-cyan-blue-background-color has-background">At Alley, we pride ourselves on being creative and having fun outside of the projects we work on for our clients. Check out our webinar to learn <a href="https://alley.com/news/how-to-automate-ci-checks-for-prs-in-wordpress-delivery/">How to automate CI checks for PRs in WordPress delivery</a>.</p>
-<p>The post <a rel="nofollow" href="https://alley.com/news/alleys-inaugural-march-emoji-madness-tournament/">Alley’s Inaugural March Emoji Madness Tournament</a> appeared first on <a rel="nofollow" href="https://alley.com">Alley</a>.</p>
-]]></content:encoded>
-
-
-
-			</item>
+			<title> A RenderATL Welcome into the Tech World</title>
+			<link>https://alley.com/news/a-renderatl-welcome-into-the-tech-world/</link>
+			<dc:creator>
+				<![CDATA[Brandon Fields]]>
+			</dc:creator>
+			<pubDate>Thu, 30 Jun 2022 14:40:00 +0000</pubDate>
+			<category>
+				<![CDATA[Alley Insight]]>
+			</category>
+			<guid isPermaLink="false">https://alley.com/?p=6191</guid>
+			<description>
+				<![CDATA[<p>One of the reasons I love Alley is because they provide opportunities for you to attend incredible conferences like RenderATL.</p><p>The post <a rel="nofollow" href="https://alley.com/news/a-renderatl-welcome-into-the-tech-world/"> A RenderATL Welcome into the Tech World</a> appeared first on <a rel="nofollow" href="https://alley.com">Alley</a>.</p>
+]]>
+			</description>
+			<content:encoded>
+				<![CDATA[
+<figure class="wp-block-video wp-block-embed is-type-video is-provider-videopress"><div class="wp-block-embed__wrapper" style="max-width:262px;margin:auto"><iframe title="VideoPress Video Player" aria-label='VideoPress Video Player' width='421' height='750' src='https://videopress.com/embed/cGjDDGpg?cover=1&amp;preloadContent=metadata&amp;useAverageColor=1&amp;hd=1' frameborder='0' allowfullscreen data-resize-to-parent="true" allow='clipboard-write'></iframe><script src='https://v0.wordpress.com/js/next/videopress-iframe.js?m=1658470809'></script></div></figure><p>One of the reasons I love Alley is because they provide opportunities for you to attend incredible conferences like <a href="https://www.renderatl.com/about-us">RenderATL</a>, my first technology conference in Atlanta, GA. Render was a four-day conference featuring 50+ expert speakers in tech covering software engineering practices, web3, engineering leadership, accessibility practices, and more. Its attendees and speakers were an intersectional of race, gender and age. It exceeded my expectations, the session speakers were unmatched and the food embodied southern hospitality. The only problem I had was that I could not attend every session—I’m excited to share my favorite speakers so you can follow them and make sure not to miss this next year!&nbsp;</p><figure class="wp-block-image size-large is-resized is-style-default"><a href="https://alley.com/wp-content/uploads/2022/06/IMG_4822.jpeg"><img decoding="async" loading="lazy" src="https://alley.com/wp-content/uploads/2022/06/IMG_4822.jpeg?w=1024" alt="" class="wp-image-6194" width="346" height="260"/></a><figcaption>OTP</figcaption></figure><figure class="wp-block-image size-large is-resized is-style-default"><a href="https://alley.com/wp-content/uploads/2022/06/IMG_4837.jpeg"><img decoding="async" loading="lazy" src="https://alley.com/wp-content/uploads/2022/06/IMG_4837.jpeg?w=1024" alt="" class="wp-image-6196" width="346" height="260"/></a><figcaption><em>Digital by Design</em> by Allison Malloy and Shawn Gandhi in West Atlanta</figcaption></figure><figure class="wp-block-image size-large is-resized is-style-default"><a href="https://alley.com/wp-content/uploads/2022/06/IMG_4850.jpeg"><img decoding="async" loading="lazy" src="https://alley.com/wp-content/uploads/2022/06/IMG_4850.jpeg?w=768" alt="" class="wp-image-6208" width="347" height="463"/></a><figcaption><strong><em>Web3 </em></strong>by Symone B in East Atlanta</figcaption></figure><p>Sessions were separated in three areas, East Atlanta, West Atlanta, OTP (Outside the Perimeter). OTP was outside, though it was blazing out (over 90 degrees) it was an amazing view.&nbsp;&nbsp;</p><p>It was inclusive to all types of roles and levels, it didn&#8217;t matter if you were an engineer or a manager, the conference had something for everyone. It appeared that they made everything accessible and emphasized inclusiveness.&nbsp; Each room had its own host to keep the conversation going and energy excited for the next speaker.&nbsp; This helped the group stay connected and learning about each other. Outdoor sessions used headphones to ensure attendees could hear the speaker.</p><p>The most notable sessions and takeaways for me included:</p><ul><li><strong><em>When you build with integrity, accessibility becomes a default</em></strong>by<strong></strong>Amina Aweis about prioritizing etc…</li><li><strong><em>Digital </em></strong><em><strong>by Design</strong></em> by Allison Malloy and Shawn Gandhi of Shopify on enhancing employee experience by creating an office culture.</li><li><strong><em>Web3 </em></strong>by Symone B about the Web3 landscape and an introduction to blockchain and smart contracts.</li></ul><figure class="wp-block-image size-large is-resized is-style-default"><a href="https://alley.com/wp-content/uploads/2022/06/IMG_4844.jpeg"><img decoding="async" loading="lazy" src="https://alley.com/wp-content/uploads/2022/06/IMG_4844.jpeg?w=768" alt="" class="wp-image-6197" width="290" height="386"/></a><figcaption>Amina Aweis &#8211; <em>When you build with integrity, accessibility becomes a default</em></figcaption></figure><p>It was clear RenderATL wanted you to feel taken care of, an example of this came at lunchtime. On day 2 they had a <a href="https://chefjrob.com/">Chef JRob</a>&nbsp;who was passing out different types of tacos at the OTP venue. My favorite meal was the fish and grits and all the unlimited sweet tea and lemonade.&nbsp; This conference had a true southern hospitality feel, everyone was nice, and wanted to get to know each other while there were presentations and sessions to help you in your career path.</p><p><strong>“We strive to not only build community, but to be community.&nbsp; A community that celebrates code, culture, diversity, and equity.”</strong> &#8211; <a href="https://www.renderatl.com/about-us">Justin E. Samuels founder of&nbsp;RenderATL</a>. RenderATL is a conference that gives you the tools to take control of your journey. Just like Alley, everyone wants you to succeed.&nbsp; This experience gave me more of an insight into the tech world from different perspectives, helping me feel more comfortable in my career change into the Technology sector. I recommend RenderATL to anyone who is interested in wanting to feel more connected in the technology world.&nbsp;</p><p>The post <a rel="nofollow" href="https://alley.com/news/a-renderatl-welcome-into-the-tech-world/"> A RenderATL Welcome into the Tech World</a> appeared first on <a rel="nofollow" href="https://alley.com">Alley</a>.</p>
+]]>
+			</content:encoded>
+		</item>
 		<item>
-		<title>How to automate CI checks for PRs in WordPress delivery</title>
-		<link>https://alley.com/news/how-to-automate-ci-checks-for-prs-in-wordpress-delivery/</link>
-
-		<dc:creator><![CDATA[]]></dc:creator>
-		<pubDate>Fri, 08 Apr 2022 19:18:04 +0000</pubDate>
-				<category><![CDATA[Alley Insight]]></category>
-		<guid isPermaLink="false">https://alley.com/?p=6057</guid>
-
-					<description><![CDATA[<p>Watch the video to learn some of the ways we automate code quality checks. These checks ensure  we ship higher-quality code with less time and effort, and a higher success rate than manual review.</p>
-<p>The post <a rel="nofollow" href="https://alley.com/news/how-to-automate-ci-checks-for-prs-in-wordpress-delivery/">How to automate CI checks for PRs in WordPress delivery</a> appeared first on <a rel="nofollow" href="https://alley.com">Alley</a>.</p>
-]]></description>
-										<content:encoded><![CDATA[
-<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
-<iframe loading="lazy" title="How to automate CI checks for PRs in WordPress delivery | Buddy Webinar #15" width="500" height="281" src="https://www.youtube.com/embed/hPYbVbqvQM8?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div></figure>
-
-
-
-<p>On April 6, Alley Vice President of Software Development Kevin Fodness and Director of Development Operations Ben Bolton participated in a free webinar, <strong>How to automate CI checks for PRs in WordPress delivery </strong>with <a href="https://buddy.works/">Buddy</a>. The webinar was designed for developers interested in adding automated code quality checks to pull requests. It was also designed for WordPress-focused digital agencies that want to shorten the feedback loop between their team and the client and improve their product’s code quality.</p>
-
-
-
-<p>Diving into this webinar will teach you how to use Buddy to run automated tests and linting checks against WordPress plugins and themes. You will also learn to set up a pipeline for WordPress themes and plugins, with continuous integration that helps improve code quality.&nbsp;</p>
-
-
-
-<p>Watch the video to learn some of the ways we automate code quality checks. These checks ensure&nbsp;we ship higher-quality code with less time and effort, and a higher success rate than manual review.</p>
-
-
-
-<p><a href="https://buddy.works/webinars/how-automate-ci-checks-pull-requests-wp-delivery"><strong>How to automate CI checks for PRs in WordPress delivery</strong>&nbsp;</a></p>
-
-
-
-<p class="has-pale-cyan-blue-background-color has-background">Adding automated code quality checks to pull requests is an essential and creative question for developers. At Alley, we pride ourselves on being creative. Check out our blog post, <a href="https://alley.com/news/alleys-inaugural-march-emoji-madness-tournament/">Emoji Madness</a>, to learn more about our culture.</p>
-<p>The post <a rel="nofollow" href="https://alley.com/news/how-to-automate-ci-checks-for-prs-in-wordpress-delivery/">How to automate CI checks for PRs in WordPress delivery</a> appeared first on <a rel="nofollow" href="https://alley.com">Alley</a>.</p>
-]]></content:encoded>
-
-
-
-			</item>
+			<title>Alley’s Inaugural March Emoji Madness Tournament</title>
+			<link>https://alley.com/news/alleys-inaugural-march-emoji-madness-tournament/</link>
+			<dc:creator>
+				<![CDATA[Bridget McNulty, Brandon Fields, Sarah Rose Belok, Paige Campbell]]>
+			</dc:creator>
+			<pubDate>Fri, 06 May 2022 19:07:56 +0000</pubDate>
+			<category>
+				<![CDATA[Alley Insight]]>
+			</category>
+			<guid isPermaLink="false">https://alley.com/?p=6076</guid>
+			<description>
+				<![CDATA[<p>At Alley, we pride ourselves on being creative and having fun outside of the projects we work on for our clients.</p><p>The post <a rel="nofollow" href="https://alley.com/news/alleys-inaugural-march-emoji-madness-tournament/">Alley’s Inaugural March Emoji Madness Tournament</a> appeared first on <a rel="nofollow" href="https://alley.com">Alley</a>.</p>
+]]>
+			</description>
+			<content:encoded>
+				<![CDATA[
+<p><strong>Take a moment to watch a short video on the creation of <a href="https://youtu.be/HdkSHPZIUa4">Emoji Madness.</a></strong><a href="https://drive.google.com/file/d/1kh4_skjPGk7rhU0G-hC-xZAQSc9SEJkf/view?usp=sharing"><strong>&nbsp;</strong></a></p><figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper"><iframe loading="lazy" title="Emoji Madness" width="500" height="281" src="https://www.youtube.com/embed/HdkSHPZIUa4?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></figure><p>At Alley, we pride ourselves on being creative and having fun outside of the projects we work on for our clients. We love coming up with our own internal activities that garner delight and community participation. In this spirit, we recently held our inaugural March Emoji Madness Tournament! The idea began in our Community Leaders group, composed of representatives from every Alley team who are focused on fostering community engagement across Alley.&nbsp;</p><p>Sound like something you might want to try at your own workplace? Here are the 4 steps for kicking off an Emoji Madness bracket competition to delight your team:</p><ol><li><strong>Determine a way to categorize your emojis for the bracket. </strong>At Alley, the Community Leaders first needed to figure out a way to categorize Alley’s <strong><em>many</em></strong> custom emojis (we have 7,149 emoji and counting at the time of this post). They ultimately broke them down into four categories: <em>Sassy</em>, <em>Weird</em>, <em>Party</em>, <em>You&#8217;re Frequently Used</em>.&nbsp;</li></ol><ol start="2"><li><strong>Choose potential emoji contenders! </strong>This was a tough decision since as noted above, we have over 7,000 custom emojis that have been created or even custom made by our team members at Alley! We needed to narrow things down and did so by first asking our community. We posted an announcement for people to vote on what emojis should be included. After the voting was complete, we narrowed it down to the top 16 emojis per category.&nbsp; </li></ol><figure class="wp-block-video wp-block-embed is-type-video is-provider-videopress"><div class="wp-block-embed__wrapper" style="max-width:814px;margin:auto"><iframe title="VideoPress Video Player" aria-label='VideoPress Video Player' width='500' height='100' src='https://videopress.com/embed/vm56vMsy?cover=1&amp;autoPlay=1&amp;loop=1&amp;preloadContent=metadata&amp;useAverageColor=1&amp;hd=1' frameborder='0' allowfullscreen data-resize-to-parent="true" allow='clipboard-write'></iframe><script src='https://v0.wordpress.com/js/next/videopress-iframe.js?m=1633526814'></script></div></figure><ol start="3"><li><strong>Create your own Bracket form. </strong>Once the categories were determined, the Community Leaders used <a href="https://brackethq.com/">Bracket HQ</a> to make our customized bracket in the style of NCAA Basketball March Madness. We created the bracket in a PDF form to make it easily editable and accessible for our team. The team members who wanted a chance at glory&nbsp; filled out their brackets.</li></ol><figure class="wp-block-image is-style-default"><img decoding="async" src="https://lh3.googleusercontent.com/qmxTO7mrHEEQUkmbDU3YA-2lrnfKwvKkgxl1zph4pIIKYr26hHqTs3gIBreCA4sjyCkjjVMEi0LASAimMEMYYkJ5MtCCkrg4h4XoQpkOtb-UQKgDe1hZhC-l8nNLvEnvxl80y-U99I3jmmafHQ" alt=""/></figure><ol start="4"><li><strong>Decide how an emoji champion is declared (it’s a tournament after all!).</strong> Using Slack, we threaded the matchups for every round. The Alley team emoji reacted with their favorite emoji of each pairing. Players got 1 point for every correct emoji they selected in their bracket. (i.e. Players receive 1 point for every correct emoji that makes it to the next round.) The first round of 32 is 1 point each, the sweet sixteen is 2 points each, the elite 8 is 4 points each, the final four is 8 points each, and the championship awards 16 points.&nbsp;&nbsp;</li></ol><p>…And so the madness began! It started on March 14th and concluded on April 4th when :party-dead: was deemed the champion of our inaugural March Emoji Madness Tournament.&nbsp;</p><figure class="wp-block-video wp-block-embed is-type-video is-provider-videopress"><div class="wp-block-embed__wrapper"><iframe title="VideoPress Video Player" aria-label='VideoPress Video Player' width='500' height='93' src='https://videopress.com/embed/ZxXHuj6c?cover=1&amp;preloadContent=metadata&amp;useAverageColor=1&amp;hd=1' frameborder='0' allowfullscreen data-resize-to-parent="true" allow='clipboard-write'></iframe><script src='https://v0.wordpress.com/js/next/videopress-iframe.js?m=1633526814'></script></div></figure><p>Agile Process Leader Jaime Allpress had the bracket with the most points and won an increase to her monthly lunch stipend &#8211; you go Jaime A!&nbsp;&nbsp;&nbsp;</p><p>The Emoji Madness Tournament started out as a fun idea amongst our Community Leaders and launched into an energizing Alley-wide competition that we’re sure has become an annual event. It allowed us to showcase our custom emojis, celebrate the creativity put into making them, and appreciate the people behind the emojis in the process!</p><p>We hope you give it a try at your own company. If and when you try it, tell us what you think on <a href="https://twitter.com/alleyco">Twitter</a> or <a href="https://www.linkedin.com/company/alley-interactive/mycompany/verification/?viewAsMember=true">LinkedIn</a>!</p><p class="has-pale-cyan-blue-background-color has-background">At Alley, we pride ourselves on being creative and having fun outside of the projects we work on for our clients. Check out our webinar to learn <a href="https://alley.com/news/how-to-automate-ci-checks-for-prs-in-wordpress-delivery/">How to automate CI checks for PRs in WordPress delivery</a>.</p><p>The post <a rel="nofollow" href="https://alley.com/news/alleys-inaugural-march-emoji-madness-tournament/">Alley’s Inaugural March Emoji Madness Tournament</a> appeared first on <a rel="nofollow" href="https://alley.com">Alley</a>.</p>
+]]>
+			</content:encoded>
+		</item>
 		<item>
-		<title>MVP for Marketing &#8211; Realizing Helperbot&#8217;s Publicity</title>
-		<link>https://alley.com/news/mvp-for-marketing-realizing-helperbots-publicity/</link>
-
-		<dc:creator><![CDATA[Jonathan Byerley]]></dc:creator>
-		<pubDate>Tue, 25 Jan 2022 15:45:00 +0000</pubDate>
-				<category><![CDATA[Alley Insight]]></category>
-		<guid isPermaLink="false">https://alley.com/?p=5887</guid>
-
-					<description><![CDATA[<p>How do you approach marketing on a small budget and tight timeline? Create an MVP for marketing just like you do for product development!</p>
-<p>The post <a rel="nofollow" href="https://alley.com/news/mvp-for-marketing-realizing-helperbots-publicity/">MVP for Marketing &#8211; Realizing Helperbot&#8217;s Publicity</a> appeared first on <a rel="nofollow" href="https://alley.com">Alley</a>.</p>
-]]></description>
-										<content:encoded><![CDATA[
-<p class="has-cyan-bluish-gray-background-color has-background"><em>This post is the third and final in a series devoted to the development of Helperbot, Alley’s Slack application for remote Scrum teams. Be sure to check out the previous posts on <a href="https://alley.com/news/the-origin-of-helperbot/">the origin of Helperbot</a> and <a href="https://alley.com/news/the-product-development-of-helperbot/">its product development</a>!</em></p>
-
-
-
-<p>In our blog series so far, we have covered <a href="https://alley.com/news/the-origin-of-helperbot/">the origins of Helperbot</a> &#8211; a result of Alley’s own need to build a tool to suit its remote Scrum practice &#8211; and <a href="https://alley.com/news/the-product-development-of-helperbot/">the process of bringing our tool to market </a>for the benefit of Scrum teams everywhere. Since launching Helperbot in the <a href="https://alleyinteractive.slack.com/apps/AFQJFBAP2-helperbot?tab=more_info">Slack App Directory</a> in June of 2020, we have seen over a hundred organizations install the tool and we log interactions on a daily basis. It is highly rewarding to watch our creation out in the world helping teams succeed! But now what?</p>
-
-
-
-<p>In the last post, we discussed testing for various business hypotheses &#8211; viability, feasibility, and desirability (an idea for prototyping product ideas that <a href="https://www.ideou.com/blogs/inspiration/how-to-prototype-a-new-business">originated with IDEO</a> in the early aughts) through an extensive round of alpha testing. From this testing, we determined that a market for our product existed, but questions still remain. Just how<em> large</em> is the market for remote Scrum tooling like Helperbot? What is the potential for scale? How can we not only drive up our installation count, but also drive up our number of recurring, regular users? (i.e. a full organizational adoption of Helperbot, rather than a mere workspace installation.)</p>
-
-
-
-<p>We decided the best way to answer these questions would be a combination of marketing and product education to reach and retain our potential market. We realized we needed to succinctly marry three distinct concepts together in a way that our new users had perhaps not yet considered. The following three pillars working together are so native to Alley, that we almost take them for granted. But that doesn&#8217;t mean that they would come naturally to teams new to Scrum, or first-time Helperbot adopters, including the thousands of teams that found themselves <a href="https://alley.com/news/locked-out-of-the-scrum-room/">suddenly remote</a> due to the pandemic:</p>
-
-
-
-<ul><li>Agile estimation, sprint planning, and backlog refinement</li><li>Fully remote, distributed team composition</li><li>Tandem tooling: Video, chat, and project management software</li></ul>
-
-
-
-<p>For Helperbot to be effective in improving a team’s planning efficiency, the team must first be comfortable with employing its various communication tools in tandem, to connect its distributed members both synchronously and asynchronously, to execute the rituals required to properly estimate a backlog and plan for a sprint.</p>
-
-
-
-<p>To ensure that our new and potential users understood how Helperbot works within and alongside Slack, Zoom, Jira, and so on, we decided to create an <a href="https://helperbot.alley.co/faq">FAQ</a> as well as a product demonstration video. Together, these would serve an educational purpose and, as content for our website and social media channels, would serve a marketing and outreach purpose as well.</p>
-
-
-
-<p>Creating the product video, part demonstration, part commercial, seemed like it would be a daunting task. As we mentioned in our last post, Alley is an agency and our revenue comes from working with our clients. The product development of Helperbot was an internal project representing opportunity cost. In other words, we didn&#8217;t have much of a budget for marketing and outreach, so we needed to be as scrappy as possible. An early spike on animation and production firms confirmed our suspicion that hiring the “pros” would be too cost-prohibitive. Luckily, we have no shortage of talent internally!</p>
-
-
-
-<div class="is-layout-flex wp-container-3 wp-block-columns">
-<div class="is-layout-flow wp-block-column">
-<figure class="wp-block-image size-large"><a href="https://alley.com/wp-content/uploads/2022/01/Screen-Shot-2022-01-24-at-2.33.03-PM.png"><img decoding="async" loading="lazy" width="910" height="1230" src="https://alley.com/wp-content/uploads/2022/01/Screen-Shot-2022-01-24-at-2.33.03-PM.png?w=758" alt="" class="wp-image-5971"/></a></figure>
-</div>
-
-
-
-<div class="is-layout-flow wp-block-column">
-<figure class="wp-block-image size-large"><a href="https://alley.com/wp-content/uploads/2021/11/helperbotblog.png"><img decoding="async" loading="lazy" width="500" height="500" src="https://alley.com/wp-content/uploads/2021/11/helperbotblog.png?w=500" alt="" class="wp-image-5805"/></a></figure>
-</div>
-</div>
-
-
-
-<p><em>Left: Initial sketches for Helperbot logo design by Kelsey Locotos; Right: Final Helperbot Logo</em></p>
-
-
-
-<p>Kelsey Locotos, Alley’s Senior People Operations Manager, also happens to be a wonderful illustrator and graphic designer. In fact, she designed Helperbot’s logo, taking it through several iterations before landing on the graphic that you see today. Naturally, we knew she would be the perfect fit for creating animations for our Helperbot video. Alley’s Operations Analyst Brandon Fields helps run our social media and is no stranger to content creation, so we asked him to put his video editing chops to use. And through helping to produce Alley’s agile-focused podcast, <a href="https://twoscrumsup.com/">Two Scrums Up</a>, the author of this post knows a thing or two about audio recording, editing, and sound mixing. So I volunteered to record the voiceover. The three of us worked together to produce the following video. We’re really proud of what we came up with. Check out the result below!</p>
-
-
-
-<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-4-3 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
-<iframe loading="lazy" title="Meet Helperbot" width="500" height="375" src="https://www.youtube.com/embed/Hj09bfvVEF8?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div></figure>
-
-
-
-<p>Ultimately, creating this animated product demo was as fun and rewarding as it was outside of our zone of expertise. The process reinforced the idea that we can pool our talents internally to make something really cool, without paying a lot of money to an outside marketing firm or animation studio. We know the video isn&#8217;t perfect. It&#8217;s certainly not as slick as what we would have gotten by paying thousands of dollars to professional video producers. But in it&#8217;s own scrappy way, it serves as the Minimum Viable Product (MVP again!) for a Helperbot demonstration video, and most importantly &#8211; it&#8217;s getting us results. So far, our DIY approach to marketing Helperbot has paid off, as we have seen not only our download count rise, but also an increase in repeat interactions with the application. We would love to hear from you about similar efforts. What have been some of your successes and challenges with DIY marketing on a limited (or non-existent) budget? Tweet to us at <a href="https://twitter.com/alleyco">https://twitter.com/alleyco</a>! We hope you enjoyed this series on Alley’s journey of bringing Helperbot from an idea to a product. If you’d like to try Helperbot with your own team, be sure to <a href="https://slack.com/apps/AFQJFBAP2-helperbot?tab=more_info">download</a> it, check out our <a href="https://www.youtube.com/watch?v=Hj09bfvVEF8">video</a>, review the <a href="https://helperbot.alley.co/faq">FAQ</a>, and <a href="mailto:helperbot-support@alley.co">send us feedback!</a></p>
-<p>The post <a rel="nofollow" href="https://alley.com/news/mvp-for-marketing-realizing-helperbots-publicity/">MVP for Marketing &#8211; Realizing Helperbot&#8217;s Publicity</a> appeared first on <a rel="nofollow" href="https://alley.com">Alley</a>.</p>
-]]></content:encoded>
-
-
-
-			</item>
+			<title>How to automate CI checks for PRs in WordPress delivery</title>
+			<link>https://alley.com/news/how-to-automate-ci-checks-for-prs-in-wordpress-delivery/</link>
+			<dc:creator>
+				<![CDATA[]]>
+			</dc:creator>
+			<pubDate>Fri, 08 Apr 2022 19:18:04 +0000</pubDate>
+			<category>
+				<![CDATA[Alley Insight]]>
+			</category>
+			<guid isPermaLink="false">https://alley.com/?p=6057</guid>
+			<description>
+				<![CDATA[<p>Watch the video to learn some of the ways we automate code quality checks. These checks ensure  we ship higher-quality code with less time and effort, and a higher success rate than manual review.</p><p>The post <a rel="nofollow" href="https://alley.com/news/how-to-automate-ci-checks-for-prs-in-wordpress-delivery/">How to automate CI checks for PRs in WordPress delivery</a> appeared first on <a rel="nofollow" href="https://alley.com">Alley</a>.</p>
+]]>
+			</description>
+			<content:encoded>
+				<![CDATA[
+<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper"><iframe loading="lazy" title="How to automate CI checks for PRs in WordPress delivery | Buddy Webinar #15" width="500" height="281" src="https://www.youtube.com/embed/hPYbVbqvQM8?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></figure><p>On April 6, Alley Vice President of Software Development Kevin Fodness and Director of Development Operations Ben Bolton participated in a free webinar, <strong>How to automate CI checks for PRs in WordPress delivery </strong>with <a href="https://buddy.works/">Buddy</a>. The webinar was designed for developers interested in adding automated code quality checks to pull requests. It was also designed for WordPress-focused digital agencies that want to shorten the feedback loop between their team and the client and improve their product’s code quality.</p><p>Diving into this webinar will teach you how to use Buddy to run automated tests and linting checks against WordPress plugins and themes. You will also learn to set up a pipeline for WordPress themes and plugins, with continuous integration that helps improve code quality.&nbsp;</p><p>Watch the video to learn some of the ways we automate code quality checks. These checks ensure&nbsp;we ship higher-quality code with less time and effort, and a higher success rate than manual review.</p><p><a href="https://buddy.works/webinars/how-automate-ci-checks-pull-requests-wp-delivery"><strong>How to automate CI checks for PRs in WordPress delivery</strong>&nbsp;</a></p><p class="has-pale-cyan-blue-background-color has-background">Adding automated code quality checks to pull requests is an essential and creative question for developers. At Alley, we pride ourselves on being creative. Check out our blog post, <a href="https://alley.com/news/alleys-inaugural-march-emoji-madness-tournament/">Emoji Madness</a>, to learn more about our culture.</p><p>The post <a rel="nofollow" href="https://alley.com/news/how-to-automate-ci-checks-for-prs-in-wordpress-delivery/">How to automate CI checks for PRs in WordPress delivery</a> appeared first on <a rel="nofollow" href="https://alley.com">Alley</a>.</p>
+]]>
+			</content:encoded>
+		</item>
 		<item>
-		<title>The Product Development of Helperbot</title>
-		<link>https://alley.com/news/the-product-development-of-helperbot/</link>
-
-		<dc:creator><![CDATA[Jonathan Byerley]]></dc:creator>
-		<pubDate>Wed, 19 Jan 2022 13:44:00 +0000</pubDate>
-				<category><![CDATA[Alley Insight]]></category>
-		<guid isPermaLink="false">https://alley.com/?p=5886</guid>
-
-					<description><![CDATA[<p>Minimum Viable Product is a great agile concept. Here's how we applied it to our Helperbot product development process.</p>
-<p>The post <a rel="nofollow" href="https://alley.com/news/the-product-development-of-helperbot/">The Product Development of Helperbot</a> appeared first on <a rel="nofollow" href="https://alley.com">Alley</a>.</p>
-]]></description>
-										<content:encoded><![CDATA[
-<p class="has-cyan-bluish-gray-background-color has-background"><em>This post is the second in a series devoted to the development of <a href="http://helperbot.alley.co">Helperbot</a>, Alley’s Slack application for remote Scrum teams. You can also read about where the idea came from in <a href="https://alley.com/news/the-origin-of-helperbot/">the first post in the series</a></em> and read about <a href="https://alley.com/news/mvp-for-marketing-realizing-helperbots-publicity/">MVP for Marketing &#8211; Realizing Helperbot&#8217;s Publicity</a> in our third post in the series. </p>
-
-
-
-<p>Minimum Viable Product, or MVP, is an agile concept with roots in Lean Startup, Lean Manufacturing, and Customer Development methodologies. It is generally defined as a product release with the most basic set of features to be usable by early adopters so they may provide feedback for future iterations. The idea behind releasing an MVP is that by continuously iterating on working versions, responding to feedback early and often, and allowing product developers’ assumptions to be challenged, engineers and stakeholders will be saved from costly, time-consuming, and ultimately unnecessary work in the long run.</p>
-
-
-
-<p>Releasing MVPs in sprint increments is a core practice of Alley’s development teams, so determining a basic feature set to bring Helperbot to market quickly was a natural starting point for us. As we mentioned in <a href="https://alley.com/news/the-origin-of-helperbot/">our first post in this series</a>, our internal Alleybot is crammed with features, some of which are perhaps marketable (quoting your colleagues’ Slack snark), others we have already open-sourced (code review queuing) and others… well, not so much. For example, Swanson me!&nbsp;</p>
-
-
-
-<figure class="wp-block-image size-large"><a href="https://alley.com/wp-content/uploads/2022/01/Screen-Shot-2022-01-19-at-2.51.37-PM.png"><img decoding="async" loading="lazy" width="786" height="672" src="https://alley.com/wp-content/uploads/2022/01/Screen-Shot-2022-01-19-at-2.51.37-PM.png?w=786" alt="" class="wp-image-5962"/></a></figure>
-
-
-
-<p>To determine an MVP for Helperbot, we had a discussion about our goals for the product. We realized a key area of expertise that Alley has to share &#8211; besides strategy, user experience, design, and software engineering &#8211; is our role pioneering Scrum for remote, distributed teams. Tooling is only a small part of fostering remote Scrum &#8211; a drop in the bucket really &#8211; but it is something we can easily share with the rest of the world. This guided our decision to make Alleybot’s agile estimation and rate function the minimum viable product for Helperbot.</p>
-
-
-
-<h2 id="h-feasible-viable-and-desirable"><strong>Feasible, Viable, and Desirable</strong></h2>
-
-
-
-<p>While workshopping the idea of productizing Helperbot, the book <a href="https://www.strategyzer.com/books/testing-business-ideas-david-j-bland"><em>Testing Business Ideas</em></a> by David Bland and Alex Osterwalder became a key guidepost for us. Billed as a “field guide for rapid experimentation,” the book defined for us three different types of business hypotheses and how to test for them.</p>
-
-
-
-<p>The first was the <strong>Feasibility </strong>hypothesis. In other words, <em>Can</em> we do this? Can Alley manage, scale, and access key resources (technology, branding, IP) to bring Helperbot to market? Given that our MVP feature set already existed in the form of Alleybot, the engineering overhead, while not insignificant, was far more feasible than building something entirely new from scratch. Engaging the help of our in-house design and marketing teams for the logo and branding further established the feasibility of taking this project on. We determined that productizing Helperbot passed the feasibility test.&nbsp;</p>
-
-
-
-<p>Next up came the <strong>Viability </strong>hypothesis: <em>Should</em> we do this?&nbsp; Can bringing Helperbot to market generate more revenue than cost? This was a more difficult question to answer. As an agency, our revenue comes from our work from clients, and work not spent on billable hours represents opportunity costs. So the question was, how much time and capacity were we willing to devote developer resources toward an internal project, without an established stream of revenue?&nbsp;</p>
-
-
-
-<p>This question brought us to the next and final question, the <strong>Desirability </strong>hypothesis. <em>Do they want this?</em> Is there actually a market for our value proposition, i.e. a Slack tool enabling agile estimation for remote Scrum teams? If yes, is the market significant enough for our product to be viable?</p>
-
-
-
-<figure class="wp-block-image size-large"><a href="https://alley.com/wp-content/uploads/2022/01/Screen-Shot-2022-01-19-at-2.52.05-PM.png"><img decoding="async" loading="lazy" width="1102" height="708" src="https://alley.com/wp-content/uploads/2022/01/Screen-Shot-2022-01-19-at-2.52.05-PM.png?w=1024" alt="" class="wp-image-5963"/></a></figure>
-
-
-
-<p>This is where we had to face and perhaps challenge our assumptions. While Alleybot’s agile estimation and rate features are super useful, arguably critical, to Alley’s own Scrum practice, would it be so for a significant number of other users? It became clear that the majority of our product experimentation and market research needed to be conducted with the goal of proving, or disproving, the Desirability hypothesis. To accomplish this, our first step was to deliver an MVP to a selection of non-Alley alpha users and let them take Helperbot out for a spin.</p>
-
-
-
-<h2><strong>Alpha User Testing</strong></h2>
-
-
-
-<p>To find alpha users, Alley looked to its own network of peers and former colleagues. It didn&#8217;t take too long for us to secure the participation of two SaaS companies, one consulting agency, and a startup &#8211; each of which employ remote Scrum to one degree or another. We gave each of the four alpha testing groups an early version of the Slack application and asked that they use Helperbot over the course of a few sprints, using the estimation and rates features for sprint planning and backlog refinement. We established five criteria to determine desirability:</p>
-
-
-
-<ul><li>We believe that Helperbot will empower teams to asynchronously estimate and rate user stories.</li><li>We believe that Helperbot’s integration with Slack and Jira will be highly valuable to teams.</li><li>We believe that Helperbot will reduce meeting time teams need for Scrum activities like estimating and rating.</li><li>We believe that Helperbot will improve team efficiency.</li><li>We believe that Helperbot will support the Scrum practices of teams.</li></ul>
-
-
-
-<p>To test for the above, we surveyed our alpha users to rate the degree to which Helperbot supported their teams in each of these distinct areas. Our criteria for success was measured as whether more than 70% of users realized a <em>somewhat</em> or<em> significantly improved </em>ability to function as a Scrum team, and fewer than 10% of users realized any <em>diminished</em> ability to function as a Scrum team.</p>
-
-
-
-<p>In addition to survey testing, we also conducted a series of user feedback interviews that were more qualitative. Our interview below can be adapted to any product idea, so feel free to repurpose these questions!</p>
-
-
-
-<p><strong><em>Interview Questions</em></strong></p>
-
-
-
-<ol><li><em>Tell us a bit about what your experience of Helperbot has been so far.</em></li></ol>
-
-
-
-<ol start="2"><li><em>What features have you found most valuable when using Helperbot? (e.g. Estimate, Rate, Async, Jira integration, using Slack to run estimation games)</em></li></ol>
-
-
-
-<ol start="3"><li><em>What has Helperbot’s overall impact been on your team?</em></li></ol>
-
-
-
-<ol start="4"><li><em>Have you experienced any frustrations using Helperbot?</em></li></ol>
-
-
-
-<ol start="5"><li><em>What would make Helperbot more useful to your team?</em></li></ol>
-
-
-
-<ol start="6"><li><em>How useful are the following for your team?</em></li></ol>
-
-
-
-<ul><li>Asynchronous rating and estimation&nbsp;</li><li>Slack integration</li><li>Jira integration</li></ul>
-
-
-
-<ol start="7"><li><em>Has Helperbot helped your team improve upon any of the following?</em></li></ol>
-
-
-
-<ul><li>Meeting time</li><li>Team efficiency</li><li>Scrum practices</li></ul>
-
-
-
-<ol start="8"><li><em>Has anything unexpected or surprising come with using Helperbot?</em></li></ol>
-
-
-
-<ol start="9"><li><em>How much of a Slack feature feeling did this have? Add-on?</em></li></ol>
-
-
-
-<p>The results were encouraging and at times even surprising! Below are some highlights of the feedback we received from our alpha testers.</p>
-
-
-
-<ul><li>Users reported past efforts to adopt similar products that ultimately failed because they were too far removed from the users’ established practices, tooling, and workflows.&nbsp;</li><li>A key advantage of Helperbot was that it “worked where they live.” (i.e. in the remote office space of Slack.)&nbsp;</li><li>Users reported that Helperbot helped their teams to establish consistent Scrum practices, such as using numbers in the Fibonacci Sequence for user story pointing and fostering team discussion when story votes are out of range by more than two degrees.</li><li>Helperbot helped one user group &#8211; new practitioners of Scrum &#8211; to get their teams to adopt user story estimation as a general practice much faster.</li><li>Helperbot shortened meeting times and helped to eliminate “dead air” in sprint planning and backlog refinement.</li><li>One surprising finding was that Helperbot’s Jira integration option was less of a key selling point than we had anticipated (based upon the self-reporting of our alpha users).</li><li>Another surprising finding was that the ability to estimate user stories asynchronously was less important to our alpha users, who were almost uniformly in the practice of running user story estimation in real time.</li><li>Finally, one alpha user group cited a use case for the Rate feature that Alley had never considered! In this case, hiring teams used Rate to determine whether interview candidates would advance to the next round of hiring via a fist-of-five vote.</li></ul>
-
-
-
-<p>At the conclusion of our alpha testing phase, we decided that Helperbot had passed the Desirability test. Huzzah! After several more rounds of development revisions &#8211; responding to bug reports, feature requests, copy changes, UX/UI tweaks, and design feedback, we finally brought our product to market via the Slack App Directory. In our next and final post in this series, we will discuss the marketing of Helperbot and our present efforts to see wider adoption and usage of our <a href="https://helperbot.alley.co/">friendly Scrum assistant</a>. Stay tuned!</p>
-<p>The post <a rel="nofollow" href="https://alley.com/news/the-product-development-of-helperbot/">The Product Development of Helperbot</a> appeared first on <a rel="nofollow" href="https://alley.com">Alley</a>.</p>
-]]></content:encoded>
-
-
-
-			</item>
+			<title>MVP for Marketing &#8211; Realizing Helperbot&#8217;s Publicity</title>
+			<link>https://alley.com/news/mvp-for-marketing-realizing-helperbots-publicity/</link>
+			<dc:creator>
+				<![CDATA[Jonathan Byerley]]>
+			</dc:creator>
+			<pubDate>Tue, 25 Jan 2022 15:45:00 +0000</pubDate>
+			<category>
+				<![CDATA[Alley Insight]]>
+			</category>
+			<guid isPermaLink="false">https://alley.com/?p=5887</guid>
+			<description>
+				<![CDATA[<p>How do you approach marketing on a small budget and tight timeline? Create an MVP for marketing just like you do for product development!</p><p>The post <a rel="nofollow" href="https://alley.com/news/mvp-for-marketing-realizing-helperbots-publicity/">MVP for Marketing &#8211; Realizing Helperbot&#8217;s Publicity</a> appeared first on <a rel="nofollow" href="https://alley.com">Alley</a>.</p>
+]]>
+			</description>
+			<content:encoded>
+				<![CDATA[
+<p class="has-cyan-bluish-gray-background-color has-background"><em>This post is the third and final in a series devoted to the development of Helperbot, Alley’s Slack application for remote Scrum teams. Be sure to check out the previous posts on <a href="https://alley.com/news/the-origin-of-helperbot/">the origin of Helperbot</a> and <a href="https://alley.com/news/the-product-development-of-helperbot/">its product development</a>!</em></p><p>In our blog series so far, we have covered <a href="https://alley.com/news/the-origin-of-helperbot/">the origins of Helperbot</a> &#8211; a result of Alley’s own need to build a tool to suit its remote Scrum practice &#8211; and <a href="https://alley.com/news/the-product-development-of-helperbot/">the process of bringing our tool to market </a>for the benefit of Scrum teams everywhere. Since launching Helperbot in the <a href="https://alleyinteractive.slack.com/apps/AFQJFBAP2-helperbot?tab=more_info">Slack App Directory</a> in June of 2020, we have seen over a hundred organizations install the tool and we log interactions on a daily basis. It is highly rewarding to watch our creation out in the world helping teams succeed! But now what?</p><p>In the last post, we discussed testing for various business hypotheses &#8211; viability, feasibility, and desirability (an idea for prototyping product ideas that <a href="https://www.ideou.com/blogs/inspiration/how-to-prototype-a-new-business">originated with IDEO</a> in the early aughts) through an extensive round of alpha testing. From this testing, we determined that a market for our product existed, but questions still remain. Just how<em> large</em> is the market for remote Scrum tooling like Helperbot? What is the potential for scale? How can we not only drive up our installation count, but also drive up our number of recurring, regular users? (i.e. a full organizational adoption of Helperbot, rather than a mere workspace installation.)</p><p>We decided the best way to answer these questions would be a combination of marketing and product education to reach and retain our potential market. We realized we needed to succinctly marry three distinct concepts together in a way that our new users had perhaps not yet considered. The following three pillars working together are so native to Alley, that we almost take them for granted. But that doesn&#8217;t mean that they would come naturally to teams new to Scrum, or first-time Helperbot adopters, including the thousands of teams that found themselves <a href="https://alley.com/news/locked-out-of-the-scrum-room/">suddenly remote</a> due to the pandemic:</p><ul><li>Agile estimation, sprint planning, and backlog refinement</li><li>Fully remote, distributed team composition</li><li>Tandem tooling: Video, chat, and project management software</li></ul><p>For Helperbot to be effective in improving a team’s planning efficiency, the team must first be comfortable with employing its various communication tools in tandem, to connect its distributed members both synchronously and asynchronously, to execute the rituals required to properly estimate a backlog and plan for a sprint.</p><p>To ensure that our new and potential users understood how Helperbot works within and alongside Slack, Zoom, Jira, and so on, we decided to create an <a href="https://helperbot.alley.co/faq">FAQ</a> as well as a product demonstration video. Together, these would serve an educational purpose and, as content for our website and social media channels, would serve a marketing and outreach purpose as well.</p><p>Creating the product video, part demonstration, part commercial, seemed like it would be a daunting task. As we mentioned in our last post, Alley is an agency and our revenue comes from working with our clients. The product development of Helperbot was an internal project representing opportunity cost. In other words, we didn&#8217;t have much of a budget for marketing and outreach, so we needed to be as scrappy as possible. An early spike on animation and production firms confirmed our suspicion that hiring the “pros” would be too cost-prohibitive. Luckily, we have no shortage of talent internally!</p><div class="is-layout-flex wp-container-3 wp-block-columns"><div class="is-layout-flow wp-block-column"><figure class="wp-block-image size-large"><a href="https://alley.com/wp-content/uploads/2022/01/Screen-Shot-2022-01-24-at-2.33.03-PM.png"><img decoding="async" loading="lazy" width="910" height="1230" src="https://alley.com/wp-content/uploads/2022/01/Screen-Shot-2022-01-24-at-2.33.03-PM.png?w=758" alt="" class="wp-image-5971"/></a></figure></div><div class="is-layout-flow wp-block-column"><figure class="wp-block-image size-large"><a href="https://alley.com/wp-content/uploads/2021/11/helperbotblog.png"><img decoding="async" loading="lazy" width="500" height="500" src="https://alley.com/wp-content/uploads/2021/11/helperbotblog.png?w=500" alt="" class="wp-image-5805"/></a></figure></div></div><p><em>Left: Initial sketches for Helperbot logo design by Kelsey Locotos; Right: Final Helperbot Logo</em></p><p>Kelsey Locotos, Alley’s Senior People Operations Manager, also happens to be a wonderful illustrator and graphic designer. In fact, she designed Helperbot’s logo, taking it through several iterations before landing on the graphic that you see today. Naturally, we knew she would be the perfect fit for creating animations for our Helperbot video. Alley’s Operations Analyst Brandon Fields helps run our social media and is no stranger to content creation, so we asked him to put his video editing chops to use. And through helping to produce Alley’s agile-focused podcast, <a href="https://twoscrumsup.com/">Two Scrums Up</a>, the author of this post knows a thing or two about audio recording, editing, and sound mixing. So I volunteered to record the voiceover. The three of us worked together to produce the following video. We’re really proud of what we came up with. Check out the result below!</p><figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-4-3 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper"><iframe loading="lazy" title="Meet Helperbot" width="500" height="375" src="https://www.youtube.com/embed/Hj09bfvVEF8?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></figure><p>Ultimately, creating this animated product demo was as fun and rewarding as it was outside of our zone of expertise. The process reinforced the idea that we can pool our talents internally to make something really cool, without paying a lot of money to an outside marketing firm or animation studio. We know the video isn&#8217;t perfect. It&#8217;s certainly not as slick as what we would have gotten by paying thousands of dollars to professional video producers. But in it&#8217;s own scrappy way, it serves as the Minimum Viable Product (MVP again!) for a Helperbot demonstration video, and most importantly &#8211; it&#8217;s getting us results. So far, our DIY approach to marketing Helperbot has paid off, as we have seen not only our download count rise, but also an increase in repeat interactions with the application. We would love to hear from you about similar efforts. What have been some of your successes and challenges with DIY marketing on a limited (or non-existent) budget? Tweet to us at <a href="https://twitter.com/alleyco">https://twitter.com/alleyco</a>! We hope you enjoyed this series on Alley’s journey of bringing Helperbot from an idea to a product. If you’d like to try Helperbot with your own team, be sure to <a href="https://slack.com/apps/AFQJFBAP2-helperbot?tab=more_info">download</a> it, check out our <a href="https://www.youtube.com/watch?v=Hj09bfvVEF8">video</a>, review the <a href="https://helperbot.alley.co/faq">FAQ</a>, and <a href="mailto:helperbot-support@alley.co">send us feedback!</a></p><p>The post <a rel="nofollow" href="https://alley.com/news/mvp-for-marketing-realizing-helperbots-publicity/">MVP for Marketing &#8211; Realizing Helperbot&#8217;s Publicity</a> appeared first on <a rel="nofollow" href="https://alley.com">Alley</a>.</p>
+]]>
+			</content:encoded>
+		</item>
 		<item>
-		<title>3 People-First Principles for Making your Hiring Process Transparent and Equitable</title>
-		<link>https://alley.com/news/3-people-first-principles-for-making-your-hiring-process-transparent-and-equitable/</link>
-
-		<dc:creator><![CDATA[Paige Campbell, Sarah Rose Belok]]></dc:creator>
-		<pubDate>Mon, 17 Jan 2022 14:00:00 +0000</pubDate>
-				<category><![CDATA[Alley Insight]]></category>
-		<guid isPermaLink="false">https://alley.com/?p=5930</guid>
-
-					<description><![CDATA[<p>We know the importance of valuing people and have set up systems and best practices for making our employees feel cared for starting long before they accept an offer to work with us. Here are three people-first principles we’ve incorporated into our hiring process that you can try too. </p>
-<p>The post <a rel="nofollow" href="https://alley.com/news/3-people-first-principles-for-making-your-hiring-process-transparent-and-equitable/">3 People-First Principles for Making your Hiring Process Transparent and Equitable</a> appeared first on <a rel="nofollow" href="https://alley.com">Alley</a>.</p>
-]]></description>
-										<content:encoded><![CDATA[
-<p>It’s January 2022 and let’s face it— hiring during the last couple of years hasn’t been easy. However, at Alley, we’ve taken this time to walk the talk of <strong>praxis: acting and reflecting on the world in order to change it</strong>. We know the importance of valuing people and so we’ve set up systems and best practices for making our employees feel cared for starting long before they accept an offer to work with us. Here are three people-first principles we’ve incorporated into our hiring process that you can try too.&nbsp;</p>
-
-
-
-<p><strong>Show candidates you care about them </strong>&nbsp;</p>
-
-
-
-<p>You’ve applied to a job you really want and have poured your heart and soul into an application only to receive the dreaded: <em>Thank you for your interest in &lt;insert dream job with dream company here&gt;, but we’ve decided to move forward with other candidates. </em>At Alley, we understand the importance of taking the time to respond to each candidate with care instead of sending automated, robotic responses that reduce people to numbers.</p>
-
-
-
-<p>When receiving numerous applications each day, we acknowledge the person on the other side of the application who took the time, thought and energy to apply for our job opening. We understand applicants may be going through a range of life experiences or barriers to applying. Maybe they are having a terrible week, but felt a glimmer of hope when they saw the job opening. Or maybe they were met with an overwhelming sense of imposter syndrome when they read the job description, but chose to apply anyway. Interactions with candidates matter before they apply, during the interview process, and after they’ve accepted a position.&nbsp;</p>
-
-
-
-<p>Here’s how Alley is building candidate relationships at the beginning of the applicants’ journey that you can apply right away:&nbsp;</p>
-
-
-
-<ul><li><strong>Audit and revise rejection emails to add a human touch</strong>. We added language to show that we genuinely appreciate the time and energy they’ve invested into our job opening, especially since there are a lot of companies who are hiring. Even if they don’t get an interview or advance in the process, we want Alley applicants to know we genuinely appreciate their time and interest and encourage them to keep in touch with us. Some candidates may not have the experience now, but who’s to say they won’t in a few years? We have actually hired candidates who didn’t have the experience needed for the role when they first applied, but reapplied after a couple of years and were hired.&nbsp;</li><li><strong>Respond to applicants throughout the process.</strong> If a candidate asks a question, respond. If they tell you to have a great weekend, reciprocate. These seemingly small interactions leave candidates feeling valued and seen, which helps us build a positive relationship with them before they even start working with us.&nbsp;</li><li><strong>Share feedback to help applicants grow.</strong> If an applicant wants to know why they were rejected, we give them specific and actionable feedback because we value their growth and hope they’ll consider applying in the future.&nbsp;</li></ul>
-
-
-
-<p><strong>Prioritize equity and accessibility</strong></p>
-
-
-
-<p>At Alley, we value and respect our colleagues who come from many unique backgrounds and aim to foster an environment where our employees feel like they can bring their whole selves to work. As written in our <a href="https://alley.com/dei/">Diversity, Equity, and Inclusion Pledge</a>, Alley is committed to making sure our teams reflect the broader demographic makeup of the U.S. and other countries where our team members are based. As a result, we’ve focused on taking actions that make our Hiring process more equitable and have documented these tips that you can implement too:</p>
-
-
-
-<ul><li><strong>Organize unconscious bias training</strong> for everyone involved in the hiring process.&nbsp;</li><li><strong>Decide on objective criteria for approving candidates through the use of a hiring rubric.</strong> A hiring rubric is a scorecard that highlights specific objective skills required to accept a candidate and develops a shared understanding on the hiring team of what you’re looking for. It helps mitigate bias and stereotyping that might creep into the screening process.&nbsp;&nbsp;</li><li><strong>Review job descriptions and hiring process for possible bias</strong> or language that might signal an uninclusive work environment.</li><li><strong>Identify job boards curated for diverse and underrepresented communities</strong> to get your job opportunities in front of qualified individuals that you may be missing out on.&nbsp;</li><li><strong>Prepare to make accessibility accommodations an interviewee might benefit from</strong>, such as audio captioning devices or interpreters. When inviting candidates for interviews, we make sure they know these options are available for them.&nbsp;&nbsp;</li></ul>
-
-
-
-<p><strong>Keep the interview process as transparent as possible&nbsp;</strong></p>
-
-
-
-<p>Transparency is something we value at Alley and that includes during hiring. We don’t think our hiring process should be kept a secret, so we’ve done the following to make the process as clear and visible as possible. You can take these steps as well:</p>
-
-
-
-<ul><li><strong>Create a list of </strong><a href="https://alley.com/faq-hiring-process-working-at-alley/"><strong>Frequently Asked Questions</strong></a> for candidates who are looking for more information about the interview process and working at the company.&nbsp;</li><li><strong>List starting salaries and benefits on each of our job listings</strong> so candidates have the information they need to determine if they would like to submit an application.&nbsp;</li><li><strong>Let them know what to expect.</strong> At Alley, we give candidates a head’s up on what the interview process will look like when we invite them to meet with our team. We’ve even written a blog post about the fourth and final stage of our interview process: <a href="https://alley.com/news/behind-the-slack-channel-holding-a-job-interview-in-slack/">the Slack Interview</a>. From providing <a href="https://alley.com/code-sample-best-practices/">code sample tips</a> for developer candidates to sharing information about our hiring process, we want candidates to know what’s ahead if they apply for a position with us.&nbsp;</li></ul>
-
-
-
-<p>By making our expectations and process visible, candidates know what to expect and how best to prepare for interviews so they can focus on being themselves, thereby helping both the candidate and the hiring team determine if Alley is the right place for them.&nbsp;</p>
-
-
-
-<p>Interested in joining us? Review our openings and apply on our <a href="https://alley.com/careers/">careers page</a>.&nbsp;</p>
-
-
-
-<p class="has-pale-cyan-blue-background-color has-background">Transparency is essential in the hiring process and creating a product vision. Take a moment to read about <a href="https://alley.com/news/bringing-inclusivity-into-projects-from-the-beginning/" target="_blank" rel="noreferrer noopener">Bringing Inclusivity into Projects from the Beginning</a>.</p>
-<p>The post <a rel="nofollow" href="https://alley.com/news/3-people-first-principles-for-making-your-hiring-process-transparent-and-equitable/">3 People-First Principles for Making your Hiring Process Transparent and Equitable</a> appeared first on <a rel="nofollow" href="https://alley.com">Alley</a>.</p>
-]]></content:encoded>
-
-
-
-			</item>
+			<title>The Product Development of Helperbot</title>
+			<link>https://alley.com/news/the-product-development-of-helperbot/</link>
+			<dc:creator>
+				<![CDATA[Jonathan Byerley]]>
+			</dc:creator>
+			<pubDate>Wed, 19 Jan 2022 13:44:00 +0000</pubDate>
+			<category>
+				<![CDATA[Alley Insight]]>
+			</category>
+			<guid isPermaLink="false">https://alley.com/?p=5886</guid>
+			<description>
+				<![CDATA[<p>Minimum Viable Product is a great agile concept. Here's how we applied it to our Helperbot product development process.</p><p>The post <a rel="nofollow" href="https://alley.com/news/the-product-development-of-helperbot/">The Product Development of Helperbot</a> appeared first on <a rel="nofollow" href="https://alley.com">Alley</a>.</p>
+]]>
+			</description>
+			<content:encoded>
+				<![CDATA[
+<p class="has-cyan-bluish-gray-background-color has-background"><em>This post is the second in a series devoted to the development of <a href="http://helperbot.alley.co">Helperbot</a>, Alley’s Slack application for remote Scrum teams. You can also read about where the idea came from in <a href="https://alley.com/news/the-origin-of-helperbot/">the first post in the series</a></em> and read about <a href="https://alley.com/news/mvp-for-marketing-realizing-helperbots-publicity/">MVP for Marketing &#8211; Realizing Helperbot&#8217;s Publicity</a> in our third post in the series. </p><p>Minimum Viable Product, or MVP, is an agile concept with roots in Lean Startup, Lean Manufacturing, and Customer Development methodologies. It is generally defined as a product release with the most basic set of features to be usable by early adopters so they may provide feedback for future iterations. The idea behind releasing an MVP is that by continuously iterating on working versions, responding to feedback early and often, and allowing product developers’ assumptions to be challenged, engineers and stakeholders will be saved from costly, time-consuming, and ultimately unnecessary work in the long run.</p><p>Releasing MVPs in sprint increments is a core practice of Alley’s development teams, so determining a basic feature set to bring Helperbot to market quickly was a natural starting point for us. As we mentioned in <a href="https://alley.com/news/the-origin-of-helperbot/">our first post in this series</a>, our internal Alleybot is crammed with features, some of which are perhaps marketable (quoting your colleagues’ Slack snark), others we have already open-sourced (code review queuing) and others… well, not so much. For example, Swanson me!&nbsp;</p><figure class="wp-block-image size-large"><a href="https://alley.com/wp-content/uploads/2022/01/Screen-Shot-2022-01-19-at-2.51.37-PM.png"><img decoding="async" loading="lazy" width="786" height="672" src="https://alley.com/wp-content/uploads/2022/01/Screen-Shot-2022-01-19-at-2.51.37-PM.png?w=786" alt="" class="wp-image-5962"/></a></figure><p>To determine an MVP for Helperbot, we had a discussion about our goals for the product. We realized a key area of expertise that Alley has to share &#8211; besides strategy, user experience, design, and software engineering &#8211; is our role pioneering Scrum for remote, distributed teams. Tooling is only a small part of fostering remote Scrum &#8211; a drop in the bucket really &#8211; but it is something we can easily share with the rest of the world. This guided our decision to make Alleybot’s agile estimation and rate function the minimum viable product for Helperbot.</p><h2 id="h-feasible-viable-and-desirable"><strong>Feasible, Viable, and Desirable</strong></h2><p>While workshopping the idea of productizing Helperbot, the book <a href="https://www.strategyzer.com/books/testing-business-ideas-david-j-bland"><em>Testing Business Ideas</em></a> by David Bland and Alex Osterwalder became a key guidepost for us. Billed as a “field guide for rapid experimentation,” the book defined for us three different types of business hypotheses and how to test for them.</p><p>The first was the <strong>Feasibility </strong>hypothesis. In other words, <em>Can</em> we do this? Can Alley manage, scale, and access key resources (technology, branding, IP) to bring Helperbot to market? Given that our MVP feature set already existed in the form of Alleybot, the engineering overhead, while not insignificant, was far more feasible than building something entirely new from scratch. Engaging the help of our in-house design and marketing teams for the logo and branding further established the feasibility of taking this project on. We determined that productizing Helperbot passed the feasibility test.&nbsp;</p><p>Next up came the <strong>Viability </strong>hypothesis: <em>Should</em> we do this?&nbsp; Can bringing Helperbot to market generate more revenue than cost? This was a more difficult question to answer. As an agency, our revenue comes from our work from clients, and work not spent on billable hours represents opportunity costs. So the question was, how much time and capacity were we willing to devote developer resources toward an internal project, without an established stream of revenue?&nbsp;</p><p>This question brought us to the next and final question, the <strong>Desirability </strong>hypothesis. <em>Do they want this?</em> Is there actually a market for our value proposition, i.e. a Slack tool enabling agile estimation for remote Scrum teams? If yes, is the market significant enough for our product to be viable?</p><figure class="wp-block-image size-large"><a href="https://alley.com/wp-content/uploads/2022/01/Screen-Shot-2022-01-19-at-2.52.05-PM.png"><img decoding="async" loading="lazy" width="1102" height="708" src="https://alley.com/wp-content/uploads/2022/01/Screen-Shot-2022-01-19-at-2.52.05-PM.png?w=1024" alt="" class="wp-image-5963"/></a></figure><p>This is where we had to face and perhaps challenge our assumptions. While Alleybot’s agile estimation and rate features are super useful, arguably critical, to Alley’s own Scrum practice, would it be so for a significant number of other users? It became clear that the majority of our product experimentation and market research needed to be conducted with the goal of proving, or disproving, the Desirability hypothesis. To accomplish this, our first step was to deliver an MVP to a selection of non-Alley alpha users and let them take Helperbot out for a spin.</p><h2><strong>Alpha User Testing</strong></h2><p>To find alpha users, Alley looked to its own network of peers and former colleagues. It didn&#8217;t take too long for us to secure the participation of two SaaS companies, one consulting agency, and a startup &#8211; each of which employ remote Scrum to one degree or another. We gave each of the four alpha testing groups an early version of the Slack application and asked that they use Helperbot over the course of a few sprints, using the estimation and rates features for sprint planning and backlog refinement. We established five criteria to determine desirability:</p><ul><li>We believe that Helperbot will empower teams to asynchronously estimate and rate user stories.</li><li>We believe that Helperbot’s integration with Slack and Jira will be highly valuable to teams.</li><li>We believe that Helperbot will reduce meeting time teams need for Scrum activities like estimating and rating.</li><li>We believe that Helperbot will improve team efficiency.</li><li>We believe that Helperbot will support the Scrum practices of teams.</li></ul><p>To test for the above, we surveyed our alpha users to rate the degree to which Helperbot supported their teams in each of these distinct areas. Our criteria for success was measured as whether more than 70% of users realized a <em>somewhat</em> or<em> significantly improved </em>ability to function as a Scrum team, and fewer than 10% of users realized any <em>diminished</em> ability to function as a Scrum team.</p><p>In addition to survey testing, we also conducted a series of user feedback interviews that were more qualitative. Our interview below can be adapted to any product idea, so feel free to repurpose these questions!</p><p><strong><em>Interview Questions</em></strong></p><ol><li><em>Tell us a bit about what your experience of Helperbot has been so far.</em></li></ol><ol start="2"><li><em>What features have you found most valuable when using Helperbot? (e.g. Estimate, Rate, Async, Jira integration, using Slack to run estimation games)</em></li></ol><ol start="3"><li><em>What has Helperbot’s overall impact been on your team?</em></li></ol><ol start="4"><li><em>Have you experienced any frustrations using Helperbot?</em></li></ol><ol start="5"><li><em>What would make Helperbot more useful to your team?</em></li></ol><ol start="6"><li><em>How useful are the following for your team?</em></li></ol><ul><li>Asynchronous rating and estimation&nbsp;</li><li>Slack integration</li><li>Jira integration</li></ul><ol start="7"><li><em>Has Helperbot helped your team improve upon any of the following?</em></li></ol><ul><li>Meeting time</li><li>Team efficiency</li><li>Scrum practices</li></ul><ol start="8"><li><em>Has anything unexpected or surprising come with using Helperbot?</em></li></ol><ol start="9"><li><em>How much of a Slack feature feeling did this have? Add-on?</em></li></ol><p>The results were encouraging and at times even surprising! Below are some highlights of the feedback we received from our alpha testers.</p><ul><li>Users reported past efforts to adopt similar products that ultimately failed because they were too far removed from the users’ established practices, tooling, and workflows.&nbsp;</li><li>A key advantage of Helperbot was that it “worked where they live.” (i.e. in the remote office space of Slack.)&nbsp;</li><li>Users reported that Helperbot helped their teams to establish consistent Scrum practices, such as using numbers in the Fibonacci Sequence for user story pointing and fostering team discussion when story votes are out of range by more than two degrees.</li><li>Helperbot helped one user group &#8211; new practitioners of Scrum &#8211; to get their teams to adopt user story estimation as a general practice much faster.</li><li>Helperbot shortened meeting times and helped to eliminate “dead air” in sprint planning and backlog refinement.</li><li>One surprising finding was that Helperbot’s Jira integration option was less of a key selling point than we had anticipated (based upon the self-reporting of our alpha users).</li><li>Another surprising finding was that the ability to estimate user stories asynchronously was less important to our alpha users, who were almost uniformly in the practice of running user story estimation in real time.</li><li>Finally, one alpha user group cited a use case for the Rate feature that Alley had never considered! In this case, hiring teams used Rate to determine whether interview candidates would advance to the next round of hiring via a fist-of-five vote.</li></ul><p>At the conclusion of our alpha testing phase, we decided that Helperbot had passed the Desirability test. Huzzah! After several more rounds of development revisions &#8211; responding to bug reports, feature requests, copy changes, UX/UI tweaks, and design feedback, we finally brought our product to market via the Slack App Directory. In our next and final post in this series, we will discuss the marketing of Helperbot and our present efforts to see wider adoption and usage of our <a href="https://helperbot.alley.co/">friendly Scrum assistant</a>. Stay tuned!</p><p>The post <a rel="nofollow" href="https://alley.com/news/the-product-development-of-helperbot/">The Product Development of Helperbot</a> appeared first on <a rel="nofollow" href="https://alley.com">Alley</a>.</p>
+]]>
+			</content:encoded>
+		</item>
 		<item>
-		<title>Accessibility and Strategy: How They Interact</title>
-		<link>https://alley.com/news/accessibility-and-strategy-how-they-interact/</link>
-
-		<dc:creator><![CDATA[Allison Greenwald, Brandon Fields]]></dc:creator>
-		<pubDate>Fri, 14 Jan 2022 18:38:00 +0000</pubDate>
-				<category><![CDATA[Alley Insight]]></category>
-		<guid isPermaLink="false">https://alley.com/?p=5924</guid>
-
-					<description><![CDATA[<p>Check out our latest video hosted by Product Manager Allison Greenwald and former Digital Strategist Rebecca Viser,  Accessibility and Strategy: How They Interact, discussing ways to create content that’s accessible for everyone.</p>
-<p>The post <a rel="nofollow" href="https://alley.com/news/accessibility-and-strategy-how-they-interact/">Accessibility and Strategy: How They Interact</a> appeared first on <a rel="nofollow" href="https://alley.com">Alley</a>.</p>
-]]></description>
-										<content:encoded><![CDATA[
-<p>Check out our latest video Accessibility and Strategy: How To Create Content for Everyone hosted by Senior Product Manager Allison Greenwald and former Digital Strategist Rebecca Viser. At least 8.5 percent of the population has a disability that affects computer use so creating content that’s accessible for everyone is a critical strategy for any audience. In this video, Allison and Rebecca discuss their experiences creating accessible content and share advice for others looking to do the same.</p>
-
-
-
-<p><br>What other topics would you like to learn more about? Let us know on<a href="http://twitter.com/alleyco"> Twitter</a>!</p>
-
-
-
-<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
-<iframe loading="lazy" title="Accessibility &amp; Strategy: How They Interact" width="500" height="281" src="https://www.youtube.com/embed/X313aCzZwhc?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div></figure>
-
-
-
-<p class="has-pale-cyan-blue-background-color has-background">Are you interested in learning more about accessibility in the world of Data Visualization? Take a moment to check out &#8211; <a href="https://alley.com/news/introducing-our-three-part-product-chats-video-series-on-data-visualization/" target="_blank" rel="noreferrer noopener">Introducing our Three-Part Product Chats Video Series on Data Visualization</a> by Ben Myers.</p>
-<p>The post <a rel="nofollow" href="https://alley.com/news/accessibility-and-strategy-how-they-interact/">Accessibility and Strategy: How They Interact</a> appeared first on <a rel="nofollow" href="https://alley.com">Alley</a>.</p>
-]]></content:encoded>
-
-
-
-			</item>
+			<title>3 People-First Principles for Making your Hiring Process Transparent and Equitable</title>
+			<link>https://alley.com/news/3-people-first-principles-for-making-your-hiring-process-transparent-and-equitable/</link>
+			<dc:creator>
+				<![CDATA[Paige Campbell, Sarah Rose Belok]]>
+			</dc:creator>
+			<pubDate>Mon, 17 Jan 2022 14:00:00 +0000</pubDate>
+			<category>
+				<![CDATA[Alley Insight]]>
+			</category>
+			<guid isPermaLink="false">https://alley.com/?p=5930</guid>
+			<description>
+				<![CDATA[<p>We know the importance of valuing people and have set up systems and best practices for making our employees feel cared for starting long before they accept an offer to work with us. Here are three people-first principles we’ve incorporated into our hiring process that you can try too. </p><p>The post <a rel="nofollow" href="https://alley.com/news/3-people-first-principles-for-making-your-hiring-process-transparent-and-equitable/">3 People-First Principles for Making your Hiring Process Transparent and Equitable</a> appeared first on <a rel="nofollow" href="https://alley.com">Alley</a>.</p>
+]]>
+			</description>
+			<content:encoded>
+				<![CDATA[
+<p>It’s January 2022 and let’s face it— hiring during the last couple of years hasn’t been easy. However, at Alley, we’ve taken this time to walk the talk of <strong>praxis: acting and reflecting on the world in order to change it</strong>. We know the importance of valuing people and so we’ve set up systems and best practices for making our employees feel cared for starting long before they accept an offer to work with us. Here are three people-first principles we’ve incorporated into our hiring process that you can try too.&nbsp;</p><p><strong>Show candidates you care about them </strong>&nbsp;</p><p>You’ve applied to a job you really want and have poured your heart and soul into an application only to receive the dreaded: <em>Thank you for your interest in &lt;insert dream job with dream company here&gt;, but we’ve decided to move forward with other candidates. </em>At Alley, we understand the importance of taking the time to respond to each candidate with care instead of sending automated, robotic responses that reduce people to numbers.</p><p>When receiving numerous applications each day, we acknowledge the person on the other side of the application who took the time, thought and energy to apply for our job opening. We understand applicants may be going through a range of life experiences or barriers to applying. Maybe they are having a terrible week, but felt a glimmer of hope when they saw the job opening. Or maybe they were met with an overwhelming sense of imposter syndrome when they read the job description, but chose to apply anyway. Interactions with candidates matter before they apply, during the interview process, and after they’ve accepted a position.&nbsp;</p><p>Here’s how Alley is building candidate relationships at the beginning of the applicants’ journey that you can apply right away:&nbsp;</p><ul><li><strong>Audit and revise rejection emails to add a human touch</strong>. We added language to show that we genuinely appreciate the time and energy they’ve invested into our job opening, especially since there are a lot of companies who are hiring. Even if they don’t get an interview or advance in the process, we want Alley applicants to know we genuinely appreciate their time and interest and encourage them to keep in touch with us. Some candidates may not have the experience now, but who’s to say they won’t in a few years? We have actually hired candidates who didn’t have the experience needed for the role when they first applied, but reapplied after a couple of years and were hired.&nbsp;</li><li><strong>Respond to applicants throughout the process.</strong> If a candidate asks a question, respond. If they tell you to have a great weekend, reciprocate. These seemingly small interactions leave candidates feeling valued and seen, which helps us build a positive relationship with them before they even start working with us.&nbsp;</li><li><strong>Share feedback to help applicants grow.</strong> If an applicant wants to know why they were rejected, we give them specific and actionable feedback because we value their growth and hope they’ll consider applying in the future.&nbsp;</li></ul><p><strong>Prioritize equity and accessibility</strong></p><p>At Alley, we value and respect our colleagues who come from many unique backgrounds and aim to foster an environment where our employees feel like they can bring their whole selves to work. As written in our <a href="https://alley.com/dei/">Diversity, Equity, and Inclusion Pledge</a>, Alley is committed to making sure our teams reflect the broader demographic makeup of the U.S. and other countries where our team members are based. As a result, we’ve focused on taking actions that make our Hiring process more equitable and have documented these tips that you can implement too:</p><ul><li><strong>Organize unconscious bias training</strong> for everyone involved in the hiring process.&nbsp;</li><li><strong>Decide on objective criteria for approving candidates through the use of a hiring rubric.</strong> A hiring rubric is a scorecard that highlights specific objective skills required to accept a candidate and develops a shared understanding on the hiring team of what you’re looking for. It helps mitigate bias and stereotyping that might creep into the screening process.&nbsp;&nbsp;</li><li><strong>Review job descriptions and hiring process for possible bias</strong> or language that might signal an uninclusive work environment.</li><li><strong>Identify job boards curated for diverse and underrepresented communities</strong> to get your job opportunities in front of qualified individuals that you may be missing out on.&nbsp;</li><li><strong>Prepare to make accessibility accommodations an interviewee might benefit from</strong>, such as audio captioning devices or interpreters. When inviting candidates for interviews, we make sure they know these options are available for them.&nbsp;&nbsp;</li></ul><p><strong>Keep the interview process as transparent as possible&nbsp;</strong></p><p>Transparency is something we value at Alley and that includes during hiring. We don’t think our hiring process should be kept a secret, so we’ve done the following to make the process as clear and visible as possible. You can take these steps as well:</p><ul><li><strong>Create a list of </strong><a href="https://alley.com/faq-hiring-process-working-at-alley/"><strong>Frequently Asked Questions</strong></a> for candidates who are looking for more information about the interview process and working at the company.&nbsp;</li><li><strong>List starting salaries and benefits on each of our job listings</strong> so candidates have the information they need to determine if they would like to submit an application.&nbsp;</li><li><strong>Let them know what to expect.</strong> At Alley, we give candidates a head’s up on what the interview process will look like when we invite them to meet with our team. We’ve even written a blog post about the fourth and final stage of our interview process: <a href="https://alley.com/news/behind-the-slack-channel-holding-a-job-interview-in-slack/">the Slack Interview</a>. From providing <a href="https://alley.com/code-sample-best-practices/">code sample tips</a> for developer candidates to sharing information about our hiring process, we want candidates to know what’s ahead if they apply for a position with us.&nbsp;</li></ul><p>By making our expectations and process visible, candidates know what to expect and how best to prepare for interviews so they can focus on being themselves, thereby helping both the candidate and the hiring team determine if Alley is the right place for them.&nbsp;</p><p>Interested in joining us? Review our openings and apply on our <a href="https://alley.com/careers/">careers page</a>.&nbsp;</p><p class="has-pale-cyan-blue-background-color has-background">Transparency is essential in the hiring process and creating a product vision. Take a moment to read about <a href="https://alley.com/news/bringing-inclusivity-into-projects-from-the-beginning/" target="_blank" rel="noreferrer noopener">Bringing Inclusivity into Projects from the Beginning</a>.</p><p>The post <a rel="nofollow" href="https://alley.com/news/3-people-first-principles-for-making-your-hiring-process-transparent-and-equitable/">3 People-First Principles for Making your Hiring Process Transparent and Equitable</a> appeared first on <a rel="nofollow" href="https://alley.com">Alley</a>.</p>
+]]>
+			</content:encoded>
+		</item>
 		<item>
-		<title>The Origin of Helperbot</title>
-		<link>https://alley.com/news/the-origin-of-helperbot/</link>
-
-		<dc:creator><![CDATA[Jonathan Byerley]]></dc:creator>
-		<pubDate>Thu, 13 Jan 2022 11:21:00 +0000</pubDate>
-				<category><![CDATA[Alley Insight]]></category>
-		<guid isPermaLink="false">https://alley.com/?p=5803</guid>
-
-					<description><![CDATA[<p>Understand the story behind Helperbot, our asynchronous Scrum solution for distributed and co-located teams - built by the Alley team.</p>
-<p>The post <a rel="nofollow" href="https://alley.com/news/the-origin-of-helperbot/">The Origin of Helperbot</a> appeared first on <a rel="nofollow" href="https://alley.com">Alley</a>.</p>
-]]></description>
-										<content:encoded><![CDATA[
-<p class="has-cyan-bluish-gray-background-color has-background"><em>This post is the first in a series devoted to the development of <a href="http://helperbot.alley.co">Helperbot</a>, Alley’s Slack application for remote Scrum teams. You can read about the Product Development of Helperbot in the <a href="https://alley.com/news/the-product-development-of-helperbot/">the second post in the series</a></em> <em>and read about <a href="https://alley.com/news/mvp-for-marketing-realizing-helperbots-publicity/">MVP for Marketing – Realizing Helperbot’s Publicity</a> in our third post in the series.</em></p>
-
-
-
-<p>When Alley adopted Scrum in 2018, we needed agile tooling solutions suitable for fully-remote, distributed teams. Because Slack is where our team members communicate and collaborate, we looked for Slack-based applications that would help our teams facilitate Scrum rituals and user story estimation. As firm believers in avoiding <a href="https://alley.com/news/not-invented-here-syndrome-and-how-to-prevent-it/">Not Invented Here Syndrome</a>, that pesky tendency engineers have to architect solutions to problems that have already been solved, we were optimistic that we could find existing tools to help facilitate our emergent Scrum practice.</p>
-
-
-
-<p>It didn&#8217;t take us too long to realize that, in this case, our assumption was incorrect. Sure, Slack-based scrum tooling existed in 2018, but each application we tested fell short in some key respect or another. In some cases, the pricing structure was prohibitive for a company of our size. In other cases, the UI was clunky or the functionality was limited. In one case, the tooling simply didn’t align with our communication culture. For example: one tool would time team members during daily stand-ups and “shame” anyone who went over their allotted time slot!&nbsp;</p>
-
-
-
-<p>After testing what was available in the market, it seemed we had stumbled upon a problem for which there was not yet a great solution. If we wanted Scrum-first tooling for fully-remote, distributed teams, we would need to build it ourselves. Enter <a href="https://alley.com/team/#team-member-72">Alleybot</a>, our heavily customized Hubot instance&#8230; and machine overlord. Alleybot has more features than we can list here that help our team members on a daily basis, from <a href="https://alley.com/news/quote-unquote-alley/">capturing hilarious quotes</a> spoken in Slack, assigning users to Jira tickets, to making it easy for developers to <a href="https://github.com/alleyinteractive/hubot-code-review">claim pull requests for code review</a>, a feature we have open-sourced for all. But one of our most heavily-used features, and the one we feel would be most beneficial for teams beyond Alley, is its agile estimation function, for user story pointing (aka <a href="https://en.wikipedia.org/wiki/Planning_poker">planning poker</a>.)</p>
-
-
-
-<p>So after using Alleybot for our Scrum tooling solution with great internal success from late 2018 onwards, we had the idea of creating a simplified, less Alley-specific version of the tool for the general public. Our first product ideation session was held in January 2020 during a <a href="https://alley.com/news/alley-turns-10-in-cancun/">company-wide retreat</a> to Cancun, Mexico. After several product workshops (that we will discuss in greater detail in the second post in this blog series) we determined our MVP, or minimum viable product, to get <a href="https://helperbot.alley.co/">Helperbot</a> to market as quickly as possible, with minimum overhead for us and the most value for our users.</p>
-
-
-
-<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-4-3 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
-<iframe loading="lazy" title="Meet Helperbot" width="500" height="375" src="https://www.youtube.com/embed/Hj09bfvVEF8?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div></figure>
-
-
-
-<p>Less than six months later, Helperbot was available in the <a href="https://slack.com/apps/AFQJFBAP2-helperbot?tab=more_info">Slack app directory</a>, free of charge. Its release could not have been more timely, given that by June of 2020, nearly every co-located company had found themselves <a href="https://alley.com/news/locked-out-of-the-scrum-room/">suddenly remote</a> due to the Covid-19 pandemic. We launched with two features that can be used by Scrum teams everywhere, particularly teams made up of distributed team members. The command <em>/estimate [user story]</em> requests a story point estimation from your team right in Slack. It hides the votes of your team until you set the voting as complete, and then provides the median and average points determined by the team. This works asynchronously – your team members can vote at any time while voting is open – and Helperbot periodically reminds the channel if the voting is still open. If you’re a Jira user, Helperbot can insert the issue title and summary from Jira with the ticket number right into Slack. It can even automatically point the ticket from Slack by selecting either the median or average points. The second feature is <em>Rate</em>. The command <em>/rate [thing to rate] </em>&nbsp;spins up a poll for the team, allowing everyone in a channel to pick a number between 0-5 (aka Fist of Five) to give their opinion to the question. Anonymous results are displayed once everyone has rated.</p>
-
-
-
-<p>Since launching, we’ve seen new companies install and interact with Helperbot on a weekly basis. It’s been a thrill to see other organizations use Helperbot for backlog refinement and sprint planning. In the next blog post in this series, we will discuss the productization of Helperbot in greater detail. In the meantime, check out our <a href="https://www.youtube.com/watch?v=Hj09bfvVEF8">video</a>, <a href="https://slack.com/apps/AFQJFBAP2-helperbot?tab=more_info">download Helperbot</a>, and review the <a href="https://helperbot.alley.co/faq">FAQ</a>!</p>
-<p>The post <a rel="nofollow" href="https://alley.com/news/the-origin-of-helperbot/">The Origin of Helperbot</a> appeared first on <a rel="nofollow" href="https://alley.com">Alley</a>.</p>
-]]></content:encoded>
-
-
-
-			</item>
+			<title>Accessibility and Strategy: How They Interact</title>
+			<link>https://alley.com/news/accessibility-and-strategy-how-they-interact/</link>
+			<dc:creator>
+				<![CDATA[Allison Greenwald, Brandon Fields]]>
+			</dc:creator>
+			<pubDate>Fri, 14 Jan 2022 18:38:00 +0000</pubDate>
+			<category>
+				<![CDATA[Alley Insight]]>
+			</category>
+			<guid isPermaLink="false">https://alley.com/?p=5924</guid>
+			<description>
+				<![CDATA[<p>Check out our latest video hosted by Product Manager Allison Greenwald and former Digital Strategist Rebecca Viser,  Accessibility and Strategy: How They Interact, discussing ways to create content that’s accessible for everyone.</p><p>The post <a rel="nofollow" href="https://alley.com/news/accessibility-and-strategy-how-they-interact/">Accessibility and Strategy: How They Interact</a> appeared first on <a rel="nofollow" href="https://alley.com">Alley</a>.</p>
+]]>
+			</description>
+			<content:encoded>
+				<![CDATA[
+<p>Check out our latest video Accessibility and Strategy: How To Create Content for Everyone hosted by Senior Product Manager Allison Greenwald and former Digital Strategist Rebecca Viser. At least 8.5 percent of the population has a disability that affects computer use so creating content that’s accessible for everyone is a critical strategy for any audience. In this video, Allison and Rebecca discuss their experiences creating accessible content and share advice for others looking to do the same.</p><p><br>What other topics would you like to learn more about? Let us know on<a href="http://twitter.com/alleyco"> Twitter</a>!</p><figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper"><iframe loading="lazy" title="Accessibility &amp; Strategy: How They Interact" width="500" height="281" src="https://www.youtube.com/embed/X313aCzZwhc?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></figure><p class="has-pale-cyan-blue-background-color has-background">Are you interested in learning more about accessibility in the world of Data Visualization? Take a moment to check out &#8211; <a href="https://alley.com/news/introducing-our-three-part-product-chats-video-series-on-data-visualization/" target="_blank" rel="noreferrer noopener">Introducing our Three-Part Product Chats Video Series on Data Visualization</a> by Ben Myers.</p><p>The post <a rel="nofollow" href="https://alley.com/news/accessibility-and-strategy-how-they-interact/">Accessibility and Strategy: How They Interact</a> appeared first on <a rel="nofollow" href="https://alley.com">Alley</a>.</p>
+]]>
+			</content:encoded>
+		</item>
 		<item>
-		<title>Bringing Inclusivity into Projects from the Beginning</title>
-		<link>https://alley.com/news/bringing-inclusivity-into-projects-from-the-beginning/</link>
-
-		<dc:creator><![CDATA[Daniel Gale-Rosen]]></dc:creator>
-		<pubDate>Wed, 05 Jan 2022 13:38:00 +0000</pubDate>
-				<category><![CDATA[Inside Alley]]></category>
-		<guid isPermaLink="false">https://alley.com/?p=5880</guid>
-
-					<description><![CDATA[<p>We should be bringing inclusivity into projects from the very beginning. It shouldn't be an afterthought, but instead a vital piece of the workflow.</p>
-<p>The post <a rel="nofollow" href="https://alley.com/news/bringing-inclusivity-into-projects-from-the-beginning/">Bringing Inclusivity into Projects from the Beginning</a> appeared first on <a rel="nofollow" href="https://alley.com">Alley</a>.</p>
-]]></description>
-										<content:encoded><![CDATA[
-<p>Alley recently kicked off a new project with the <a href="https://www.aam-us.org/">American Alliance of Museums</a>, an organization with which we’ve worked many times before. This project&#8217;s goal was to create an inclusive and accessible portal to match museums and board members. Museums and board members could match based on goals, interests, and missions.</p>
-
-
-
-<p>One of the most important factors in the creation of this portal was its inclusivity. AAM wanted museums and candidates alike to enjoy a transparent, open matching process. This minimizes bias and creates the best outcomes for the new board seats. We wanted to ensure that that same inclusivity and transparency factored in the entire process, starting with the kickoff.</p>
-
-
-
-<p>Like <a href="https://alley.com/news/rethinking-5-misconceptions-about-website-accessibility/">accessibility</a>, inclusivity is something that every project should have from the beginning. It should not be an afterthought, but rather a vital piece of the workflow, to have the largest effect on the final product. Too often, technology products suffer from bias built in by the very nature of those involved in their creation. We aim to avoid that trap for every project we work on.</p>
-
-
-
-<p>We made the kickoff for this project as inclusive as we could, in many ways. First, we invited a broad group from the client (and from Alley) to bring many diverse perspectives into the workshop. This included AAM’s President and CEO, their DEAI department, a <a href="https://www.aam-us.org/programs/facing-change1/">Facing Change</a> Senior Diversity Fellow, a board candidate, and a team from Big Answers (consultants on the board matching process).</p>
-
-
-
-<p>The workshop took place over the course of two days, with time between to process individually,&nbsp; which allowed for more opportunities for people to make their voices heard and bring more inclusivity into the project. Scheduling, although it may seem rote, is actually a big part of inclusivity, especially in a semi-remote work environment. You need to make sure that people aren’t restricted from events just because of where they’re located. The two day structure also allowed for &#8220;homework&#8221; in session and after&nbsp; creating individual drafts of the Product Vision Statement and sketching out a wireframe for the homepage.</p>
-
-
-
-<p>The Product Vision Statement is an overview of the goals of the project and the most important pieces of it. By doing this work outside of the meeting , it allowed for many to take the time they needed to think about the assignment. Those who might feel uncomfortable sharing spontaneously in a group setting could still take part in the discussion. There were many ways to participate &#8211; open discussion, Zoom chat, and collaborative whiteboards with Google Jamboard. Writing the statements also lifted the burden on introverts or others who would rather not speak or present in a large group.</p>
-
-
-
-<p>This was only the beginning of the project, and we’re excited to continue the work. We will continue to bring inclusivity and transparency of purpose and perspectives throughout the process. Stay tuned as the work goes on, as we can share further tactics over the coming months.</p>
-
-
-
-<p>How are you bringing inclusivity into projects &#8211; not only into your products, but into your process? Let us know on <a href="https://alley.com/news/">Twitter</a>, or reach out anytime if you’re interested in learning more!</p>
-
-
-
-<p class="has-pale-cyan-blue-background-color has-background">Inclusivity and transparency are essential for product creation and critical for hiring. Check out our post on <a href="https://alley.com/news/3-people-first-principles-for-making-your-hiring-process-transparent-and-equitable/" target="_blank" rel="noreferrer noopener">3 People-First Principles for Making your Hiring Process Transparent and Equitable</a>.</p>
-<p>The post <a rel="nofollow" href="https://alley.com/news/bringing-inclusivity-into-projects-from-the-beginning/">Bringing Inclusivity into Projects from the Beginning</a> appeared first on <a rel="nofollow" href="https://alley.com">Alley</a>.</p>
-]]></content:encoded>
-
-
-
-			</item>
+			<title>The Origin of Helperbot</title>
+			<link>https://alley.com/news/the-origin-of-helperbot/</link>
+			<dc:creator>
+				<![CDATA[Jonathan Byerley]]>
+			</dc:creator>
+			<pubDate>Thu, 13 Jan 2022 11:21:00 +0000</pubDate>
+			<category>
+				<![CDATA[Alley Insight]]>
+			</category>
+			<guid isPermaLink="false">https://alley.com/?p=5803</guid>
+			<description>
+				<![CDATA[<p>Understand the story behind Helperbot, our asynchronous Scrum solution for distributed and co-located teams - built by the Alley team.</p><p>The post <a rel="nofollow" href="https://alley.com/news/the-origin-of-helperbot/">The Origin of Helperbot</a> appeared first on <a rel="nofollow" href="https://alley.com">Alley</a>.</p>
+]]>
+			</description>
+			<content:encoded>
+				<![CDATA[
+<p class="has-cyan-bluish-gray-background-color has-background"><em>This post is the first in a series devoted to the development of <a href="http://helperbot.alley.co">Helperbot</a>, Alley’s Slack application for remote Scrum teams. You can read about the Product Development of Helperbot in the <a href="https://alley.com/news/the-product-development-of-helperbot/">the second post in the series</a></em><em>and read about <a href="https://alley.com/news/mvp-for-marketing-realizing-helperbots-publicity/">MVP for Marketing – Realizing Helperbot’s Publicity</a> in our third post in the series.</em></p><p>When Alley adopted Scrum in 2018, we needed agile tooling solutions suitable for fully-remote, distributed teams. Because Slack is where our team members communicate and collaborate, we looked for Slack-based applications that would help our teams facilitate Scrum rituals and user story estimation. As firm believers in avoiding <a href="https://alley.com/news/not-invented-here-syndrome-and-how-to-prevent-it/">Not Invented Here Syndrome</a>, that pesky tendency engineers have to architect solutions to problems that have already been solved, we were optimistic that we could find existing tools to help facilitate our emergent Scrum practice.</p><p>It didn&#8217;t take us too long to realize that, in this case, our assumption was incorrect. Sure, Slack-based scrum tooling existed in 2018, but each application we tested fell short in some key respect or another. In some cases, the pricing structure was prohibitive for a company of our size. In other cases, the UI was clunky or the functionality was limited. In one case, the tooling simply didn’t align with our communication culture. For example: one tool would time team members during daily stand-ups and “shame” anyone who went over their allotted time slot!&nbsp;</p><p>After testing what was available in the market, it seemed we had stumbled upon a problem for which there was not yet a great solution. If we wanted Scrum-first tooling for fully-remote, distributed teams, we would need to build it ourselves. Enter <a href="https://alley.com/team/#team-member-72">Alleybot</a>, our heavily customized Hubot instance&#8230; and machine overlord. Alleybot has more features than we can list here that help our team members on a daily basis, from <a href="https://alley.com/news/quote-unquote-alley/">capturing hilarious quotes</a> spoken in Slack, assigning users to Jira tickets, to making it easy for developers to <a href="https://github.com/alleyinteractive/hubot-code-review">claim pull requests for code review</a>, a feature we have open-sourced for all. But one of our most heavily-used features, and the one we feel would be most beneficial for teams beyond Alley, is its agile estimation function, for user story pointing (aka <a href="https://en.wikipedia.org/wiki/Planning_poker">planning poker</a>.)</p><p>So after using Alleybot for our Scrum tooling solution with great internal success from late 2018 onwards, we had the idea of creating a simplified, less Alley-specific version of the tool for the general public. Our first product ideation session was held in January 2020 during a <a href="https://alley.com/news/alley-turns-10-in-cancun/">company-wide retreat</a> to Cancun, Mexico. After several product workshops (that we will discuss in greater detail in the second post in this blog series) we determined our MVP, or minimum viable product, to get <a href="https://helperbot.alley.co/">Helperbot</a> to market as quickly as possible, with minimum overhead for us and the most value for our users.</p><figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-4-3 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper"><iframe loading="lazy" title="Meet Helperbot" width="500" height="375" src="https://www.youtube.com/embed/Hj09bfvVEF8?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></figure><p>Less than six months later, Helperbot was available in the <a href="https://slack.com/apps/AFQJFBAP2-helperbot?tab=more_info">Slack app directory</a>, free of charge. Its release could not have been more timely, given that by June of 2020, nearly every co-located company had found themselves <a href="https://alley.com/news/locked-out-of-the-scrum-room/">suddenly remote</a> due to the Covid-19 pandemic. We launched with two features that can be used by Scrum teams everywhere, particularly teams made up of distributed team members. The command <em>/estimate [user story]</em> requests a story point estimation from your team right in Slack. It hides the votes of your team until you set the voting as complete, and then provides the median and average points determined by the team. This works asynchronously – your team members can vote at any time while voting is open – and Helperbot periodically reminds the channel if the voting is still open. If you’re a Jira user, Helperbot can insert the issue title and summary from Jira with the ticket number right into Slack. It can even automatically point the ticket from Slack by selecting either the median or average points. The second feature is <em>Rate</em>. The command <em>/rate [thing to rate] </em>&nbsp;spins up a poll for the team, allowing everyone in a channel to pick a number between 0-5 (aka Fist of Five) to give their opinion to the question. Anonymous results are displayed once everyone has rated.</p><p>Since launching, we’ve seen new companies install and interact with Helperbot on a weekly basis. It’s been a thrill to see other organizations use Helperbot for backlog refinement and sprint planning. In the next blog post in this series, we will discuss the productization of Helperbot in greater detail. In the meantime, check out our <a href="https://www.youtube.com/watch?v=Hj09bfvVEF8">video</a>, <a href="https://slack.com/apps/AFQJFBAP2-helperbot?tab=more_info">download Helperbot</a>, and review the <a href="https://helperbot.alley.co/faq">FAQ</a>!</p><p>The post <a rel="nofollow" href="https://alley.com/news/the-origin-of-helperbot/">The Origin of Helperbot</a> appeared first on <a rel="nofollow" href="https://alley.com">Alley</a>.</p>
+]]>
+			</content:encoded>
+		</item>
 		<item>
-		<title>Store-y Points</title>
-		<link>https://alley.com/news/store-y-points-story-points/</link>
-
-		<dc:creator><![CDATA[John Ragozzine]]></dc:creator>
-		<pubDate>Tue, 14 Dec 2021 13:49:00 +0000</pubDate>
-				<category><![CDATA[Alley Insight]]></category>
-		<guid isPermaLink="false">https://alley.com/?p=5866</guid>
-
-					<description><![CDATA[<p>The Scrum world is replete with creative and delightful symbolic stand-ins meant to help people get good with story pointing.</p>
-<p>The post <a rel="nofollow" href="https://alley.com/news/store-y-points-story-points/">Store-y Points</a> appeared first on <a rel="nofollow" href="https://alley.com">Alley</a>.</p>
-]]></description>
-										<content:encoded><![CDATA[
-<p>Share with me one metaphor explaining Agile estimation using story points and I will fire back with two, three, five, or more other examples. The Scrum world is replete with creative and delightful symbolic stand-ins meant to help people get good with story pointing. Buildings in a skyline, LEGO kit assembly, fruit salad,&nbsp;<a href="https://helperbot.alley.co/">dogs and cats living together</a>&nbsp;— I have heard them all.</p>
-
-
-
-<p>A fellow Agilist at work turned me onto what may be my final favorite: going to the grocery store. Think of your usual, go-to supermarket. In my house, we frequent a variety of grocers nearly every week, depending on what foodstuffs we need, but typically, we get most of what we eat at the same store every week.</p>
-
-
-
-<p>Take a moment to picture your own grocery store. How far away is it, mileage wise? For us, by taking the shortest route by car (we’re not crows) this store is ~4.5mi from our house. How about yours? I had to Google to figure this out, so I don’t blame you if you do the same.</p>
-
-
-
-<p>Now, how long does it take you to get there every week? Traditional estimation techniques might suggest we treat this like a math problem.&nbsp;<em>If the store is 6 miles away and the speed limit of the roads taken averages out to 30mph, we will be there in 12 minutes</em>. I don’t know about you, but I have very little faith in that number being trustworthy. Given enough trips, it may well be a 100% accurate prediction — but it would take a lot of trips and a lot of luck.</p>
-
-
-
-<p>Think of all the ways your trip differs the more often you take it. Sometimes, your arrival time will be affected by external things. Bad weather, construction detours, other cars, is it rush hour or not, did you make that one extra-long traffic light? In countless ways, getting to the store is out of your control.</p>
-
-
-
-<p>Likewise, even with every iota of the trip being the same every time you go, YOU could change the duration. Maybe you are distracted, zone out, and miss a turn. Maybe a super bad-ass song comes on the radio and you unconsciously give your car a little more gas than usual. Maybe you’re just plain tired and drive more slowly. Even with all things being equal on the outside, the same trip could take more or less time depending solely on the person behind the steering wheel:&nbsp;<strong>You</strong>.</p>
-
-
-
-<p>So how does this relate to story pointing? Well, much like saying how long it will take you to make a drive you do dozens of times a year, estimating the complexity, risks, and effort in completing a work increment can result in a variety of very likely guesses. And several of them have a very good chance of being correct. The trick to story pointing is to realize that you are aiming at a moving target and, even with the best data and experience, you won’t be spot-on 100% of the time. And that’s ok! Scrum estimation is about the long-game, not hitting the bullseye every go.</p>
-
-
-
-<p>Helping your team sit well with such ambiguity is a constant chore (we all like being right) but one that needs to be revisited all the time to keep teams moving forward. Getting tripped up on whether a task is a&nbsp;<code>3</code>&nbsp;or a&nbsp;<code>5</code>&nbsp;just wastes time that can be better spent doing the work itself.</p>
-
-
-
-<h2 id="h-bonus-relative-sizing-using-a-reference-story">BONUS: Relative sizing using a reference story</h2>
-
-
-
-<p>Even the most seasoned Scrum Team can get stymied by the ill-defined horror that is the unpointed Product Backlog. All that work and not a story point to be seen — oh my!</p>
-
-
-
-<p>Now there are two ways to get this work estimated so a delivery window can be identified:</p>
-
-
-
-<ol><li>Get the whole team together and estimate every item in the backlog one at a time.</li><li>Relative sizing for large-scale estimation!</li></ol>
-
-
-
-<p>Once a team has taken the cognitive leap that story points are moving targets, have them estimate&nbsp;<em>one</em>&nbsp;item in the Backlog that feels fairly noncontroversial. Perhaps, to belabor our store metaphor, this grocer is located “right around the corner” from our house. Travel times&nbsp;<em>could</em>&nbsp;still vary, but the amount of extenuating circumstances are fewer so our guesses are more likely to be correct the majority of the time.</p>
-
-
-
-<p>In our hypothetical, the team estimates&nbsp;<code>Getting to the Around-the-corner Store</code>&nbsp;a&nbsp;<code>3</code>. Great! Now we can quickly estimate the rest of the Backlog using relative sizing.</p>
-
-
-
-<p>Think of it this way, if we “know” how long it takes us to get to the close store, will it take us more, less, or about the same amount of time to get to stores that are:</p>
-
-
-
-<ul><li>Across town</li><li>In another state</li><li>In the same plaza as the reference store</li><li>The lemonade stand the neighbor kids set up</li></ul>
-
-
-
-<p>It wastes time to story point each permutation in isolation. Rather, we quickly place the items in a spectrum around the reference store — our “true” 3-pointer. I like to do this visually, either using the brute force of sticky notes on a wall or a digital tool like Google Drawings or&nbsp;<a href="https://cardboardit.com/">CardboardIt</a>.</p>
-
-
-
-<p>Once our items are all laid out in a reasonably agreeable fashion, overlay columns onto them all, with each column being headed by a Fibonacci number. While you can give the team one more chance to shift items around, I advise not doing so. Relative sizing is a great way to ballpark the effort and complexity of a large body of work for forecasting, but the team should still review each planned Sprint and call out any items that seem mispointed, either due to new info or even a hunch.</p>
-
-
-
-<p>In a fraction of the time, we now have a fully pointed Backlog that can help inform how long it will take us to deliver the work in full. Yes, this number will absolutely change as the work begins and unknowns are made known or life happens and someone on your team misses a week of work due to some nasty flu, but at least that scary Product Backlog has been tamed ever so slightly.</p>
-
-
-
-<hr class="wp-block-separator is-style-wide"/>
-
-
-
-<p><meta charset="utf-8"><em>This post originally appeared on <a href="https://ragozzine.me/articles/store-y-points/">John&#8217;s personal site</a> on December 9, 2021.</em></p>
-<p>The post <a rel="nofollow" href="https://alley.com/news/store-y-points-story-points/">Store-y Points</a> appeared first on <a rel="nofollow" href="https://alley.com">Alley</a>.</p>
-]]></content:encoded>
-
-
-
-			</item>
+			<title>Bringing Inclusivity into Projects from the Beginning</title>
+			<link>https://alley.com/news/bringing-inclusivity-into-projects-from-the-beginning/</link>
+			<dc:creator>
+				<![CDATA[Daniel Gale-Rosen]]>
+			</dc:creator>
+			<pubDate>Wed, 05 Jan 2022 13:38:00 +0000</pubDate>
+			<category>
+				<![CDATA[Inside Alley]]>
+			</category>
+			<guid isPermaLink="false">https://alley.com/?p=5880</guid>
+			<description>
+				<![CDATA[<p>We should be bringing inclusivity into projects from the very beginning. It shouldn't be an afterthought, but instead a vital piece of the workflow.</p><p>The post <a rel="nofollow" href="https://alley.com/news/bringing-inclusivity-into-projects-from-the-beginning/">Bringing Inclusivity into Projects from the Beginning</a> appeared first on <a rel="nofollow" href="https://alley.com">Alley</a>.</p>
+]]>
+			</description>
+			<content:encoded>
+				<![CDATA[
+<p>Alley recently kicked off a new project with the <a href="https://www.aam-us.org/">American Alliance of Museums</a>, an organization with which we’ve worked many times before. This project&#8217;s goal was to create an inclusive and accessible portal to match museums and board members. Museums and board members could match based on goals, interests, and missions.</p><p>One of the most important factors in the creation of this portal was its inclusivity. AAM wanted museums and candidates alike to enjoy a transparent, open matching process. This minimizes bias and creates the best outcomes for the new board seats. We wanted to ensure that that same inclusivity and transparency factored in the entire process, starting with the kickoff.</p><p>Like <a href="https://alley.com/news/rethinking-5-misconceptions-about-website-accessibility/">accessibility</a>, inclusivity is something that every project should have from the beginning. It should not be an afterthought, but rather a vital piece of the workflow, to have the largest effect on the final product. Too often, technology products suffer from bias built in by the very nature of those involved in their creation. We aim to avoid that trap for every project we work on.</p><p>We made the kickoff for this project as inclusive as we could, in many ways. First, we invited a broad group from the client (and from Alley) to bring many diverse perspectives into the workshop. This included AAM’s President and CEO, their DEAI department, a <a href="https://www.aam-us.org/programs/facing-change1/">Facing Change</a> Senior Diversity Fellow, a board candidate, and a team from Big Answers (consultants on the board matching process).</p><p>The workshop took place over the course of two days, with time between to process individually,&nbsp; which allowed for more opportunities for people to make their voices heard and bring more inclusivity into the project. Scheduling, although it may seem rote, is actually a big part of inclusivity, especially in a semi-remote work environment. You need to make sure that people aren’t restricted from events just because of where they’re located. The two day structure also allowed for &#8220;homework&#8221; in session and after&nbsp; creating individual drafts of the Product Vision Statement and sketching out a wireframe for the homepage.</p><p>The Product Vision Statement is an overview of the goals of the project and the most important pieces of it. By doing this work outside of the meeting , it allowed for many to take the time they needed to think about the assignment. Those who might feel uncomfortable sharing spontaneously in a group setting could still take part in the discussion. There were many ways to participate &#8211; open discussion, Zoom chat, and collaborative whiteboards with Google Jamboard. Writing the statements also lifted the burden on introverts or others who would rather not speak or present in a large group.</p><p>This was only the beginning of the project, and we’re excited to continue the work. We will continue to bring inclusivity and transparency of purpose and perspectives throughout the process. Stay tuned as the work goes on, as we can share further tactics over the coming months.</p><p>How are you bringing inclusivity into projects &#8211; not only into your products, but into your process? Let us know on <a href="https://alley.com/news/">Twitter</a>, or reach out anytime if you’re interested in learning more!</p><p class="has-pale-cyan-blue-background-color has-background">Inclusivity and transparency are essential for product creation and critical for hiring. Check out our post on <a href="https://alley.com/news/3-people-first-principles-for-making-your-hiring-process-transparent-and-equitable/" target="_blank" rel="noreferrer noopener">3 People-First Principles for Making your Hiring Process Transparent and Equitable</a>.</p><p>The post <a rel="nofollow" href="https://alley.com/news/bringing-inclusivity-into-projects-from-the-beginning/">Bringing Inclusivity into Projects from the Beginning</a> appeared first on <a rel="nofollow" href="https://alley.com">Alley</a>.</p>
+]]>
+			</content:encoded>
+		</item>
+		<item>
+			<title>Store-y Points</title>
+			<link>https://alley.com/news/store-y-points-story-points/</link>
+			<dc:creator>
+				<![CDATA[John Ragozzine]]>
+			</dc:creator>
+			<pubDate>Tue, 14 Dec 2021 13:49:00 +0000</pubDate>
+			<category>
+				<![CDATA[Alley Insight]]>
+			</category>
+			<guid isPermaLink="false">https://alley.com/?p=5866</guid>
+			<description>
+				<![CDATA[<p>The Scrum world is replete with creative and delightful symbolic stand-ins meant to help people get good with story pointing.</p><p>The post <a rel="nofollow" href="https://alley.com/news/store-y-points-story-points/">Store-y Points</a> appeared first on <a rel="nofollow" href="https://alley.com">Alley</a>.</p>
+]]>
+			</description>
+			<content:encoded>
+				<![CDATA[
+<p>Share with me one metaphor explaining Agile estimation using story points and I will fire back with two, three, five, or more other examples. The Scrum world is replete with creative and delightful symbolic stand-ins meant to help people get good with story pointing. Buildings in a skyline, LEGO kit assembly, fruit salad,&nbsp;<a href="https://helperbot.alley.co/">dogs and cats living together</a>&nbsp;— I have heard them all.</p><p>A fellow Agilist at work turned me onto what may be my final favorite: going to the grocery store. Think of your usual, go-to supermarket. In my house, we frequent a variety of grocers nearly every week, depending on what foodstuffs we need, but typically, we get most of what we eat at the same store every week.</p><p>Take a moment to picture your own grocery store. How far away is it, mileage wise? For us, by taking the shortest route by car (we’re not crows) this store is ~4.5mi from our house. How about yours? I had to Google to figure this out, so I don’t blame you if you do the same.</p><p>Now, how long does it take you to get there every week? Traditional estimation techniques might suggest we treat this like a math problem.&nbsp;<em>If the store is 6 miles away and the speed limit of the roads taken averages out to 30mph, we will be there in 12 minutes</em>. I don’t know about you, but I have very little faith in that number being trustworthy. Given enough trips, it may well be a 100% accurate prediction — but it would take a lot of trips and a lot of luck.</p><p>Think of all the ways your trip differs the more often you take it. Sometimes, your arrival time will be affected by external things. Bad weather, construction detours, other cars, is it rush hour or not, did you make that one extra-long traffic light? In countless ways, getting to the store is out of your control.</p><p>Likewise, even with every iota of the trip being the same every time you go, YOU could change the duration. Maybe you are distracted, zone out, and miss a turn. Maybe a super bad-ass song comes on the radio and you unconsciously give your car a little more gas than usual. Maybe you’re just plain tired and drive more slowly. Even with all things being equal on the outside, the same trip could take more or less time depending solely on the person behind the steering wheel:&nbsp;<strong>You</strong>.</p><p>So how does this relate to story pointing? Well, much like saying how long it will take you to make a drive you do dozens of times a year, estimating the complexity, risks, and effort in completing a work increment can result in a variety of very likely guesses. And several of them have a very good chance of being correct. The trick to story pointing is to realize that you are aiming at a moving target and, even with the best data and experience, you won’t be spot-on 100% of the time. And that’s ok! Scrum estimation is about the long-game, not hitting the bullseye every go.</p><p>Helping your team sit well with such ambiguity is a constant chore (we all like being right) but one that needs to be revisited all the time to keep teams moving forward. Getting tripped up on whether a task is a&nbsp;<code>3</code>&nbsp;or a&nbsp;<code>5</code>&nbsp;just wastes time that can be better spent doing the work itself.</p><h2 id="h-bonus-relative-sizing-using-a-reference-story">BONUS: Relative sizing using a reference story</h2><p>Even the most seasoned Scrum Team can get stymied by the ill-defined horror that is the unpointed Product Backlog. All that work and not a story point to be seen — oh my!</p><p>Now there are two ways to get this work estimated so a delivery window can be identified:</p><ol><li>Get the whole team together and estimate every item in the backlog one at a time.</li><li>Relative sizing for large-scale estimation!</li></ol><p>Once a team has taken the cognitive leap that story points are moving targets, have them estimate&nbsp;<em>one</em>&nbsp;item in the Backlog that feels fairly noncontroversial. Perhaps, to belabor our store metaphor, this grocer is located “right around the corner” from our house. Travel times&nbsp;<em>could</em>&nbsp;still vary, but the amount of extenuating circumstances are fewer so our guesses are more likely to be correct the majority of the time.</p><p>In our hypothetical, the team estimates&nbsp;<code>Getting to the Around-the-corner Store</code>&nbsp;a&nbsp;<code>3</code>. Great! Now we can quickly estimate the rest of the Backlog using relative sizing.</p><p>Think of it this way, if we “know” how long it takes us to get to the close store, will it take us more, less, or about the same amount of time to get to stores that are:</p><ul><li>Across town</li><li>In another state</li><li>In the same plaza as the reference store</li><li>The lemonade stand the neighbor kids set up</li></ul><p>It wastes time to story point each permutation in isolation. Rather, we quickly place the items in a spectrum around the reference store — our “true” 3-pointer. I like to do this visually, either using the brute force of sticky notes on a wall or a digital tool like Google Drawings or&nbsp;<a href="https://cardboardit.com/">CardboardIt</a>.</p><p>Once our items are all laid out in a reasonably agreeable fashion, overlay columns onto them all, with each column being headed by a Fibonacci number. While you can give the team one more chance to shift items around, I advise not doing so. Relative sizing is a great way to ballpark the effort and complexity of a large body of work for forecasting, but the team should still review each planned Sprint and call out any items that seem mispointed, either due to new info or even a hunch.</p><p>In a fraction of the time, we now have a fully pointed Backlog that can help inform how long it will take us to deliver the work in full. Yes, this number will absolutely change as the work begins and unknowns are made known or life happens and someone on your team misses a week of work due to some nasty flu, but at least that scary Product Backlog has been tamed ever so slightly.</p><hr class="wp-block-separator is-style-wide"/><p><meta charset="utf-8"><em>This post originally appeared on <a href="https://ragozzine.me/articles/store-y-points/">John&#8217;s personal site</a> on December 9, 2021.</em></p><p>The post <a rel="nofollow" href="https://alley.com/news/store-y-points-story-points/">Store-y Points</a> appeared first on <a rel="nofollow" href="https://alley.com">Alley</a>.</p>
+]]>
+			</content:encoded>
+		</item>
 	</channel>
 </rss>

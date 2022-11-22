@@ -13,8 +13,6 @@ use Psr\Log\LoggerInterface;
  * Processor Interface
  */
 interface Processor {
-	public function __construct( int $processor_id, ?LoggerInterface $logger = null );
-
 	/**
 	 * Getter for the name of the processor.
 	 *
@@ -25,9 +23,10 @@ interface Processor {
 	/**
 	 * Retrieve the stored settings for the processor.
 	 *
+	 * @param array|null $settings The settings to set, optional.
 	 * @return array
 	 */
-	public function settings(): array;
+	public function settings( ?array $settings = null ): array;
 
 	/**
 	 * Retrieve or set the logger for the processor.
@@ -43,7 +42,7 @@ interface Processor {
 	 * @param Extractor $extractor The extractor to set, optional.
 	 * @return Extractor|null
 	 */
-	public function extractor( ?Extractor $extractors = null ): ?Extractor;
+	public function extractor( ?Extractor $extractor = null ): ?Extractor;
 
 	/**
 	 * Retrieve or set the transformer for the processor.
