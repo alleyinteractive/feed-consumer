@@ -28,7 +28,7 @@ if ( ! file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
 		function() {
 			?>
 			<div class="notice notice-error">
-				<p><?php esc_html_e( 'Composer is not installed and feed-consumer cannot load. Try using a `*-built` branch if the plugin is being loaded as a submodule.', 'plugin_domain' ); ?></p>
+				<p><?php esc_html_e( 'Composer is not installed and feed-consumer cannot load. Try using a `*-built` branch if the plugin is being loaded as a submodule.', 'feed-consumer' ); ?></p>
 			</div>
 			<?php
 		}
