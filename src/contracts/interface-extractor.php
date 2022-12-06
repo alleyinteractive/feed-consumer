@@ -11,6 +11,10 @@ use Mantle\Http_Client\Response;
 
 /**
  * Extractor Interface
+ *
+ * An extractor is a means to extract data from a source and return the raw
+ * data. It shouldn't be used to parse the response, which will be done in a
+ * transformer.
  */
 interface Extractor extends With_Processor {
 	/**
@@ -26,11 +30,4 @@ interface Extractor extends With_Processor {
 	 * @return Response
 	 */
 	public function data(): Response;
-
-	/**
-	 * Getter for the cursor for the extractor.
-	 *
-	 * @return string|null Cursor if set, null otherwise.
-	 */
-	public function cursor(): ?string;
 }
