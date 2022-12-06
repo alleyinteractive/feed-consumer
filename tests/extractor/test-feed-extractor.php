@@ -7,6 +7,9 @@ use Mantle\Testing\Mock_Http_Response;
 
 use function Mantle\Support\Helpers\tap;
 
+/**
+ * @group extractor
+ */
 class Feed_Extractor_Test extends Test_Case {
 	public function test_extract_feed() {
 		$this->fake_request(

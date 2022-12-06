@@ -9,12 +9,14 @@ namespace Feed_Consumer\Transformer;
 
 use Feed_Consumer\Contracts\With_Presets;
 use Feed_Consumer\Contracts\With_Settings;
+use Fieldmanager_TextField;
 use SimpleXMLElement;
 
 /**
  * XML Transformer
  *
  * Transform the extracted content into an array of items by their XPath.
+ * Designed for feeds of content to be converted into multiple posts.
  */
 class XML_Transformer extends Transformer implements With_Settings {
 	/**
@@ -82,13 +84,24 @@ class XML_Transformer extends Transformer implements With_Settings {
 
 	/**
 	 * Settings to register.
+	 *
+	 * XML XPaths can be set with settings or presets from a extended class. If
+	 * the class doesn't have any presets the settings will presented to the
+	 * user when creating a new feed loader.
 	 */
 	public function settings(): array {
 		if ( $this instanceof With_Presets ) {
 			return [];
 		}
 
-		return [];
+		return [
+			static::PATH_ITEMS     => new Fieldmanager_TextField( __( 'XPath to items', 'feed-consumer' ) ),
+			static::PATH_GUID      => new Fieldmanager_TextField( __( 'XPath to guid', 'feed-consumer' ) ),
+			static::PATH_TITLE     => new Fieldmanager_TextField( __( 'XPath to title', 'feed-consumer' ) ),
+			static::PATH_PERMALINK => new Fieldmanager_TextField( __( 'XPath to permalink', 'feed-consumer' ) ),
+			static::PATH_CONTENT   => new Fieldmanager_TextField( __( 'XPath to content', 'feed-consumer' ) ),
+			static::PATH_BYLINE    => new Fieldmanager_TextField( __( 'XPath to byline', 'feed-consumer' ) ),
+		];
 	}
 
 	/**
@@ -139,13 +152,13 @@ class XML_Transformer extends Transformer implements With_Settings {
 			// todo: convert to a DTO.
 			fn ( SimpleXMLElement $item ) => [
 				'byline'        => $this->extract_by_xpath( $item, $settings[ static::PATH_BYLINE ] ?? 'author' ),
-				'content'       => $this->extract_by_xpath( $item, $settings[ static::PATH_CONTENT ] ?? 'description' ),
+				'post_content'  => $this->extract_by_xpath( $item, $settings[ static::PATH_CONTENT ] ?? 'description' ),
 				'guid'          => $this->extract_by_xpath( $item, $settings[ static::PATH_GUID ] ?? 'guid' ),
 				'image_caption' => $this->extract_by_xpath( $item, $settings[ static::PATH_IMAGE_CAPTION ] ?? 'image_caption' ),
 				'image_credit'  => $this->extract_by_xpath( $item, $settings[ static::PATH_IMAGE_CREDIT ] ?? 'image_credit' ),
 				'image'         => $this->extract_by_xpath( $item, $settings[ static::PATH_IMAGE ] ?? 'image' ),
-				'permalink'     => $this->extract_by_xpath( $item, $settings[ static::PATH_PERMALINK ] ?? 'link' ),
-				'title'         => $this->extract_by_xpath( $item, $settings[ static::PATH_TITLE ] ?? 'title' ),
+				// 'permalink'  => $this->extract_by_xpath( $item, $settings[ static::PATH_PERMALINK ] ?? 'link' ),
+				'post_title'    => $this->extract_by_xpath( $item, $settings[ static::PATH_TITLE ] ?? 'title' ),
 			],
 			(array) $items,
 		);

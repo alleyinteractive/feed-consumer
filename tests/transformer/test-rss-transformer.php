@@ -5,6 +5,9 @@ use Feed_Consumer\Tests\Test_Case;
 use Feed_Consumer\Transformer\RSS_Transformer;
 use Mantle\Testing\Mock_Http_Response;
 
+/**
+ * @group transformer
+ */
 class RSS_Transformer_Test extends Test_Case {
 	public function test_rss_transformation() {
 		$processor = $this->make_processor();
@@ -16,7 +19,12 @@ class RSS_Transformer_Test extends Test_Case {
 			$processor,
 		);
 
-		$data = ( new RSS_Transformer( $processor, $extractor ) )->data();
+		$transformer = new RSS_Transformer( $processor, $extractor );
+
+		$transformer->processor( $processor );
+		$transformer->extractor( $extractor );
+
+		$data = $transformer->data();
 
 		$this->assertCount( 10, $data );
 
@@ -42,7 +50,12 @@ class RSS_Transformer_Test extends Test_Case {
 			$processor,
 		);
 
-		$data = ( new RSS_Transformer( $processor, $extractor ) )->data();
+		$transformer = new RSS_Transformer( $processor, $extractor );
+
+		$transformer->processor( $processor );
+		$transformer->extractor( $extractor );
+
+		$data = $transformer->data();
 
 		$this->assertCount( 0, $data );
 	}

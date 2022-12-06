@@ -18,6 +18,20 @@ use Feed_Consumer\Contracts\With_Processor;
  */
 abstract class Transformer implements With_Extractor, With_Processor, Contract {
 	/**
+	 * Processor instance.
+	 *
+	 * @var Processor
+	 */
+	protected Processor $processor;
+
+	/**
+	 * Extractor instance.
+	 *
+	 * @var Extractor
+	 */
+	protected Extractor $extractor;
+
+	/**
 	 * Retrieve/set the processor instance.
 	 *
 	 * @param Processor $processor Processor instance to set, optional.

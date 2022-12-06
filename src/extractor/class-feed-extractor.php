@@ -16,7 +16,8 @@ use RuntimeException;
 /**
  * Feed Extractor
  *
- * Used to fetch common feeds and extract the data.
+ * Used to fetch common feeds and extract the data. Supports basic HTTP
+ * authentication.
  */
 class Feed_Extractor extends Extractor implements With_Settings {
 	/**
@@ -53,8 +54,8 @@ class Feed_Extractor extends Extractor implements With_Settings {
 	public function settings(): array {
 		return [
 			static::SETTING_FEED_URL => new \Fieldmanager_TextField( __( 'Feed URL', 'feed-consumer' ) ),
-			static::SETTING_USERNAME => new \Fieldmanager_TextField( __( 'Username', 'feed-consumer' ) ),
-			static::SETTING_PASSWORD => new \Fieldmanager_TextField( __( 'Password', 'feed-consumer' ) ),
+			static::SETTING_USERNAME => new \Fieldmanager_TextField( __( 'Username (optional)', 'feed-consumer' ) ),
+			static::SETTING_PASSWORD => new \Fieldmanager_TextField( __( 'Password (optional)', 'feed-consumer' ) ),
 		];
 	}
 
