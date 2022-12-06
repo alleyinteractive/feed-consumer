@@ -1,4 +1,10 @@
 <?php
+/**
+ * Post_Loader class file
+ *
+ * @package feed-consumer
+ */
+
 namespace Feed_Consumer\Loader;
 
 use Feed_Consumer\Contracts\With_Presets;
@@ -14,6 +20,9 @@ use function Mantle\Support\Helpers\collect;
  * Loader that takes transformer data and loads it into the system as a post.
  *
  * @todo Add support for pipeline.
+ * @todo Add support for terms from settings.
+ * @todo Add support for featured image.
+ * @todo Add support for bylines.
  */
 class Post_Loader extends Loader implements With_Settings {
 	/**
@@ -44,8 +53,8 @@ class Post_Loader extends Loader implements With_Settings {
 					// Ensure some defaults are set in the post array.
 					$postarr = array_merge(
 						[
-							'post_type'   => $settings['post_type'] ?? 'post',
 							'post_status' => $settings['post_status'] ?? 'draft',
+							'post_type'   => $settings['post_type'] ?? 'post',
 						],
 						$postarr,
 					);

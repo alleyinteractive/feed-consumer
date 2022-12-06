@@ -22,7 +22,7 @@ abstract class Test_Case extends Testkit {
 		$this->prevent_stray_requests();
 	}
 
-	public function make_processor( array $settings = [] ): Processor {
+	protected function make_processor( array $settings = [] ): Processor {
 		$instance = new class extends Processor {
 			public function name(): string {
 				return 'Test Processor';
@@ -96,7 +96,7 @@ abstract class Test_Case extends Testkit {
 	 * @param Extractor $extractor
 	 * @return Transformer
 	 */
-	public function make_transformer(
+	protected function make_transformer(
 		mixed $data,
 		Processor $processor = null,
 		Extractor $extractor = null
