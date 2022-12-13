@@ -10,16 +10,17 @@
     "license": "GPL-2.0-or-later",
     "authors": [
         {
-            "name": "Sean Fisher",
-            "email": "srtfisher@gmail.com"
+            "name": "Alley Interactive",
+            "email": "info@alley.com"
         }
     ],
     "require": {
         "php": "^8.0",
-        "alleyinteractive/composer-wordpress-autoloader": "^1.0"
+        "alleyinteractive/composer-wordpress-autoloader": "^1.0",
+        "mantle-framework/support": "^0.9.1"
     },
     "require-dev": {
-        "alleyinteractive/alley-coding-standards": "^0.4",
+        "alleyinteractive/alley-coding-standards": "^0.3",
         "mantle-framework/testkit": "^0.9",
         "nunomaduro/collision": "^5.0"
     },
