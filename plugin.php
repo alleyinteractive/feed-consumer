@@ -44,6 +44,7 @@ require_once __DIR__ . '/vendor/wordpress-autoload.php';
  * Instantiate the plugin.
  */
 function main() {
-	// ...
+	Processors::instance();
+	Post_Type::instance();
 }
 main();
