@@ -131,15 +131,28 @@ abstract class Processor implements Contract {
 	}
 
 	/**
-	 * Add loader middleware.
+	 * Retrieve or add loader middleware.
 	 *
 	 * Middleware can be used to modify the content before and/or after it is
 	 * loaded to the site.
 	 *
 	 * @param callable $middleware The middleware to add.
 	 */
-	public function middleware( callable $middleware ): void {
-		$this->middleware[] = $middleware;
+	public function middleware( ?callable $middleware = null ): array {
+		if ( $middleware ) {
+			$this->middleware[] = $middleware;
+		}
+
+		return $this->middleware;
+	}
+
+	/**
+	 * Clear the middleware stack.
+	 *
+	 * @return void
+	 */
+	public function clear_middleware(): void {
+		$this->middleware = [];
 	}
 
 	/**

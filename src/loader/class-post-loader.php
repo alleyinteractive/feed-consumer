@@ -11,6 +11,7 @@ use Feed_Consumer\Contracts\With_Presets;
 use Feed_Consumer\Contracts\With_Settings;
 use Fieldmanager_Select;
 use InvalidArgumentException;
+use Mantle\Support\Pipeline;
 
 use function Mantle\Support\Helpers\collect;
 
@@ -55,8 +56,8 @@ class Post_Loader extends Loader implements With_Settings {
 					// Ensure some defaults are set in the post array.
 					$postarr = array_merge(
 						[
-							'post_status' => $settings['post_status'] ?? 'draft',
-							'post_type'   => $settings['post_type'] ?? 'post',
+							'post_status' => $settings[ Post_Loader::class ]['post_status'] ?? 'draft',
+							'post_type'   => $settings[ Post_Loader::class ]['post_type'] ?? 'post',
 						],
 						$postarr,
 					);
@@ -70,7 +71,7 @@ class Post_Loader extends Loader implements With_Settings {
 						[
 							'fields'           => 'ids',
 							// todo: convert to class constant.
-							'meta_key'         => 'feed_consumer_remote_id', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
+							'meta_key'         => static::META_KEY_REMOTE_ID, // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
 							'meta_value'       => $postarr['remote_id'] ?? $postarr['guid'], // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
 							'post_status'      => 'any',
 							'post_type'        => $postarr['post_type'],
@@ -88,27 +89,39 @@ class Post_Loader extends Loader implements With_Settings {
 						 * @param Post_Loader $loader   The post loader.
 						 */
 						if ( apply_filters( 'feed_consumer_update_existing_post', false, $existing[0], $this ) ) {
-							$postarr['ID'] = $existing[0]->ID;
+							$postarr['ID'] = $existing[0];
 						} else {
 							return null;
 						}
 					}
 
 					// Ensure the remote ID is set in post meta.
-					$postarr['meta_input']['feed_consumer_remote_id'] = $postarr['remote_id'] ?? $postarr['guid'];
+					$postarr['meta_input'][ static::META_KEY_REMOTE_ID ] = $postarr['remote_id'] ?? $postarr['guid'];
 
-					// Attempt to insert or update the post.
-					if ( ! empty( $postarr['ID'] ) ) {
-						$post_id = wp_update_post( $postarr, true );
-					} else {
-						$post_id = wp_insert_post( $postarr, true );
-					}
+					return ( new Pipeline() )
+						->send( $postarr )
+						->through( $this->processor()->middleware() )
+						->then(
+							function ( array $postarr ) use ( $settings ) {
+								// Attempt to insert or update the post.
+								if ( ! empty( $postarr['ID'] ) ) {
+									$post_id = wp_update_post( $postarr, true );
+								} else {
+									$post_id = wp_insert_post( $postarr, true );
+								}
 
-					if ( is_wp_error( $post_id ) ) {
-						throw new InvalidArgumentException( $post_id->get_error_message() );
-					}
+								if ( is_wp_error( $post_id ) ) {
+									throw new InvalidArgumentException( $post_id->get_error_message() );
+								}
 
-					return get_post( $post_id );
+								// Process any terms that need to be set on the post.
+								if ( ! empty( $settings[ Post_Loader::class ]['terms'] ) ) {
+									$this->assign_terms( $settings[ Post_Loader::class ]['terms'], $post_id );
+								}
+
+								return get_post( $post_id );
+							}
+						);
 				}
 			)
 			->all();
@@ -135,6 +148,33 @@ class Post_Loader extends Loader implements With_Settings {
 					'options' => get_post_statuses(),
 				]
 			),
+			// todo: add terms that can be added to the post.
 		];
+	}
+
+	/**
+	 * Assign terms to a post from the loader's settings.
+	 *
+	 * @param int[] $term_ids Term IDs to assign.
+	 * @param int   $post_id Post ID to assign terms to.
+	 * @return void
+	 */
+	protected function assign_terms( array $term_ids, int $post_id ): void {
+		$taxonomy_map = [];
+
+		// Assign terms to the post from different taxonomies.
+		foreach ( $term_ids as $term_id ) {
+			$term = get_term( $term_id );
+
+			if ( ! $term instanceof \WP_Term ) {
+				continue;
+			}
+
+			$taxonomy_map[ $term->taxonomy ][] = $term_id;
+		}
+
+		foreach ( $taxonomy_map as $taxonomy => $term_ids ) {
+			wp_set_post_terms( $post_id, $term_ids, $taxonomy, true );
+		}
 	}
 }

@@ -20,6 +20,13 @@ use Feed_Consumer\Contracts\Transformer;
  */
 abstract class Loader implements Contract {
 	/**
+	 * Meta key for storing the remote ID of an item.
+	 *
+	 * @var string
+	 */
+	public const META_KEY_REMOTE_ID = 'feed_consumer_remote_id';
+
+	/**
 	 * Processor instance.
 	 *
 	 * @var Processor

@@ -61,14 +61,22 @@ interface Processor {
 	public function loader( ?Loader $loaders = null ): ?Loader;
 
 	/**
-	 * Add loader middleware.
+	 * Retrieve or add loader middleware.
 	 *
 	 * Middleware can be used to modify the content before and/or after it is
 	 * loaded to the site.
 	 *
 	 * @param callable $middleware The middleware to add.
+	 * @return callable[]
 	 */
-	public function middleware( callable $middleware ): void;
+	public function middleware( ?callable $middleware = null ): array;
+
+	/**
+	 * Clear the middleware stack.
+	 *
+	 * @return void
+	 */
+	public function clear_middleware(): void;
 
 	/**
 	 * Getter for the interval to run the processor.

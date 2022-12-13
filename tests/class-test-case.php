@@ -23,7 +23,7 @@ abstract class Test_Case extends Testkit {
 	}
 
 	protected function make_processor( array $settings = [] ): Processor {
-		$instance = new class extends Processor {
+		$instance = new class() extends Processor {
 			public function name(): string {
 				return 'Test Processor';
 			}
@@ -38,7 +38,7 @@ abstract class Test_Case extends Testkit {
 	 * Create a controllable instance of a extractor.
 	 *
 	 * @param Mock_Http_Response|Response $response
-	 * @param Processor $processor
+	 * @param Processor                   $processor
 	 * @return Extractor
 	 */
 	protected function make_extractor( Mock_Http_Response|Response $response, Processor $processor = null ): Extractor {
@@ -46,7 +46,7 @@ abstract class Test_Case extends Testkit {
 			$response = new Response( $response->to_array() );
 		}
 
-		return new class ( $processor ?: $this->make_processor(), $response ) extends \Feed_Consumer\Extractor\Extractor {
+		return new class( $processor ?: $this->make_processor(), $response ) extends \Feed_Consumer\Extractor\Extractor {
 			protected $response;
 
 			/**
@@ -91,7 +91,7 @@ abstract class Test_Case extends Testkit {
 	/**
 	 * Create a controllable instance of a transformer.
 	 *
-	 * @param mixed $data
+	 * @param mixed     $data
 	 * @param Processor $processor
 	 * @param Extractor $extractor
 	 * @return Transformer
@@ -103,15 +103,14 @@ abstract class Test_Case extends Testkit {
 	): Transformer {
 		$processor ??= $this->make_processor();
 
-		return new class (
+		return new class(
 			$data,
 			$processor,
 			$extractor ?: $this->make_extractor( Mock_Http_Response::create(), $processor )
 		) extends \Feed_Consumer\Transformer\Transformer {
 			public function __construct( public mixed $data, protected Processor_Contract $processor, protected Extractor $extractor ) {}
 
-			public function data(): array
-			{
+			public function data(): array {
 				return $this->data;
 			}
 		};
