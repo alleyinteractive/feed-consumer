@@ -1,10 +1,23 @@
 <?php
+/**
+ * Loader class file
+ *
+ * @package feed-consumer
+ */
+
 namespace Feed_Consumer\Loader;
 
 use Feed_Consumer\Contracts\Loader as Contract;
 use Feed_Consumer\Contracts\Processor;
 use Feed_Consumer\Contracts\Transformer;
 
+/**
+ * Abstract Loader
+ *
+ * Loaders are used to define how the data is loaded into the system. They are
+ * passed the processor and transformer instances and return the loaded data, be
+ * it a post, term, array of either, or something else entirely.
+ */
 abstract class Loader implements Contract {
 	/**
 	 * Processor instance.
@@ -23,7 +36,7 @@ abstract class Loader implements Contract {
 	/**
 	 * Retrieve/set the processor instance.
 	 *
-	 * @param Processor|null $processor
+	 * @param Processor|null $processor Processor instance to set, optional.
 	 * @return Processor
 	 */
 	public function processor( ?Processor $processor = null ): Processor {
@@ -37,7 +50,7 @@ abstract class Loader implements Contract {
 	/**
 	 * Retrieve/set the transformer instance.
 	 *
-	 * @param Transformer|null $transformer
+	 * @param Transformer|null $transformer Transformer instance to set, optional.
 	 * @return Transformer
 	 */
 	public function transformer( ?Transformer $transformer = null ): Transformer {

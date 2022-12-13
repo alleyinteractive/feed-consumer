@@ -157,7 +157,7 @@ class XML_Transformer extends Transformer implements With_Settings {
 				'image_caption' => $this->extract_by_xpath( $item, $settings[ static::PATH_IMAGE_CAPTION ] ?? 'image_caption' ),
 				'image_credit'  => $this->extract_by_xpath( $item, $settings[ static::PATH_IMAGE_CREDIT ] ?? 'image_credit' ),
 				'image'         => $this->extract_by_xpath( $item, $settings[ static::PATH_IMAGE ] ?? 'image' ),
-				// 'permalink'  => $this->extract_by_xpath( $item, $settings[ static::PATH_PERMALINK ] ?? 'link' ),
+				'permalink'     => $this->extract_by_xpath( $item, $settings[ static::PATH_PERMALINK ] ?? 'link' ),
 				'post_title'    => $this->extract_by_xpath( $item, $settings[ static::PATH_TITLE ] ?? 'title' ),
 			],
 			(array) $items,

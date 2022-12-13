@@ -9,6 +9,7 @@ namespace Feed_Consumer\Processor;
 
 use Feed_Consumer\Contracts\With_Settings;
 use Feed_Consumer\Extractor\Feed_Extractor;
+use Feed_Consumer\Loader\Post_Loader;
 use Feed_Consumer\Transformer\RSS_Transformer;
 
 /**
@@ -23,7 +24,7 @@ class RSS_Processor extends Processor implements With_Settings {
 	public function __construct() {
 		$this->extractor( new Feed_Extractor() );
 		$this->transformer( new RSS_Transformer() );
-		// $this->loader( new Post_Loader() );
+		$this->loader( new Post_Loader() );
 	}
 
 	/**

@@ -31,13 +31,13 @@ class RSS_Transformer_Test extends Test_Case {
 		$item = $data[0];
 
 		$this->assertEquals( 'Brandon Fields', $item['byline'] );
-		$this->assertEquals( '<p>One of the reasons I love Alley is because they provide opportunities for you to attend incredible conferences like RenderATL.</p><p>The post <a rel="nofollow" href="https://alley.com/news/a-renderatl-welcome-into-the-tech-world/"> A RenderATL Welcome into the Tech World</a> appeared first on <a rel="nofollow" href="https://alley.com">Alley</a>.</p>', $item['content'] );
+		$this->assertEquals( '<p>One of the reasons I love Alley is because they provide opportunities for you to attend incredible conferences like RenderATL.</p><p>The post <a rel="nofollow" href="https://alley.com/news/a-renderatl-welcome-into-the-tech-world/"> A RenderATL Welcome into the Tech World</a> appeared first on <a rel="nofollow" href="https://alley.com">Alley</a>.</p>', $item['post_content'] );
 		$this->assertEquals( 'https://alley.com/?p=6191', $item['guid'] );
 		$this->assertEquals( null, $item['image_caption'] );
 		$this->assertEquals( null, $item['image_credit'] );
 		$this->assertEquals( null, $item['image'] );
 		$this->assertEquals( 'https://alley.com/news/a-renderatl-welcome-into-the-tech-world/', $item['permalink'] );
-		$this->assertEquals( 'A RenderATL Welcome into the Tech World', $item['title'] );
+		$this->assertEquals( 'A RenderATL Welcome into the Tech World', $item['post_title'] );
 	}
 
 	public function test_rss_transformation_error() {

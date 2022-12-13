@@ -28,6 +28,8 @@ class Post_Loader extends Loader implements With_Settings {
 	/**
 	 * Load the data
 	 *
+	 * @throws InvalidArgumentException When the data from the transformer is not an array.
+	 *
 	 * @return \WP_Post
 	 */
 	public function load(): mixed {
@@ -68,8 +70,8 @@ class Post_Loader extends Loader implements With_Settings {
 						[
 							'fields'           => 'ids',
 							// todo: convert to class constant.
-							'meta_key'         => 'feed_consumer_remote_id', // phpcs:ignore WordPress.VIP.SlowDBQuery.slow_db_query_meta_key
-							'meta_value'       => $postarr['remote_id'] ?? $postarr['guid'], // phpcs:ignore WordPress.VIP.SlowDBQuery.slow_db_query_meta_value
+							'meta_key'         => 'feed_consumer_remote_id', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
+							'meta_value'       => $postarr['remote_id'] ?? $postarr['guid'], // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
 							'post_status'      => 'any',
 							'post_type'        => $postarr['post_type'],
 							'posts_per_page'   => 1,
