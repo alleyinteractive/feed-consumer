@@ -45,6 +45,6 @@ require_once __DIR__ . '/vendor/wordpress-autoload.php';
  */
 function main() {
 	Processors::instance();
-	Post_Type::instance();
+	Settings::instance();
 }
 main();

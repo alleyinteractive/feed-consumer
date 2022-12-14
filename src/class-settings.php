@@ -19,9 +19,9 @@ use Mantle\Support\Traits\Singleton;
 use function Mantle\Support\Helpers\collect;
 
 /**
- * Feed Consumer Post Type
+ * Feed Consumer Post Type and Settings
  */
-class Post_Type {
+class Settings {
 	use Singleton;
 
 	/**
@@ -30,6 +30,13 @@ class Post_Type {
 	 * @var string
 	 */
 	public const NAME = 'feed_consumer';
+
+	/**
+	 * Meta key for settings.
+	 *
+	 * @var string
+	 */
+	public const SETTINGS_META_KEY = 'feed_consumer_settings';
 
 	/**
 	 * Constructor.
@@ -87,7 +94,7 @@ class Post_Type {
 
 		$settings = new Fieldmanager_Group(
 			[
-				'name'     => 'settings',
+				'name'     => static::SETTINGS_META_KEY,
 				'children' => array_merge(
 					[
 						'processor' => new Fieldmanager_Select(
