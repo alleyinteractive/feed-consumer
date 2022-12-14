@@ -52,9 +52,24 @@ class Settings {
 	 * Constructor.
 	 */
 	protected function __construct() {
+		add_action( 'init', [ $this, 'on_init' ] );
 		add_action( 'init', [ $this, 'register_post_type' ] );
 		add_action( 'fm_post_' . static::POST_TYPE, [ $this, 'register_fields' ] );
 		add_action( 'add_meta_boxes_' . static::POST_TYPE, [ $this, 'add_meta_boxes' ] );
+	}
+
+	/**
+	 * Called on 'init'.
+	 */
+	public function on_init() {
+		if ( ! class_exists( Fieldmanager_Group::class ) ) {
+			add_action( 'admin_notices', [ $this, 'missing_fieldmanager_notice' ] );
+		}
+
+		// Nudge the user to install AI Logger if it's not installed.
+		if ( ! class_exists( \AI_Logger\AI_Logger::class ) ) {
+			add_action( 'admin_notices', [ $this, 'missing_ai_logger_notice' ] );
+		}
 	}
 
 	/**
@@ -92,6 +107,52 @@ class Settings {
 				'show_ui'            => true,
 			]
 		);
+	}
+
+	/**
+	 * Display a notice that Fieldmanager is required.
+	 *
+	 * @return void
+	 */
+	public function missing_fieldmanager_notice() {
+		?>
+		<div class="notice notice-error">
+			<p>
+				<?php
+				printf(
+					/* translators: 1: open anchor tag, 2: close anchor tag */
+					esc_html__( 'Feed Consumer requires %1$sFieldmanager%2$s to be installed and activated to run properly.', 'feed-consumer' ),
+					'<a href="https://github.com/alleyinteractive/wordpress-fieldmanager">',
+					'</a>',
+				);
+				?>
+			</p>
+		</div>
+		<?php
+	}
+
+	/**
+	 * Display a notice to nudge the user to install AI Logger.
+	 */
+	public function missing_ai_logger_notice() {
+		// Only display on the feed post type.
+		if ( static::POST_TYPE !== get_current_screen()?->post_type ) {
+			return;
+		}
+		?>
+		<div data-dismissible="feed-consumer-ai-logger" class="notice notice-info">
+			<p>
+				<?php
+				printf(
+					/* translators: 1: open anchor tag, 2: close anchor tag */
+					esc_html__( 'Feed Consumer recommends installing %1$sAlley Logger%2$s to log feed processing.', 'feed-consumer' ),
+					'<a href="https://github.com/alleyinteractive/logger">',
+					'</a>',
+				);
+				?>
+			</p>
+		</div>
+		<?php
 	}
 
 	/**
