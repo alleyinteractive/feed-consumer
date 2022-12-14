@@ -84,7 +84,7 @@ class RSS_Processor_Test extends Test_Case {
 			->with_meta(
 				[
 					Settings::SETTINGS_META_KEY => [
-						'processor' => Settings::escape_setting_name( RSS_Processor::class ),
+						'processor'                                           => Settings::escape_setting_name( RSS_Processor::class ),
 						Settings::escape_setting_name( RSS_Processor::class ) => [
 							'extractor' => [
 								'feed_url' => 'https://alley.com/feed/',

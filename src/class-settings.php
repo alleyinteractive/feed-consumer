@@ -160,6 +160,10 @@ class Settings {
 	 * Register the settings fields for the post type that include processor settings.
 	 */
 	public function register_fields() {
+		// Register any side effects for modifying the Fieldmanager datasources.
+		add_filter( 'fm_datasource_term_get_items', [ $this, 'datasource_term_get_items' ], 10, 2 );
+		add_filter( 'fm_datasource_term_get_value', [ $this, 'datasource_term_get_value' ], 10, 2 );
+
 		// Instantiate the processors.
 		$processors = collect( Processors::instance()->processors() )
 			->map( fn ( $name ) => new $name() );
@@ -306,5 +310,37 @@ class Settings {
 		} else {
 			printf( '<strong>%s</strong>', esc_html__( 'Feed is not scheduled to run.', 'feed-consumer' ) );
 		}
+	}
+
+	/**
+	 * Include the taxonomy name in a terms datasource response.
+	 *
+	 * @param array $stack Term stack to modify.
+	 * @param array $terms Array of terms in the response.
+	 */
+	public function datasource_term_get_items( $stack, $terms ) {
+		$stack = [];
+		foreach ( $terms as $term ) {
+			$key           = $term->term_taxonomy_id;
+			$taxonomy      = get_taxonomy( $term->taxonomy );
+			$stack[ $key ] = sprintf( '%1$s (%2$s: %3$s)', html_entity_decode( $term->name ), __( 'taxonomy', 'nr' ), $taxonomy->label );
+		}
+		return $stack;
+	}
+
+	/**
+	 * Modify the term datasource label for terms that display on Fieldmanager fields.
+	 *
+	 * @param string $value The value to display.
+	 * @param mixed  $term  The stored term.
+	 * @return string
+	 */
+	public function datasource_term_get_value( $value, $term ) {
+		if ( $term instanceof \WP_Term ) {
+			$taxonomy = get_taxonomy( $term->taxonomy );
+			$value    = sprintf( '%1$s (%2$s: %3$s)', html_entity_decode( $term->name ), __( 'taxonomy', 'nr' ), $taxonomy->label );
+		}
+
+		return $value;
 	}
 }

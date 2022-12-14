@@ -9,6 +9,8 @@ namespace Feed_Consumer\Loader;
 
 use Feed_Consumer\Contracts\With_Presets;
 use Feed_Consumer\Contracts\With_Settings;
+use Fieldmanager_Autocomplete;
+use Fieldmanager_Datasource_Term;
 use Fieldmanager_Select;
 use InvalidArgumentException;
 use Mantle\Support\Pipeline;
@@ -133,12 +135,21 @@ class Post_Loader extends Loader implements With_Settings {
 			return $this->presets();
 		}
 
+		return $this->base_settings();
+	}
+
+	/**
+	 * Base settings for the post loader.
+	 *
+	 * @return array
+	 */
+	protected function base_settings(): array {
 		return [
 			'post_type'   => new Fieldmanager_Select(
 				[
 					'label'   => __( 'Post Type', 'feed-consumer' ),
 					'options' => collect( get_post_types( [ 'public' => true ], 'objects' ) )
-						->pluck( 'label' )
+						->pluck( 'label', 'name' )
 						->all(),
 				],
 			),
@@ -148,9 +159,21 @@ class Post_Loader extends Loader implements With_Settings {
 					'options' => get_post_statuses(),
 				]
 			),
-			// todo: add terms that can be added to the post.
+			'terms'       => new Fieldmanager_Autocomplete(
+				[
+					'label'         => __( 'Terms', 'feed-consumer' ),
+					'datasource'    => new Fieldmanager_Datasource_Term(
+						[
+							'taxonomy' => array_keys( get_taxonomies( [ 'public' => true ] ) ),
+						]
+					),
+					'limit'         => 0,
+					'add_more_label' => __( 'Add Term', 'feed-consumer' ),
+				]
+			),
 		];
 	}
+
 
 	/**
 	 * Assign terms to a post from the loader's settings.
