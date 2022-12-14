@@ -63,6 +63,7 @@ class Feed_Extractor extends Extractor implements With_Settings {
 	 * Extract the data.
 	 *
 	 * @throws RuntimeException Thrown if the feed URL is not set.
+	 * @throws Extractor_Exception Thrown if the feed request fails.
 	 *
 	 * @return static
 	 */
@@ -81,6 +82,10 @@ class Feed_Extractor extends Extractor implements With_Settings {
 		}
 
 		$this->response = $request->get( $settings[ static::SETTING_FEED_URL ] );
+
+		if ( ! $this->response->ok() ) {
+			throw new Extractor_Exception( 'Failed to extract feed: ' . $settings[ static::SETTING_FEED_URL ], $this->response );
+		}
 
 		return $this;
 	}

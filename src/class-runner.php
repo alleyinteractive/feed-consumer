@@ -185,6 +185,9 @@ class Runner {
 		} catch ( Throwable $e ) {
 			$this->logger?->error( 'Error running feed extractor', [ 'exception' => $e ] );
 
+			// Schedule the next run of the feed to try again.
+			static::schedule_next_run( $this->feed_id );
+
 			static::$current_feed_id = null;
 
 			return;
@@ -209,6 +212,9 @@ class Runner {
 		} catch ( Throwable $e ) {
 			$this->logger?->error( 'Error running feed transformer', [ 'exception' => $e ] );
 
+			// Schedule the next run of the feed to try again.
+			static::schedule_next_run( $this->feed_id );
+
 			static::$current_feed_id = null;
 
 			return;
@@ -232,6 +238,9 @@ class Runner {
 			$loaded_data = $loader->load();
 		} catch ( Throwable $e ) {
 			$this->logger?->error( 'Error running feed loader', [ 'exception' => $e ] );
+
+			// Schedule the next run of the feed to try again.
+			static::schedule_next_run( $this->feed_id );
 
 			static::$current_feed_id = null;
 

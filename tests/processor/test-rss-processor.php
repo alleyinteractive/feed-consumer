@@ -68,5 +68,34 @@ class RSS_Processor_Test extends Test_Case {
 		$this->assertInCronQueue( Runner::CRON_HOOK, [ $feed_id ] );
 	}
 
-	// public function test_handle_rss_feed_error() {}
+	public function test_handle_rss_feed_error() {
+		$this->expectApplied( 'feed_consumer_run_complete' )->never();
+
+		$this->fake_request(
+			'https://alley.com/feed/',
+			Mock_Http_Response::create()->with_status( 404 )
+		);
+
+		// Create the RSS feed.
+		$feed_id = static::factory()->post
+			->with_meta(
+				[
+					Settings::SETTINGS_META_KEY => [
+						'processor' => Settings::escape_setting_name( RSS_Processor::class ),
+						Settings::escape_setting_name( RSS_Processor::class ) => [
+							'feed_url' => 'https://alley.com/feed/',
+						],
+					]
+				]
+			)
+			->create(
+				[
+					'post_type' => Settings::POST_TYPE,
+				]
+			);
+
+		Runner::run_scheduled( $feed_id );
+
+		$this->assertInCronQueue( Runner::CRON_HOOK, [ $feed_id ] );
+	}
 }
