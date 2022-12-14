@@ -111,14 +111,18 @@ class Runner {
 			return null;
 		}
 
-		// Fetch the frequency of the processor to calculate the next timestamp.
-		$timestamp = time() + static::processor( $feed_id )->frequency();
+		try {
+			// Fetch the frequency of the processor to calculate the next timestamp.
+			$timestamp = time() + static::processor( $feed_id )->frequency();
 
-		if ( ! wp_schedule_single_event( $timestamp, static::CRON_HOOK, [ $feed_id ] ) ) {
+			if ( ! wp_schedule_single_event( $timestamp, static::CRON_HOOK, [ $feed_id ] ) ) {
+				return null;
+			}
+
+			return $timestamp;
+		} catch ( Throwable $e ) {
 			return null;
 		}
-
-		return $timestamp;
 	}
 
 	/**
