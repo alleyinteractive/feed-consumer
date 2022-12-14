@@ -17,6 +17,7 @@ class RSS_Processor_Test extends Test_Case {
 	use Refresh_Database;
 
 	public function test_load_rss_feed() {
+		$this->expectApplied( 'feed_consumer_transformed_data' )->once();
 		$this->expectApplied( 'feed_consumer_run_complete' )->once();
 
 		$this->fake_request(

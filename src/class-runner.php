@@ -220,6 +220,16 @@ class Runner {
 			return;
 		}
 
+		/**
+		 * Filters the transformed data before it is passed to the loader.
+		 *
+		 * @param array                                $transformed_data Transformed data from the transformer.
+		 * @param int                                  $feed_id          Feed ID.
+		 * @param \Feed_Consumer\Contracts\Transformer $transformer      Transformer instance.
+		 * @param \Feed_Consumer\Contracts\Extractor   $extractor        Extractor instance.
+		 */
+		$transformed_data = apply_filters( 'feed_consumer_transformed_data', $transformed_data, $this->feed_id, $transformer, $extractor );
+
 		if ( empty( $transformed_data ) ) {
 			$this->logger?->info( 'No transformed data found' );
 
