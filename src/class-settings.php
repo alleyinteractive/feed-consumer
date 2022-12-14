@@ -283,15 +283,16 @@ class Settings {
 		$next_run = wp_next_scheduled( Runner::CRON_HOOK, [ $feed->ID ] );
 
 		if ( $next_run ) {
-			if ( $next_run > current_time( 'timestamp' ) ) {
+			if ( $next_run > current_time( 'timestamp' ) ) { // phpcs:ignore WordPress.DateTime.CurrentTimeTimestamp.Requested
 				printf(
 					'<strong>%s</strong> <time datetime="%s">%s</time>',
 					esc_html__( 'Next run:', 'feed-consumer' ),
 					esc_attr( date_i18n( 'c', $next_run ) ),
 					esc_html(
 						sprintf(
+							/* translators: %s: Human readable time difference. */
 							__( '%s from now', 'feed-consumer' ),
-							human_time_diff( $next_run, current_time( 'timestamp' ) ),
+							human_time_diff( $next_run, current_time( 'timestamp' ) ), // phpcs:ignore WordPress.DateTime.CurrentTimeTimestamp.Requested
 						),
 					),
 				);

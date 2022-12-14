@@ -47,5 +47,9 @@ function main() {
 	Processors::instance();
 	Settings::instance();
 	Scheduler::instance();
+
+	if ( defined( 'WP_CLI' ) && WP_CLI ) {
+		\WP_CLI::add_command( 'feed-consumer', CLI::class );
+	}
 }
 main();

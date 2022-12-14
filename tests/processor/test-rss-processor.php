@@ -41,7 +41,9 @@ class RSS_Processor_Test extends Test_Case {
 					Settings::SETTINGS_META_KEY => [
 						'processor' => Settings::escape_setting_name( RSS_Processor::class ),
 						Settings::escape_setting_name( RSS_Processor::class ) => [
-							'feed_url' => 'https://alley.com/feed/',
+							'extractor' => [
+								'feed_url' => 'https://alley.com/feed/',
+							],
 							'loader'   => [
 								'post_status' => 'publish',
 							],
@@ -84,7 +86,9 @@ class RSS_Processor_Test extends Test_Case {
 					Settings::SETTINGS_META_KEY => [
 						'processor' => Settings::escape_setting_name( RSS_Processor::class ),
 						Settings::escape_setting_name( RSS_Processor::class ) => [
-							'feed_url' => 'https://alley.com/feed/',
+							'extractor' => [
+								'feed_url' => 'https://alley.com/feed/',
+							],
 						],
 					],
 				]
