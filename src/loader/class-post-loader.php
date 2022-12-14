@@ -161,13 +161,13 @@ class Post_Loader extends Loader implements With_Settings {
 			),
 			'terms'       => new Fieldmanager_Autocomplete(
 				[
-					'label'         => __( 'Terms', 'feed-consumer' ),
-					'datasource'    => new Fieldmanager_Datasource_Term(
+					'label'          => __( 'Terms', 'feed-consumer' ),
+					'datasource'     => new Fieldmanager_Datasource_Term(
 						[
 							'taxonomy' => array_keys( get_taxonomies( [ 'public' => true ] ) ),
 						]
 					),
-					'limit'         => 0,
+					'limit'          => 0,
 					'add_more_label' => __( 'Add Term', 'feed-consumer' ),
 				]
 			),
