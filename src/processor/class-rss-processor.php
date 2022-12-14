@@ -24,10 +24,7 @@ class RSS_Processor extends Processor implements With_Settings {
 	public function __construct() {
 		$this->extractor( new Feed_Extractor() );
 		$this->transformer( new RSS_Transformer() );
-		// todo: being added in a follow up PR.
-		/* phpcs:disable */
-		// $this->loader( new Post_Loader() );
-		/* phpcs:enable */
+		$this->loader( new Post_Loader() );
 	}
 
 	/**
