@@ -84,6 +84,8 @@ class Feed_Extractor extends Extractor implements With_Settings {
 		$this->response = $request->get( $settings[ static::SETTING_FEED_URL ] );
 
 		if ( ! $this->response->ok() ) {
+			$this->handle_error( $this->response );
+
 			throw new Extractor_Exception( 'Failed to extract feed: ' . $settings[ static::SETTING_FEED_URL ], $this->response );
 		}
 

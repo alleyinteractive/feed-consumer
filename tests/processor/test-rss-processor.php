@@ -28,7 +28,7 @@ class RSS_Processor_Test extends Test_Case {
 
 		$this->assertPostDoesNotExists(
 			[
-				'post_title' => 'A RenderATL Welcome into the Tech World',
+				'post_title'  => 'A RenderATL Welcome into the Tech World',
 				'post_status' => 'publish',
 			],
 		);
@@ -45,7 +45,7 @@ class RSS_Processor_Test extends Test_Case {
 								'post_status' => 'publish',
 							],
 						],
-					]
+					],
 				]
 			)
 			->create(
@@ -58,7 +58,7 @@ class RSS_Processor_Test extends Test_Case {
 
 		$this->assertPostExists(
 			[
-				'post_title' => 'A RenderATL Welcome into the Tech World',
+				'post_title'  => 'A RenderATL Welcome into the Tech World',
 				'post_status' => 'publish',
 			],
 		);
@@ -85,7 +85,7 @@ class RSS_Processor_Test extends Test_Case {
 						Settings::escape_setting_name( RSS_Processor::class ) => [
 							'feed_url' => 'https://alley.com/feed/',
 						],
-					]
+					],
 				]
 			)
 			->create(

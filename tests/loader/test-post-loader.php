@@ -97,17 +97,21 @@ class Post_Loader_Test extends Test_Case {
 			[
 				Loader::META_KEY_REMOTE_ID => $remote_id,
 			]
-		)->create( [
-			'post_title' => 'Original Post',
-		] );
+		)->create(
+			[
+				'post_title' => 'Original Post',
+			] 
+		);
 
 		$load = $loader->load();
 
 		$this->assertNull( $load[0] );
 
-		$this->assertPostExists( [
-			'post_title' => 'Original Post'
-		] );
+		$this->assertPostExists(
+			[
+				'post_title' => 'Original Post',
+			] 
+		);
 	}
 
 	public function test_update_existing_post() {
@@ -132,17 +136,21 @@ class Post_Loader_Test extends Test_Case {
 			[
 				Loader::META_KEY_REMOTE_ID => $remote_id,
 			]
-		)->create( [
-			'post_title' => 'Original Post',
-		] );
+		)->create(
+			[
+				'post_title' => 'Original Post',
+			] 
+		);
 
 		$load = $loader->load();
 
 		$this->assertEquals( $post_id, $load[0]->ID );
 
-		$this->assertPostDoesNotExists( [
-			'post_title' => 'Original Post'
-		] );
+		$this->assertPostDoesNotExists(
+			[
+				'post_title' => 'Original Post',
+			] 
+		);
 	}
 
 	public function test_load_posts_with_terms() {

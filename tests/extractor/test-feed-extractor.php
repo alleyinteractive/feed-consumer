@@ -39,6 +39,8 @@ class Feed_Extractor_Test extends Test_Case {
 	}
 
 	public function test_extract_feed_error() {
+		$this->expectApplied( 'feed_consumer_extractor_error' )->once();
+
 		$this->expectException( Extractor_Exception::class );
 		$this->expectExceptionMessage( 'Failed to extract feed: https://alley.com/feed/' );
 
