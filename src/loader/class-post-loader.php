@@ -20,7 +20,6 @@ use function Mantle\Support\Helpers\collect;
  *
  * Loader that takes transformer data and loads it into the system as a post.
  *
- * @todo Add support for pipeline.
  * @todo Add support for terms from settings.
  * @todo Add support for featured image.
  * @todo Add support for bylines.

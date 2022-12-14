@@ -96,12 +96,15 @@ class Runner {
 			return $next_run;
 		}
 
+		// Determine if the next run should be scheduled.
+		if ( Settings::NAME !== get_post_type( $feed_id ) || 'publish' !== get_post_status( $feed_id ) ) {
+			return null;
+		}
+
 		// Fetch the frequency of the processor to calculate the next timestamp.
 		$timestamp = time() + static::processor( $feed_id )->frequency();
 
-		if (
-			false === wp_schedule_single_event( $timestamp, static::CRON_HOOK, [ $feed_id ] )
-		) {
+		if ( ! wp_schedule_single_event( $timestamp, static::CRON_HOOK, [ $feed_id ] ) ) {
 			return null;
 		}
 

@@ -39,6 +39,16 @@ class Settings {
 	public const SETTINGS_META_KEY = 'feed_consumer_settings';
 
 	/**
+	 * Escape a class name for use in a setting.
+	 *
+	 * @param string $class_name Class name to escape.
+	 * @return string
+	 */
+	public static function escape_setting_name( string $class_name ): string {
+		return str_replace( '\\', '_', $class_name );
+	}
+
+	/**
 	 * Constructor.
 	 */
 	protected function __construct() {
@@ -180,16 +190,6 @@ class Settings {
 		);
 
 		$settings->add_meta_box( __( 'Feed Settings', 'feed-consumer' ), static::NAME );
-	}
-
-	/**
-	 * Escape a class name for use in a setting.
-	 *
-	 * @param string $class_name Class name to escape.
-	 * @return string
-	 */
-	public static function escape_setting_name( string $class_name ): string {
-		return str_replace( '\\', '_', $class_name );
 	}
 
 	/**
