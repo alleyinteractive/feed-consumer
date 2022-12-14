@@ -14,6 +14,8 @@ use Throwable;
 
 /**
  * Feed Consumer Runner
+ *
+ * @todo Add specific tests for this class.
  */
 class Runner {
 	/**
@@ -91,6 +93,13 @@ class Runner {
 			$feed_id,
 			function_exists( 'ai_logger_to_post' ) ? ai_logger_to_post( $feed_id, static::LOG_META_KEY, Logger::INFO ) : null,
 		) )->run();
+	}
+
+	/**
+	 * Register the cron hook for the runner.
+	 */
+	public static function register_cron_hook() {
+		add_action( static::CRON_HOOK, fn ( $feed_id ) => static::run_scheduled( (int) $feed_id ) );
 	}
 
 	/**
