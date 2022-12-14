@@ -120,7 +120,7 @@ class Runner {
 			}
 
 			return $timestamp;
-		} catch ( Throwable $e ) {
+		} catch ( Throwable ) {
 			return null;
 		}
 	}

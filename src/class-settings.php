@@ -15,6 +15,7 @@ use Feed_Consumer\Contracts\With_Settings;
 use Fieldmanager_Group;
 use Fieldmanager_Select;
 use Mantle\Support\Traits\Singleton;
+use Throwable;
 use WP_Post;
 
 use function Mantle\Support\Helpers\collect;
@@ -284,7 +285,17 @@ class Settings {
 		}
 
 		// Fetch the next run time and display it.
-		$next_run = wp_next_scheduled( Runner::CRON_HOOK, [ $feed->ID ] );
+		try {
+			$next_run = Runner::schedule_next_run( $feed->ID );
+		} catch ( Throwable $e ) {
+			printf(
+				'<strong>%s</strong> %s',
+				esc_html__( 'Feed is not scheduled due to error:', 'feed-consumer' ),
+				esc_html( $e->getMessage() )
+			);
+
+			return;
+		}
 
 		if ( $next_run ) {
 			if ( $next_run > current_time( 'timestamp' ) ) { // phpcs:ignore WordPress.DateTime.CurrentTimeTimestamp.Requested
