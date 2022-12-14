@@ -38,7 +38,7 @@
     <properties>
       <property name="prefixes" type="array">
         <element value="alleyinteractive" />
-        <element value="Feed Consumer" />
+        <element value="feed_consumer" />
       </property>
     </properties>
   </rule>
