@@ -57,7 +57,7 @@ class Post_Loader_Test extends Test_Case {
 
 		$loader->processor()->settings(
 			[
-				Post_Loader::class => [
+				'loader' => [
 					'post_type'   => 'test-post-type',
 					'post_status' => 'publish',
 				],
@@ -166,7 +166,7 @@ class Post_Loader_Test extends Test_Case {
 
 		$loader->processor()->settings(
 			[
-				Post_Loader::class => [
+				'loader' => [
 					'terms' => [
 						$category_id,
 						$tag_id,

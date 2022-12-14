@@ -8,7 +8,8 @@
 namespace Feed_Consumer;
 
 use Mantle\Support\Traits\Singleton;
-use Psr\Log\LoggerInterface;
+
+use function Mantle\Support\Helpers\collect;
 
 /**
  * Processors Manager
@@ -24,13 +25,6 @@ class Processors {
 	protected array $processors = [
 		\Feed_Consumer\Processor\RSS_Processor::class,
 	];
-
-	/**
-	 * Logger instance.
-	 *
-	 * @var LoggerInterface|null
-	 */
-	protected ?LoggerInterface $logger = null;
 
 	/**
 	 * Constructor.
@@ -49,40 +43,24 @@ class Processors {
 		 * @var string[]
 		 */
 		$this->processors = apply_filters( 'feed_consumer_processors', $this->processors );
-
-		/**
-		 * Filter the logger instance.
-		 *
-		 * @var LoggerInterface|null
-		 */
-		$this->logger = apply_filters( 'feed_consumer_logger', function_exists( 'ai_logger' ) ? ai_logger() : null );
 	}
 
 	/**
 	 * Retrieve or set the processors.
 	 *
-	 * @param string[] $processors Processors to set, optional.
-	 * @return string[]
+	 * Returns an array of processors with the processor setting name as the key
+	 * and the processor class name as the value.
+	 *
+	 * @param array<int, string>|null $processors Processors to set, optional.
+	 * @return array<string, string>
 	 */
 	public function processors( ?array $processors = null ): array {
 		if ( ! is_null( $processors ) ) {
 			$this->processors = $processors;
 		}
 
-		return $this->processors;
-	}
-
-	/**
-	 * Retrieve or set the logger instance.
-	 *
-	 * @param LoggerInterface|null $logger Logger instance to set, optional.
-	 * @return LoggerInterface|null
-	 */
-	public function logger( ?LoggerInterface $logger = null ): ?LoggerInterface {
-		if ( ! is_null( $logger ) ) {
-			$this->logger = $logger;
-		}
-
-		return $this->logger;
+		return collect( $this->processors )
+			->map_with_keys( fn ( $class ) => [ Settings::escape_setting_name( $class ) => $class ] )
+			->all();
 	}
 }

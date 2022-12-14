@@ -59,13 +59,23 @@ class Runner {
 			throw new RuntimeException( 'No processor set for feed.' );
 		}
 
-		$processor = new $settings['processor']();
+		$processors = Processors::instance()->processors();
+
+		if ( empty( $processors[ $settings['processor'] ] ) ) {
+			throw new RuntimeException( 'Processor not registered: ' . $settings['processor'] );
+		}
+
+		if ( ! class_exists( $processors[ $settings['processor'] ] ) ) {
+			throw new RuntimeException( 'Processor class not found: ' . $processors[ $settings['processor'] ] );
+		}
+
+		$processor = new $processors[ $settings['processor'] ]();
 
 		if ( ! $processor instanceof Contracts\Processor ) {
 			throw new RuntimeException( 'Processor must implement Contracts\Processor.' );
 		}
 
-		$processor->settings( $settings );
+		$processor->settings( $settings[ Settings::escape_setting_name( $settings['processor'] ) ] ?? [] );
 
 		return $processor;
 	}
@@ -97,7 +107,7 @@ class Runner {
 		}
 
 		// Determine if the next run should be scheduled.
-		if ( Settings::NAME !== get_post_type( $feed_id ) || 'publish' !== get_post_status( $feed_id ) ) {
+		if ( Settings::POST_TYPE !== get_post_type( $feed_id ) || 'publish' !== get_post_status( $feed_id ) ) {
 			return null;
 		}
 
@@ -121,7 +131,7 @@ class Runner {
 	}
 
 	/**
-	 * Run a feed
+	 * Run a feed with the configured settings.
 	 */
 	public function run() {
 		$feed = get_post( $this->feed_id );
@@ -252,6 +262,7 @@ class Runner {
 		update_post_meta( $this->feed_id, static::LAST_RUN_META_KEY, current_time( 'timestamp' ) ); // phpcs:ignore WordPress.DateTime.CurrentTimeTimestamp.Requested
 
 		// Schedule the next run of the feed.
+		static::schedule_next_run( $this->feed_id );
 
 		static::$current_feed_id = null;
 	}

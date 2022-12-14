@@ -29,7 +29,7 @@ class Settings {
 	 *
 	 * @var string
 	 */
-	public const NAME = 'feed_consumer';
+	public const POST_TYPE = 'feed_consumer';
 
 	/**
 	 * Meta key for settings.
@@ -53,8 +53,8 @@ class Settings {
 	 */
 	protected function __construct() {
 		add_action( 'init', [ $this, 'register_post_type' ] );
-		add_action( 'fm_post_' . static::NAME, [ $this, 'register_fields' ] );
-		add_action( 'add_meta_boxes_' . static::NAME, [ $this, 'add_meta_boxes' ] );
+		add_action( 'fm_post_' . static::POST_TYPE, [ $this, 'register_fields' ] );
+		add_action( 'add_meta_boxes_' . static::POST_TYPE, [ $this, 'add_meta_boxes' ] );
 	}
 
 	/**
@@ -62,7 +62,7 @@ class Settings {
 	 */
 	public function register_post_type() {
 		register_post_type( // phpcs:ignore WordPress.NamingConventions.ValidPostTypeSlug.NotStringLiteral
-			static::NAME,
+			static::POST_TYPE,
 			[
 				'label'              => __( 'Feeds', 'feed-consumer' ),
 				'labels'             => [
@@ -189,7 +189,7 @@ class Settings {
 			]
 		);
 
-		$settings->add_meta_box( __( 'Feed Settings', 'feed-consumer' ), static::NAME );
+		$settings->add_meta_box( __( 'Feed Settings', 'feed-consumer' ), static::POST_TYPE );
 	}
 
 	/**

@@ -45,7 +45,7 @@ class Scheduler {
 					'fields'           => 'ids',
 					'paged'            => $paged++,
 					'post_status'      => 'publish',
-					'post_type'        => Settings::NAME,
+					'post_type'        => Settings::POST_TYPE,
 					'posts_per_page'   => 100,
 					'suppress_filters' => false,
 				]
