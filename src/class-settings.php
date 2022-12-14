@@ -15,6 +15,7 @@ use Feed_Consumer\Contracts\With_Settings;
 use Fieldmanager_Group;
 use Fieldmanager_Select;
 use Mantle\Support\Traits\Singleton;
+use WP_Post;
 
 use function Mantle\Support\Helpers\collect;
 
@@ -257,6 +258,52 @@ class Settings {
 	 * Register meta boxes for information about the current log.
 	 */
 	public function add_meta_boxes() {
-		// tktk.
+		add_meta_box(
+			'feed-consumer-status',
+			__( 'Feed Status', 'feed-consumer' ),
+			[ $this, 'render_status_meta_box' ],
+			static::POST_TYPE,
+			'side',
+			'low',
+		);
+	}
+
+	/**
+	 * Feed status meta box.
+	 *
+	 * @param WP_Post $feed Feed post object.
+	 */
+	public function render_status_meta_box( WP_Post $feed ) {
+		if ( 'publish' !== $feed->post_status ) {
+			printf( '<strong>%s</strong>', esc_html__( 'Feed is not published.', 'feed-consumer' ) );
+			return;
+		}
+
+		// Fetch the next run time and display it.
+		$next_run = wp_next_scheduled( Runner::CRON_HOOK, [ $feed->ID ] );
+
+		if ( $next_run ) {
+			if ( $next_run > current_time( 'timestamp' ) ) {
+				printf(
+					'<strong>%s</strong> <time datetime="%s">%s</time>',
+					esc_html__( 'Next run:', 'feed-consumer' ),
+					esc_attr( date_i18n( 'c', $next_run ) ),
+					esc_html(
+						sprintf(
+							__( '%s from now', 'feed-consumer' ),
+							human_time_diff( $next_run, current_time( 'timestamp' ) ),
+						),
+					),
+				);
+			} else {
+				printf(
+					'<strong>%s</strong> %s',
+					esc_html__( 'Next Run:', 'feed-consumer' ),
+					esc_html__( 'Now', 'feed-consumer' )
+				);
+			}
+		} else {
+			printf( '<strong>%s</strong>', esc_html__( 'Feed is not scheduled to run.', 'feed-consumer' ) );
+		}
 	}
 }
