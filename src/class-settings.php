@@ -324,6 +324,17 @@ class Settings {
 		} else {
 			printf( '<strong>%s</strong>', esc_html__( 'Feed is not scheduled to run.', 'feed-consumer' ) );
 		}
+
+		$last_run = get_post_meta( $feed->ID, Runner::LAST_RUN_META_KEY, true );
+
+		if ( $last_run ) {
+			printf(
+				'<p><strong>%s</strong> <time datetime="%s">%s</time></p>',
+				esc_html__( 'Last run:', 'feed-consumer' ),
+				esc_attr( date_i18n( 'c', $last_run ) ),
+				esc_html( date_i18n( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), $last_run ) ),
+			);
+		}
 	}
 
 	/**
