@@ -27,6 +27,62 @@ use function Mantle\Support\Helpers\collect;
  */
 class Post_Loader extends Loader implements With_Settings {
 	/**
+	 * Key for storing the post's byline.
+	 *
+	 * @var string
+	 */
+	public const BYLINE = 'byline';
+
+	/**
+	 * Key for storing the post's content.
+	 *
+	 * @var string
+	 */
+	public const CONTENT = 'post_content';
+
+	/**
+	 * Key for storing the post's guid.
+	 *
+	 * @var string
+	 */
+	public const GUID = 'guid';
+
+	/**
+	 * Key for storing the post's image URL.
+	 *
+	 * @var string
+	 */
+	public const IMAGE = 'image';
+
+	/**
+	 * Key for storing the post's image caption.
+	 *
+	 * @var string
+	 */
+	public const IMAGE_CAPTION = 'image_caption';
+
+	/**
+	 * Key for storing the post's image credit.
+	 *
+	 * @var string
+	 */
+	public const IMAGE_CREDIT = 'image_credit';
+
+	/**
+	 * Key for storing the post's permalink.
+	 *
+	 * @var string
+	 */
+	public const PERMALINK = 'permalink';
+
+	/**
+	 * Key for storing the post's title.
+	 *
+	 * @var string
+	 */
+	public const TITLE = 'post_title';
+
+	/**
 	 * Load the data
 	 *
 	 * @throws InvalidArgumentException When the data from the transformer is not an array.

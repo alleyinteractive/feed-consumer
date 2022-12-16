@@ -33,9 +33,9 @@ class RSS_Transformer_Test extends Test_Case {
 		$this->assertEquals( 'Brandon Fields', $item['byline'] );
 		$this->assertEquals( '<p>One of the reasons I love Alley is because they provide opportunities for you to attend incredible conferences like RenderATL.</p><p>The post <a rel="nofollow" href="https://alley.com/news/a-renderatl-welcome-into-the-tech-world/"> A RenderATL Welcome into the Tech World</a> appeared first on <a rel="nofollow" href="https://alley.com">Alley</a>.</p>', $item['post_content'] );
 		$this->assertEquals( 'https://alley.com/?p=6191', $item['guid'] );
-		$this->assertEquals( null, $item['image_caption'] );
-		$this->assertEquals( null, $item['image_credit'] );
-		$this->assertEquals( null, $item['image'] );
+		$this->assertEquals( 'Example image description', $item['image_caption'] );
+		$this->assertEquals( 'Example Photo Credit', $item['image_credit'] );
+		$this->assertEquals( 'https://alley.com/wp-content/uploads/2022/06/IMG_4825.jpeg?w=1024', $item['image'] );
 		$this->assertEquals( 'https://alley.com/news/a-renderatl-welcome-into-the-tech-world/', $item['permalink'] );
 		$this->assertEquals( 'A RenderATL Welcome into the Tech World', $item['post_title'] );
 	}

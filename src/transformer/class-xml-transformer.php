@@ -9,6 +9,7 @@ namespace Feed_Consumer\Transformer;
 
 use Feed_Consumer\Contracts\With_Presets;
 use Feed_Consumer\Contracts\With_Settings;
+use Feed_Consumer\Loader\Post_Loader;
 use Fieldmanager_TextField;
 use SimpleXMLElement;
 
@@ -151,14 +152,14 @@ class XML_Transformer extends Transformer implements With_Settings {
 		return array_map(
 			// todo: convert to a DTO.
 			fn ( SimpleXMLElement $item ) => [
-				'byline'        => $this->extract_by_xpath( $item, $settings[ static::PATH_BYLINE ] ?? 'author' ),
-				'post_content'  => $this->extract_by_xpath( $item, $settings[ static::PATH_CONTENT ] ?? 'description' ),
-				'guid'          => $this->extract_by_xpath( $item, $settings[ static::PATH_GUID ] ?? 'guid' ),
-				'image_caption' => $this->extract_by_xpath( $item, $settings[ static::PATH_IMAGE_CAPTION ] ?? 'image_caption' ),
-				'image_credit'  => $this->extract_by_xpath( $item, $settings[ static::PATH_IMAGE_CREDIT ] ?? 'image_credit' ),
-				'image'         => $this->extract_by_xpath( $item, $settings[ static::PATH_IMAGE ] ?? 'image' ),
-				'permalink'     => $this->extract_by_xpath( $item, $settings[ static::PATH_PERMALINK ] ?? 'link' ),
-				'post_title'    => $this->extract_by_xpath( $item, $settings[ static::PATH_TITLE ] ?? 'title' ),
+				Post_Loader::BYLINE        => $this->extract_by_xpath( $item, $settings[ static::PATH_BYLINE ] ?? 'author' ),
+				Post_Loader::CONTENT       => $this->extract_by_xpath( $item, $settings[ static::PATH_CONTENT ] ?? 'description' ),
+				Post_Loader::GUID          => $this->extract_by_xpath( $item, $settings[ static::PATH_GUID ] ?? 'guid' ),
+				Post_Loader::IMAGE_CAPTION => $this->extract_by_xpath( $item, $settings[ static::PATH_IMAGE_CAPTION ] ?? 'image_caption' ),
+				Post_Loader::IMAGE_CREDIT  => $this->extract_by_xpath( $item, $settings[ static::PATH_IMAGE_CREDIT ] ?? 'image_credit' ),
+				Post_Loader::IMAGE         => $this->extract_by_xpath( $item, $settings[ static::PATH_IMAGE ] ?? 'image' ),
+				Post_Loader::PERMALINK     => $this->extract_by_xpath( $item, $settings[ static::PATH_PERMALINK ] ?? 'link' ),
+				Post_Loader::TITLE         => $this->extract_by_xpath( $item, $settings[ static::PATH_TITLE ] ?? 'title' ),
 			],
 			(array) $items,
 		);
