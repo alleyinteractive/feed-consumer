@@ -44,6 +44,8 @@ require_once __DIR__ . '/vendor/wordpress-autoload.php';
  * Instantiate the plugin.
  */
 function main() {
+	require_once __DIR__ . '/src/helpers.php';
+
 	Processors::instance();
 	Settings::instance();
 	Scheduler::instance();

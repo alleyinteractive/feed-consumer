@@ -20,7 +20,7 @@ class Runner_Test extends Test_Case {
 						'extractor' => [
 							'feed_url' => 'https://alley.com/feed/',
 						],
-						'loader'   => [
+						'loader'    => [
 							'post_status' => 'publish',
 						],
 					],
@@ -47,7 +47,7 @@ class Runner_Test extends Test_Case {
 				'extractor' => [
 					'feed_url' => 'https://alley.com/feed/',
 				],
-				'loader'   => [
+				'loader'    => [
 					'post_status' => 'publish',
 				],
 			],

@@ -6,6 +6,7 @@ use Feed_Consumer\Loader\Loader;
 use Feed_Consumer\Loader\Post_Loader;
 use Feed_Consumer\Tests\Test_Case;
 use Mantle\Testing\Concerns\Refresh_Database;
+use Mantle\Testing\Mock_Http_Response;
 
 /**
  * @group loader
@@ -100,7 +101,7 @@ class Post_Loader_Test extends Test_Case {
 		)->create(
 			[
 				'post_title' => 'Original Post',
-			] 
+			]
 		);
 
 		$load = $loader->load();
@@ -110,7 +111,7 @@ class Post_Loader_Test extends Test_Case {
 		$this->assertPostExists(
 			[
 				'post_title' => 'Original Post',
-			] 
+			]
 		);
 	}
 
@@ -139,7 +140,7 @@ class Post_Loader_Test extends Test_Case {
 		)->create(
 			[
 				'post_title' => 'Original Post',
-			] 
+			]
 		);
 
 		$load = $loader->load();
@@ -149,7 +150,7 @@ class Post_Loader_Test extends Test_Case {
 		$this->assertPostDoesNotExists(
 			[
 				'post_title' => 'Original Post',
-			] 
+			]
 		);
 	}
 
@@ -224,6 +225,67 @@ class Post_Loader_Test extends Test_Case {
 		$this->assertCount( 1, $posts );
 		$this->assertTrue( is_array( $_SERVER['__middleware_applied'] ) );
 		$this->assertEquals( 'applied', get_post_meta( $posts[0]->ID, 'middleware', true ) );
+	}
+
+	public function test_image_on_posts() {
+		$this->fake_request(
+			'https://example.com/image.jpg',
+			function ( string $url, array $args ) {
+				$contents = file_get_contents( __DIR__ . '/../fixtures/alley.jpg' );
+
+				if ( $args['stream'] && ! empty( $args['filename'] ) ) {
+					file_put_contents( $args['filename'], $contents );
+				}
+
+				return Mock_Http_Response::create()
+					->with_status( 200 )
+					->with_body( $contents )
+					->with_headers(
+						[
+							'content-type'        => 'image/jpeg',
+							'content-disposition' => 'attachment; filename="image.jpg"',
+						],
+					);
+			},
+		);
+
+		$loader = $this->make_loader(
+			[
+				[
+					'post_content'                 => $this->faker->paragraph( 3 ),
+					'post_title'                   => $this->faker->words( 5, true ),
+					'remote_id'                    => $this->faker->uuid(),
+					Post_Loader::IMAGE             => 'https://example.com/image.jpg',
+					Post_Loader::IMAGE_DESCRIPTION => 'Image Description',
+					Post_Loader::IMAGE_CAPTION     => 'Image Caption',
+					Post_Loader::IMAGE_CREDIT      => 'Image Credit',
+					Post_Loader::IMAGE_ALT         => 'Image Alt',
+				],
+			],
+			[
+				'loader' => [
+					'ingest_images' => true,
+				],
+			],
+		);
+
+		$posts = $loader->load();
+
+		$this->assertCount( 1, $posts );
+		$this->assertEquals( 'post', $posts[0]->post_type );
+		$this->assertEquals( 'draft', $posts[0]->post_status );
+
+		$this->assertTrue( has_post_thumbnail( $posts[0]->ID ) );
+
+		$thumbnail_id = get_post_thumbnail_id( $posts[0]->ID );
+
+		$this->assertEquals( 'Image Alt', get_post_meta( $thumbnail_id, '_wp_attachment_image_alt', true ) );
+		$this->assertEquals( 'https://example.com/image.jpg', get_post_meta( $thumbnail_id, 'original_url', true ) );
+
+		$attachment = get_post( $thumbnail_id );
+
+		$this->assertEquals( 'Image Description', $attachment->post_content );
+		$this->assertEquals( 'Image Caption', $attachment->post_excerpt );
 	}
 
 	protected function make_loader( mixed $data, array $settings = [] ): Post_Loader {
