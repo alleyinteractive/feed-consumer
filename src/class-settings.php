@@ -58,6 +58,7 @@ class Settings {
 		add_action( 'init', [ $this, 'register_post_type' ] );
 		add_action( 'fm_post_' . static::POST_TYPE, [ $this, 'register_fields' ] );
 		add_action( 'add_meta_boxes_' . static::POST_TYPE, [ $this, 'add_meta_boxes' ] );
+		add_action( 'save_post', [ $this, 'on_save_post' ], 99, 2 ); // Uses 'save_post' action to save settings because Fieldmanager does.
 	}
 
 	/**
@@ -356,5 +357,23 @@ class Settings {
 		}
 
 		return $value;
+	}
+
+	/**
+	 * On save_post, reschedule the feed to run according to the new settings.
+	 *
+	 * @param int     $post_id Post ID.
+	 * @param WP_Post $post    Post object.
+	 */
+	public function on_save_post( $post_id, $post ) {
+		if ( static::POST_TYPE !== $post->post_type ) {
+			return;
+		}
+
+		if ( wp_next_scheduled( Runner::CRON_HOOK, [ $post_id ] ) ) {
+			wp_clear_scheduled_hook( Runner::CRON_HOOK, [ $post_id ] );
+		}
+
+		Runner::schedule_next_run( $post_id );
 	}
 }
