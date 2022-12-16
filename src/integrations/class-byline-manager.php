@@ -15,6 +15,8 @@ use Fieldmanager_Checkbox;
 use Fieldmanager_TextField;
 use WP_Post;
 
+use function Mantle\Support\Helpers\collect;
+
 /**
  * Byline Manager Integration
  */
@@ -97,6 +99,7 @@ class Byline_Manager implements With_Setting_Fields {
 		}
 
 		$middleware[] = function ( array $item, Closure $next ) use ( $settings ): WP_Post {
+			// Use the default byline from settings if configured.
 			if ( empty( $settings[ static::SETTING_USE_FEED_AUTHOR ] ) && ! empty( $settings[ static::SETTING_DEFAULT_BYLINE ] ) ) {
 				$byline = [
 					'byline_entries' => [
@@ -109,15 +112,30 @@ class Byline_Manager implements With_Setting_Fields {
 					],
 				];
 			} elseif ( ! empty( $settings[ static::SETTING_USE_FEED_AUTHOR ] ) && ! empty( $item['byline'] ) ) {
-				$byline = [
-					'byline_entries' => [
-						[
-							'type' => 'text',
-							'atts' => [
-								'text' => $item['byline'],
-							],
-						],
+				// Use the item's byline if configured.
+
+				$parts = str_replace(
+					[
+						', and ',
+						' and ',
 					],
+					', ',
+					$item['byline'],
+				);
+
+
+				$byline = [
+					'byline_entries' => collect( explode( ',', $parts ) )
+						->filter()
+						->map(
+							fn ( $part ) => [
+								'type' => 'text',
+								'atts' => [
+									'text' => trim( $part ),
+								],
+							],
+						)
+						->all(),
 				];
 			}
 
