@@ -71,6 +71,9 @@ class Settings {
 		// Nudge the user to install AI Logger if it's not installed.
 		if ( ! class_exists( \AI_Logger\AI_Logger::class ) ) {
 			add_action( 'admin_notices', [ $this, 'missing_ai_logger_notice' ] );
+		} elseif ( function_exists( 'ai_logger_post_meta_box' ) ) {
+			// Register the meta box for the post type.
+			ai_logger_post_meta_box( Runner::LOG_META_KEY, __( 'Feed Consumer Logs', 'feed-consumer' ) );
 		}
 	}
 
