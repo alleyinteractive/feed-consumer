@@ -9,5 +9,13 @@
 \Mantle\Testing\manager()
 	->maybe_rsync_plugin()
 	// Load the main file of the plugin.
-	->loaded( fn () => require_once __DIR__ . '/../plugin.php' )
+	->loaded(
+		function() {
+			if ( file_exists( __DIR__ . '/../../byline-manager/byline-manager.php' ) ) {
+				require_once __DIR__ . '/../../byline-manager/byline-manager.php';
+			}
+
+			require_once __DIR__ . '/../plugin.php';
+		}
+	)
 	->install();

@@ -4,6 +4,7 @@ namespace Feed_Consumer\Tests;
 use Feed_Consumer\Contracts\Extractor;
 use Feed_Consumer\Contracts\Processor as Processor_Contract;
 use Feed_Consumer\Contracts\Transformer;
+use Feed_Consumer\Loader\Post_Loader;
 use Feed_Consumer\Processor\Processor;
 use Mantle\Http_Client\Response;
 use Mantle\Testing\Concerns\With_Faker;
@@ -105,5 +106,19 @@ abstract class Test_Case extends Testkit {
 				return $this->data;
 			}
 		};
+	}
+
+	protected function make_loader( mixed $data, array $settings = [] ): Post_Loader {
+		$processor = $this->make_processor( $settings );
+
+		$loader = new Post_Loader();
+
+		$loader->processor( $processor );
+
+		$loader->transformer(
+			$this->make_transformer( $data, $processor ),
+		);
+
+		return $loader;
 	}
 }

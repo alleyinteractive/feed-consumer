@@ -23,8 +23,6 @@ use function Mantle\Support\Helpers\collect;
  * Post Loader
  *
  * Loader that takes transformer data and loads it into the system as a post.
- *
- * @todo Add support for bylines.
  */
 class Post_Loader extends Loader implements With_Setting_Fields {
 	/**
