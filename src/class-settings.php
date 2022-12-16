@@ -11,7 +11,7 @@ use Feed_Consumer\Contracts\Extractor;
 use Feed_Consumer\Contracts\Loader;
 use Feed_Consumer\Contracts\Processor;
 use Feed_Consumer\Contracts\Transformer;
-use Feed_Consumer\Contracts\With_Settings;
+use Feed_Consumer\Contracts\With_Setting_Fields;
 use Fieldmanager_Group;
 use Fieldmanager_Select;
 use Mantle\Support\Traits\Singleton;
@@ -203,7 +203,7 @@ class Settings {
 							)
 									->map_with_keys(
 										function ( Processor|Extractor|Transformer|Loader $object, string $type ) use ( $processor ): array {
-											if ( ! ( $object instanceof With_Settings ) ) {
+											if ( ! ( $object instanceof With_Setting_Fields ) ) {
 												return [];
 											}
 
@@ -212,10 +212,10 @@ class Settings {
 												$object->processor( $processor );
 											}
 
-											$settings = $object->settings();
+											$fields = $object->setting_fields();
 
 											// If the settings are empty, return null.
-											if ( empty( $settings ) ) {
+											if ( empty( $fields ) ) {
 												return [];
 											}
 
@@ -227,7 +227,7 @@ class Settings {
 															__( '%s Settings', 'feed-consumer' ),
 															ucfirst( $type ),
 														),
-														'children' => $settings,
+														'children' => $fields,
 													]
 												),
 											];

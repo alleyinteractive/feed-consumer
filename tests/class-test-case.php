@@ -76,15 +76,6 @@ abstract class Test_Case extends Testkit {
 			public function data(): Response {
 				return $this->response;
 			}
-
-			/**
-			 * Cursor for the extractor.
-			 *
-			 * @return string|null Cursor if set, null otherwise.
-			 */
-			public function cursor(): ?string {
-				return null;
-			}
 		};
 	}
 

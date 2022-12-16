@@ -7,7 +7,7 @@
 
 namespace Feed_Consumer\Processor;
 
-use Feed_Consumer\Contracts\With_Settings;
+use Feed_Consumer\Contracts\With_Setting_Fields;
 use Feed_Consumer\Extractor\Feed_Extractor;
 use Feed_Consumer\Loader\Post_Loader;
 use Feed_Consumer\Transformer\RSS_Transformer;
@@ -17,7 +17,7 @@ use Feed_Consumer\Transformer\RSS_Transformer;
  *
  * Extracts an array of items from an RSS feed.
  */
-class RSS_Processor extends Processor implements With_Settings {
+class RSS_Processor extends Processor {
 	/**
 	 * Constructor.
 	 */

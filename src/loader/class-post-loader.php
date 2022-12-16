@@ -8,7 +8,7 @@
 namespace Feed_Consumer\Loader;
 
 use Feed_Consumer\Contracts\With_Presets;
-use Feed_Consumer\Contracts\With_Settings;
+use Feed_Consumer\Contracts\With_Setting_Fields;
 use Fieldmanager_Autocomplete;
 use Fieldmanager_Checkbox;
 use Fieldmanager_Datasource_Term;
@@ -26,7 +26,7 @@ use function Mantle\Support\Helpers\collect;
  *
  * @todo Add support for bylines.
  */
-class Post_Loader extends Loader implements With_Settings {
+class Post_Loader extends Loader implements With_Setting_Fields {
 	/**
 	 * Key for storing the post's byline.
 	 *
@@ -216,7 +216,7 @@ class Post_Loader extends Loader implements With_Settings {
 	/**
 	 * Settings to register.
 	 */
-	public function settings(): array {
+	public function setting_fields(): array {
 		if ( $this instanceof With_Presets ) {
 			return $this->presets();
 		}

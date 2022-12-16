@@ -37,7 +37,6 @@ class Feed_Extractor_Test extends Test_Case {
 
 		$this->assertTrue( $data->is_xml() );
 		$this->assertStringContainsString( '<channel>', $data->body() );
-		$this->assertEmpty( $extractor->cursor() );
 	}
 
 	public function test_extract_feed_error() {
