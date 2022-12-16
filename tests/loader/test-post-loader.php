@@ -281,6 +281,7 @@ class Post_Loader_Test extends Test_Case {
 
 		$this->assertEquals( 'Image Alt', get_post_meta( $thumbnail_id, '_wp_attachment_image_alt', true ) );
 		$this->assertEquals( 'https://example.com/image.jpg', get_post_meta( $thumbnail_id, 'original_url', true ) );
+		$this->assertEquals( 'Image Credit', get_post_meta( $thumbnail_id, 'credit', true ) );
 
 		$attachment = get_post( $thumbnail_id );
 

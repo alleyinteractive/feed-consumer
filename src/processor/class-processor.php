@@ -143,7 +143,13 @@ abstract class Processor implements Contract {
 			$this->middleware[] = $middleware;
 		}
 
-		return $this->middleware;
+		/**
+		 * Filters the middleware stack for the processor.
+		 *
+		 * @param callable[] $middleware The middleware stack.
+		 * @param Processor  $processor  The processor instance.
+		 */
+		return (array) apply_filters( 'feed_consumer_processor_middleware', $this->middleware, $this );
 	}
 
 	/**

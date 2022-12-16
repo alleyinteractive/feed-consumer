@@ -298,6 +298,13 @@ class Post_Loader extends Loader implements With_Settings {
 	 * @param int   $post_id Post ID.
 	 */
 	protected function assign_featured_image( array $postarr, int $post_id ): void {
+		/**
+		 * Filter the meta key used to store the image credit.
+		 *
+		 * @param string $credit_meta_key Meta key to store the image credit.
+		 */
+		$credit_meta_key = apply_filters( 'feed_consumer_image_credit_meta_key', 'credit' );
+
 		$attachment_id = create_or_get_attachment_from_url(
 			$postarr[ static::IMAGE ],
 			[
@@ -305,6 +312,9 @@ class Post_Loader extends Loader implements With_Settings {
 				'caption'        => $postarr[ static::IMAGE_CAPTION ] ?? '',
 				'description'    => $postarr[ static::IMAGE_DESCRIPTION ] ?? '',
 				'parent_post_id' => $post_id,
+				'meta'           => [
+					$credit_meta_key => $postarr[ static::IMAGE_CREDIT ] ?? '',
+				],
 			]
 		);
 
