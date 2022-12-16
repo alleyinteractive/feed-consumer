@@ -14,8 +14,6 @@ use Throwable;
 
 /**
  * Feed Consumer Runner
- *
- * @todo Add specific tests for this class.
  */
 class Runner {
 	/**

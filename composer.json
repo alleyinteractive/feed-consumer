@@ -48,6 +48,7 @@
         "phpcbf": "phpcbf .",
         "phpcs": "phpcs .",
         "phpunit": "phpunit",
+        "phpunit:coverage": "phpunit --coverage-html .coverage",
         "test": [
             "@phpcs",
             "@phpunit"
