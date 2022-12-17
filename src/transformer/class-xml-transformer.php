@@ -122,7 +122,7 @@ class XML_Transformer extends Transformer implements With_Setting_Fields {
 	 * @return array
 	 */
 	public function data(): array {
-		$settings = $this->processor->settings();
+		$settings = $this->processor->get_settings();
 
 		if ( $this instanceof With_Presets ) {
 			$settings = array_merge( $this->presets(), $settings );
@@ -130,7 +130,7 @@ class XML_Transformer extends Transformer implements With_Setting_Fields {
 
 		// Extract the items from the response.
 		if ( empty( $settings[ static::PATH_ITEMS ] ) ) {
-			$this->processor->logger()?->error(
+			$this->processor->get_logger()?->error(
 				'Missing required setting: ' . static::PATH_ITEMS,
 				[
 					'processor' => $this->processor->name(),
@@ -146,7 +146,7 @@ class XML_Transformer extends Transformer implements With_Setting_Fields {
 		try {
 			$items = $response->xml( $settings[ static::PATH_ITEMS ] );
 		} catch ( \Throwable $e ) {
-			$this->processor->logger()?->error(
+			$this->processor->get_logger()?->error(
 				'Error parsing XML response: ' . $e->getMessage(),
 				[
 					'exception' => $e,

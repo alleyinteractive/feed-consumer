@@ -75,7 +75,7 @@ interface Processor {
 	/**
 	 * Set the transformer for the processor.
 	 *
-	 * @param Transformer $transformer|null The transformers to set.
+	 * @param Transformer|null $transformer The transformers to set.
 	 * @return static
 	 */
 	public function set_transformer( ?Transformer $transformer = null ): static;
@@ -90,7 +90,7 @@ interface Processor {
 	/**
 	 * Set the loaders for the processor.
 	 *
-	 * @param Loader $loader|null The loader to set.
+	 * @param Loader|null $loader The loader to set.
 	 * @return static
 	 */
 	public function set_loader( ?Loader $loader = null ): static;
@@ -106,12 +106,13 @@ interface Processor {
 	public function get_middleware(): array;
 
 	/**
-	 * Retrieve or add loader middleware.
+	 * Set the loader middleware.
 	 *
 	 * Middleware can be used to modify the content before and/or after it is
-	 * loaded to the site.
+	 * loaded to the site. This method will replace all existing middleware. Use
+	 * `push_middleware()` to add middleware to the stack.
 	 *
-	 * @param callable $middleware The middleware to add.
+	 * @param array $middleware The middleware to set.
 	 * @return static
 	 */
 	public function set_middleware( ?array $middleware = null ): static;

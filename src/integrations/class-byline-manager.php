@@ -91,7 +91,7 @@ class Byline_Manager implements With_Setting_Fields {
 	 * @param Processor  $processor  Processor instance.
 	 */
 	public function register_middleware( array $middleware, Processor $processor ) {
-		$settings = $processor->settings()['byline_manager'] ?? [];
+		$settings = $processor->get_settings()['byline_manager'] ?? [];
 
 		// Bail if the processor doesn't have any configured settings.
 		if ( empty( array_filter( $settings ) ) ) {

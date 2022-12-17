@@ -97,20 +97,6 @@ abstract class Processor implements Contract, With_Setting_Fields {
 		];
 	}
 
-	// /**
-	//  * Retrieve the stored settings for the processor.
-	//  *
-	//  * @param array|null $settings The settings to set, optional.
-	//  * @return array
-	//  */
-	// public function settings( ?array $settings = null ): array {
-	// 	if ( $settings ) {
-	// 		$this->settings = $settings;
-	// 	}
-
-	// 	return $this->settings;
-	// }
-
 	/**
 	 * Retrieve the stored settings for the processor.
 	 *

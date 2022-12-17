@@ -12,10 +12,17 @@ namespace Feed_Consumer\Contracts;
  */
 interface With_Transformer {
 	/**
-	 * Retrieve/set the transformer instance.
+	 * Retrieve the transformer instance.
 	 *
-	 * @param Transformer $transformer Transformer instance to set, optional.
 	 * @return Transformer
 	 */
-	public function transformer( ?Transformer $transformer = null ): Transformer;
+	public function get_transformer(): ?Transformer;
+
+	/**
+	 * Set the transformer instance.
+	 *
+	 * @param Transformer $transformer Transformer instance to set, optional.
+	 * @return static
+	 */
+	public function set_transformer( ?Transformer $transformer = null ): static;
 }

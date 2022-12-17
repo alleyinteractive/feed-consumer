@@ -206,23 +206,20 @@ class Settings {
 							$settings_groups = apply_filters(
 								'feed_consumer_processor_settings',
 								[
-									'extractor'   => $processor->extractor(),
-									'transformer' => $processor->transformer(),
-									'loader'      => $processor->loader(),
+									'extractor'   => $processor->get_extractor(),
+									'transformer' => $processor->get_transformer(),
+									'loader'      => $processor->get_loader(),
 								],
 								$processor,
 							);
 
 							$children = collect( $settings_groups )
+									->filter( fn ( $item ) => ! empty( $item ) && $item instanceof With_Setting_Fields )
 									->map_with_keys(
 										function ( object $object, string $type ) use ( $processor ): array {
-											if ( ! ( $object instanceof With_Setting_Fields ) ) {
-												return [];
-											}
-
 											// Pass along the processor to the object.
-											if ( method_exists( $object, 'processor' ) ) {
-												$object->processor( $processor );
+											if ( method_exists( $object, 'set_processor' ) ) {
+												$object->set_processor( $processor );
 											}
 
 											$fields = $object->setting_fields();
@@ -376,19 +373,16 @@ class Settings {
 			try {
 				$processor = Runner::processor( $feed->ID );
 
-				$extractor = tap(
-					$processor->extractor(),
-					fn ( Extractor $e ) => $e->processor( $processor ),
-				);
+				$extractor = $processor
+					->get_extractor()
+					->set_processor( $processor );
 
 				$extractor->run();
 
-				$transformer = tap(
-					$processor->transformer(),
-					fn ( Transformer $t ) => $t->processor( $processor ),
-				);
-
-				$transformer->extractor( $extractor );
+				$transformer = $processor
+					->get_transformer()
+					->set_processor( $processor )
+					->set_extractor( $extractor );
 
 				$data = $transformer->data();
 			} catch ( Throwable $e ) {
@@ -411,7 +405,7 @@ class Settings {
 			printf(
 				'<p>%s</p><pre style="overflow: scroll; max-height: 500px;">%s</pre>',
 				esc_html__( 'Feed Transformer Output', 'feed-consumer' ),
-				esc_html( var_export( $data, true ) )
+				esc_html( var_export( $data, true ) ) // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_var_export
 			);
 		} else {
 			printf( '<strong>%s</strong>', esc_html__( 'No data to display.', 'feed-consumer' ) );

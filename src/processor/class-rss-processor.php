@@ -22,9 +22,10 @@ class RSS_Processor extends Processor {
 	 * Constructor.
 	 */
 	public function __construct() {
-		$this->extractor( new Feed_Extractor() );
-		$this->transformer( new RSS_Transformer() );
-		$this->loader( new Post_Loader() );
+		$this
+			->set_extractor( new Feed_Extractor() )
+			->set_transformer( new RSS_Transformer() )
+			->set_loader( new Post_Loader() );
 	}
 
 	/**

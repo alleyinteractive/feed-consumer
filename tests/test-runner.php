@@ -51,7 +51,7 @@ class Runner_Test extends Test_Case {
 					'post_status' => 'publish',
 				],
 			],
-			$instance->settings(),
+			$instance->get_settings(),
 		);
 	}
 

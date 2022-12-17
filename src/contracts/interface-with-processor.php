@@ -12,10 +12,17 @@ namespace Feed_Consumer\Contracts;
  */
 interface With_Processor {
 	/**
-	 * Retrieve/set the processor instance.
+	 * Retrieve the processor instance.
 	 *
-	 * @param Processor $processor Processor instance to set, optional.
-	 * @return Processor
+	 * @return Processor|null
 	 */
-	public function processor( ?Processor $processor = null ): Processor;
+	public function get_processor(): ?Processor;
+
+	/**
+	 * Set the processor instance.
+	 *
+	 * @param Processor $processor Processor instance to set.
+	 * @return static
+	 */
+	public function set_processor( ?Processor $processor = null ): static;
 }

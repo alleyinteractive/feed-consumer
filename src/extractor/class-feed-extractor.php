@@ -74,7 +74,7 @@ class Feed_Extractor extends Extractor implements With_Setting_Fields {
 			throw new RuntimeException( 'Processor not set.' );
 		}
 
-		$settings = $this->processor->settings()['extractor'] ?? [];
+		$settings = $this->processor->get_settings()['extractor'] ?? [];
 
 		// Set the username and password if provided.
 		if ( ! empty( $settings[ static::SETTING_USERNAME ] ) && ! empty( $settings[ static::SETTING_PASSWORD ] ) ) {

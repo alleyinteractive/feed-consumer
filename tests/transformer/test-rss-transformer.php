@@ -21,8 +21,8 @@ class RSS_Transformer_Test extends Test_Case {
 
 		$transformer = new RSS_Transformer( $processor, $extractor );
 
-		$transformer->processor( $processor );
-		$transformer->extractor( $extractor );
+		$transformer->set_processor( $processor );
+		$transformer->set_extractor( $extractor );
 
 		$data = $transformer->data();
 
@@ -52,8 +52,8 @@ class RSS_Transformer_Test extends Test_Case {
 
 		$transformer = new RSS_Transformer( $processor, $extractor );
 
-		$transformer->processor( $processor );
-		$transformer->extractor( $extractor );
+		$transformer->set_processor( $processor );
+		$transformer->set_extractor( $extractor );
 
 		$data = $transformer->data();
 
