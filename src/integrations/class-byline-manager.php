@@ -112,8 +112,7 @@ class Byline_Manager implements With_Setting_Fields {
 					],
 				];
 			} elseif ( ! empty( $settings[ static::SETTING_USE_FEED_AUTHOR ] ) && ! empty( $item['byline'] ) ) {
-				// Use the item's byline if configured.
-
+				// Use the item's byline if configured to, splitting the byline up.
 				$parts = str_replace(
 					[
 						', and ',
