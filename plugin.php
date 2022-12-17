@@ -47,5 +47,10 @@ function main() {
 	Processors::instance();
 	Settings::instance();
 	Scheduler::instance();
+	Runner::register_cron_hook();
+
+	if ( defined( 'WP_CLI' ) && WP_CLI ) {
+		\WP_CLI::add_command( 'feed-consumer', CLI::class );
+	}
 }
 main();

@@ -15,6 +15,8 @@ use Feed_Consumer\Contracts\With_Settings;
 use Fieldmanager_Group;
 use Fieldmanager_Select;
 use Mantle\Support\Traits\Singleton;
+use Throwable;
+use WP_Post;
 
 use function Mantle\Support\Helpers\collect;
 
@@ -52,9 +54,27 @@ class Settings {
 	 * Constructor.
 	 */
 	protected function __construct() {
+		add_action( 'init', [ $this, 'on_init' ] );
 		add_action( 'init', [ $this, 'register_post_type' ] );
 		add_action( 'fm_post_' . static::POST_TYPE, [ $this, 'register_fields' ] );
 		add_action( 'add_meta_boxes_' . static::POST_TYPE, [ $this, 'add_meta_boxes' ] );
+	}
+
+	/**
+	 * Called on 'init'.
+	 */
+	public function on_init() {
+		if ( ! class_exists( Fieldmanager_Group::class ) ) {
+			add_action( 'admin_notices', [ $this, 'missing_fieldmanager_notice' ] );
+		}
+
+		// Nudge the user to install AI Logger if it's not installed.
+		if ( ! class_exists( \AI_Logger\AI_Logger::class ) ) {
+			add_action( 'admin_notices', [ $this, 'missing_ai_logger_notice' ] );
+		} elseif ( function_exists( 'ai_logger_post_meta_box' ) ) {
+			// Register the meta box for the post type.
+			ai_logger_post_meta_box( Runner::LOG_META_KEY, __( 'Feed Consumer Logs', 'feed-consumer' ) );
+		}
 	}
 
 	/**
@@ -95,9 +115,59 @@ class Settings {
 	}
 
 	/**
+	 * Display a notice that Fieldmanager is required.
+	 *
+	 * @return void
+	 */
+	public function missing_fieldmanager_notice() {
+		?>
+		<div class="notice notice-error">
+			<p>
+				<?php
+				printf(
+					/* translators: 1: open anchor tag, 2: close anchor tag */
+					esc_html__( 'Feed Consumer requires %1$sFieldmanager%2$s to be installed and activated to run properly.', 'feed-consumer' ),
+					'<a href="https://github.com/alleyinteractive/wordpress-fieldmanager">',
+					'</a>',
+				);
+				?>
+			</p>
+		</div>
+		<?php
+	}
+
+	/**
+	 * Display a notice to nudge the user to install AI Logger.
+	 */
+	public function missing_ai_logger_notice() {
+		// Only display on the feed post type.
+		if ( static::POST_TYPE !== get_current_screen()?->post_type ) {
+			return;
+		}
+		?>
+		<div data-dismissible="feed-consumer-ai-logger" class="notice notice-info">
+			<p>
+				<?php
+				printf(
+					/* translators: 1: open anchor tag, 2: close anchor tag */
+					esc_html__( 'Feed Consumer recommends installing %1$sAlley Logger%2$s to log feed processing.', 'feed-consumer' ),
+					'<a href="https://github.com/alleyinteractive/logger">',
+					'</a>',
+				);
+				?>
+			</p>
+		</div>
+		<?php
+	}
+
+	/**
 	 * Register the settings fields for the post type that include processor settings.
 	 */
 	public function register_fields() {
+		// Register any side effects for modifying the Fieldmanager datasources.
+		add_filter( 'fm_datasource_term_get_items', [ $this, 'datasource_term_get_items' ], 10, 2 );
+		add_filter( 'fm_datasource_term_get_value', [ $this, 'datasource_term_get_value' ], 10, 2 );
+
 		// Instantiate the processors.
 		$processors = collect( Processors::instance()->processors() )
 			->map( fn ( $name ) => new $name() );
@@ -196,6 +266,106 @@ class Settings {
 	 * Register meta boxes for information about the current log.
 	 */
 	public function add_meta_boxes() {
-		// tktk.
+		add_meta_box(
+			'feed-consumer-status',
+			__( 'Feed Status', 'feed-consumer' ),
+			[ $this, 'render_status_meta_box' ],
+			static::POST_TYPE,
+			'side',
+			'low',
+		);
+	}
+
+	/**
+	 * Feed status meta box.
+	 *
+	 * @param WP_Post $feed Feed post object.
+	 */
+	public function render_status_meta_box( WP_Post $feed ) {
+		if ( 'publish' !== $feed->post_status ) {
+			printf( '<strong>%s</strong>', esc_html__( 'Feed is not published.', 'feed-consumer' ) );
+			return;
+		}
+
+		// Fetch the next run time and display it.
+		try {
+			$next_run = Runner::schedule_next_run( $feed->ID );
+		} catch ( Throwable $e ) {
+			printf(
+				'<strong>%s</strong> %s',
+				esc_html__( 'Feed is not scheduled due to error:', 'feed-consumer' ),
+				esc_html( $e->getMessage() )
+			);
+
+			return;
+		}
+
+		if ( $next_run ) {
+			if ( $next_run > current_time( 'timestamp' ) ) { // phpcs:ignore WordPress.DateTime.CurrentTimeTimestamp.Requested
+				printf(
+					'<strong>%s</strong> <time datetime="%s">%s</time>',
+					esc_html__( 'Next run:', 'feed-consumer' ),
+					esc_attr( date_i18n( 'c', $next_run ) ),
+					esc_html(
+						sprintf(
+							/* translators: %s: Human readable time difference. */
+							__( '%s from now', 'feed-consumer' ),
+							human_time_diff( $next_run, current_time( 'timestamp' ) ), // phpcs:ignore WordPress.DateTime.CurrentTimeTimestamp.Requested
+						),
+					),
+				);
+			} else {
+				printf(
+					'<strong>%s</strong> %s',
+					esc_html__( 'Next Run:', 'feed-consumer' ),
+					esc_html__( 'Now', 'feed-consumer' )
+				);
+			}
+		} else {
+			printf( '<strong>%s</strong>', esc_html__( 'Feed is not scheduled to run.', 'feed-consumer' ) );
+		}
+
+		$last_run = get_post_meta( $feed->ID, Runner::LAST_RUN_META_KEY, true );
+
+		if ( $last_run ) {
+			printf(
+				'<p><strong>%s</strong> <time datetime="%s">%s</time></p>',
+				esc_html__( 'Last run:', 'feed-consumer' ),
+				esc_attr( date_i18n( 'c', $last_run ) ),
+				esc_html( date_i18n( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), $last_run ) ),
+			);
+		}
+	}
+
+	/**
+	 * Include the taxonomy name in a terms datasource response.
+	 *
+	 * @param array $stack Term stack to modify.
+	 * @param array $terms Array of terms in the response.
+	 */
+	public function datasource_term_get_items( $stack, $terms ) {
+		$stack = [];
+		foreach ( $terms as $term ) {
+			$key           = $term->term_taxonomy_id;
+			$taxonomy      = get_taxonomy( $term->taxonomy );
+			$stack[ $key ] = sprintf( '%1$s (%2$s: %3$s)', html_entity_decode( $term->name ), __( 'taxonomy', 'nr' ), $taxonomy->label );
+		}
+		return $stack;
+	}
+
+	/**
+	 * Modify the term datasource label for terms that display on Fieldmanager fields.
+	 *
+	 * @param string $value The value to display.
+	 * @param mixed  $term  The stored term.
+	 * @return string
+	 */
+	public function datasource_term_get_value( $value, $term ) {
+		if ( $term instanceof \WP_Term ) {
+			$taxonomy = get_taxonomy( $term->taxonomy );
+			$value    = sprintf( '%1$s (%2$s: %3$s)', html_entity_decode( $term->name ), __( 'taxonomy', 'nr' ), $taxonomy->label );
+		}
+
+		return $value;
 	}
 }

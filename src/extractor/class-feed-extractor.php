@@ -74,14 +74,32 @@ class Feed_Extractor extends Extractor implements With_Settings {
 			throw new RuntimeException( 'Processor not set.' );
 		}
 
-		$settings = $this->processor->settings();
+		$settings = $this->processor->settings()['extractor'] ?? [];
 
 		// Set the username and password if provided.
 		if ( ! empty( $settings[ static::SETTING_USERNAME ] ) && ! empty( $settings[ static::SETTING_PASSWORD ] ) ) {
 			$request->with_basic_auth( $settings[ static::SETTING_USERNAME ], $settings[ static::SETTING_PASSWORD ] );
 		}
 
+		/**
+		 * Fires before the feed is fetched.
+		 *
+		 * @param \Mantle\Http_Client\Pending_Request $request   Request object.
+		 * @param Processor                           $processor Processor instance.
+		 * @param array                               $settings  Settings for the processor.
+		 */
+		do_action( 'feed_consumer_pre_feed_fetch', $request, $this->processor, $settings );
+
 		$this->response = $request->get( $settings[ static::SETTING_FEED_URL ] );
+
+		/**
+		 * Fires after the feed is fetched.
+		 *
+		 * @param \Mantle\Http_Client\Response $response  Response object.
+		 * @param Processor                    $processor Processor instance.
+		 * @param array                        $settings  Settings for the processor.
+		 */
+		do_action( 'feed_consumer_feed_fetch', $this->response, $this->processor, $settings );
 
 		if ( ! $this->response->ok() ) {
 			$this->handle_error( $this->response );

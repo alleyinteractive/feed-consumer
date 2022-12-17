@@ -22,7 +22,9 @@ class Feed_Extractor_Test extends Test_Case {
 
 		$processor = $this->make_processor(
 			[
-				'feed_url' => 'https://alley.com/feed/',
+				'extractor' => [
+					'feed_url' => 'https://alley.com/feed/',
+				],
 			]
 		);
 
@@ -51,7 +53,9 @@ class Feed_Extractor_Test extends Test_Case {
 
 		$processor = $this->make_processor(
 			[
-				'feed_url' => 'https://alley.com/feed/',
+				'extractor' => [
+					'feed_url' => 'https://alley.com/feed/',
+				],
 			]
 		);
 
@@ -79,9 +83,11 @@ class Feed_Extractor_Test extends Test_Case {
 
 		$processor = $this->make_processor(
 			[
-				'feed_url'      => 'https://alley.com/feed/',
-				'feed_username' => 'username',
-				'feed_password' => 'password',
+				'extractor' => [
+					'feed_url'      => 'https://alley.com/feed/',
+					'feed_username' => 'username',
+					'feed_password' => 'password',
+				],
 			]
 		);
 

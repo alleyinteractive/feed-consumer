@@ -86,11 +86,20 @@ class Runner {
 	 * @param int $feed_id Feed ID.
 	 * @return void
 	 */
-	public static function run_scheduled( int $feed_id ): void {
+	public static function run_scheduled( $feed_id ): void {
+		$feed_id = (int) $feed_id;
+
 		( new static(
 			$feed_id,
 			function_exists( 'ai_logger_to_post' ) ? ai_logger_to_post( $feed_id, static::LOG_META_KEY, Logger::INFO ) : null,
 		) )->run();
+	}
+
+	/**
+	 * Register the cron hook for the runner.
+	 */
+	public static function register_cron_hook() {
+		add_action( static::CRON_HOOK, [ __CLASS__, 'run_scheduled' ] );
 	}
 
 	/**
@@ -111,14 +120,18 @@ class Runner {
 			return null;
 		}
 
-		// Fetch the frequency of the processor to calculate the next timestamp.
-		$timestamp = time() + static::processor( $feed_id )->frequency();
+		try {
+			// Fetch the frequency of the processor to calculate the next timestamp.
+			$timestamp = time() + static::processor( $feed_id )->frequency();
 
-		if ( ! wp_schedule_single_event( $timestamp, static::CRON_HOOK, [ $feed_id ] ) ) {
+			if ( ! wp_schedule_single_event( $timestamp, static::CRON_HOOK, [ $feed_id ] ) ) {
+				return null;
+			}
+
+			return $timestamp;
+		} catch ( Throwable ) {
 			return null;
 		}
-
-		return $timestamp;
 	}
 
 	/**
