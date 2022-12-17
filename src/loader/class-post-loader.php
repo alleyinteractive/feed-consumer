@@ -20,7 +20,6 @@ use function Mantle\Support\Helpers\collect;
  *
  * Loader that takes transformer data and loads it into the system as a post.
  *
- * @todo Add support for pipeline.
  * @todo Add support for terms from settings.
  * @todo Add support for featured image.
  * @todo Add support for bylines.
@@ -44,20 +43,20 @@ class Post_Loader extends Loader implements With_Settings {
 			return [];
 		}
 
-		$settings = $this->processor->settings();
+		$loader_settings = $this->processor->settings()['loader'] ?? [];
 
 		if ( $this instanceof With_Presets ) {
-			$settings = array_merge( $this->presets(), $settings );
+			$loader_settings = array_merge( $this->presets(), $loader_settings );
 		}
 
 		return collect( $data )
 			->map(
-				function ( array $postarr ) use ( $settings ) {
+				function ( array $postarr ) use ( $loader_settings ) {
 					// Ensure some defaults are set in the post array.
 					$postarr = array_merge(
 						[
-							'post_status' => $settings[ Post_Loader::class ]['post_status'] ?? 'draft',
-							'post_type'   => $settings[ Post_Loader::class ]['post_type'] ?? 'post',
+							'post_status' => $loader_settings['post_status'] ?? 'draft',
+							'post_type'   => $loader_settings['post_type'] ?? 'post',
 						],
 						$postarr,
 					);
@@ -70,7 +69,6 @@ class Post_Loader extends Loader implements With_Settings {
 					$existing = get_posts( // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.get_posts_get_posts
 						[
 							'fields'           => 'ids',
-							// todo: convert to class constant.
 							'meta_key'         => static::META_KEY_REMOTE_ID, // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
 							'meta_value'       => $postarr['remote_id'] ?? $postarr['guid'], // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
 							'post_status'      => 'any',
@@ -102,7 +100,7 @@ class Post_Loader extends Loader implements With_Settings {
 						->send( $postarr )
 						->through( $this->processor()->middleware() )
 						->then(
-							function ( array $postarr ) use ( $settings ) {
+							function ( array $postarr ) use ( $loader_settings ) {
 								// Attempt to insert or update the post.
 								if ( ! empty( $postarr['ID'] ) ) {
 									$post_id = wp_update_post( $postarr, true );
@@ -115,8 +113,8 @@ class Post_Loader extends Loader implements With_Settings {
 								}
 
 								// Process any terms that need to be set on the post.
-								if ( ! empty( $settings[ Post_Loader::class ]['terms'] ) ) {
-									$this->assign_terms( $settings[ Post_Loader::class ]['terms'], $post_id );
+								if ( ! empty( $loader_settings['terms'] ) ) {
+									$this->assign_terms( $loader_settings['terms'], $post_id );
 								}
 
 								return get_post( $post_id );
@@ -139,8 +137,10 @@ class Post_Loader extends Loader implements With_Settings {
 			'post_type'   => new Fieldmanager_Select(
 				[
 					'label'   => __( 'Post Type', 'feed-consumer' ),
-					'options' => get_post_types( [], 'names' ),
-				]
+					'options' => collect( get_post_types( [ 'public' => true ], 'objects' ) )
+						->pluck( 'label' )
+						->all(),
+				],
 			),
 			'post_status' => new Fieldmanager_Select(
 				[

@@ -1,6 +1,7 @@
 <?php
 namespace Feed_Consumer\Tests\Extractor;
 
+use Feed_Consumer\Extractor\Extractor_Exception;
 use Feed_Consumer\Extractor\Feed_Extractor;
 use Feed_Consumer\Tests\Test_Case;
 use Mantle\Testing\Mock_Http_Response;
@@ -38,6 +39,11 @@ class Feed_Extractor_Test extends Test_Case {
 	}
 
 	public function test_extract_feed_error() {
+		$this->expectApplied( 'feed_consumer_extractor_error' )->once();
+
+		$this->expectException( Extractor_Exception::class );
+		$this->expectExceptionMessage( 'Failed to extract feed: https://alley.com/feed/' );
+
 		$this->fake_request(
 			'https://alley.com/feed/',
 			Mock_Http_Response::create()->with_status( 404 )
@@ -49,14 +55,10 @@ class Feed_Extractor_Test extends Test_Case {
 			]
 		);
 
-		$extractor = tap(
+		tap(
 			new Feed_Extractor(),
 			fn ( Feed_Extractor $extractor ) => $extractor->processor( $processor ),
 		)->run();
-		$data      = $extractor->data();
-
-		$this->assertEmpty( $data->body() );
-		$this->assertEmpty( $extractor->cursor() );
 	}
 
 	public function test_extract_basic_auth() {

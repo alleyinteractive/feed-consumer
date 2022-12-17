@@ -9,6 +9,7 @@ namespace Feed_Consumer\Extractor;
 
 use Feed_Consumer\Contracts\Extractor as Contract;
 use Feed_Consumer\Contracts\Processor;
+use Mantle\Http_Client\Response;
 
 /**
  * Base Extractor
@@ -33,5 +34,20 @@ abstract class Extractor implements Contract {
 		}
 
 		return $this->processor;
+	}
+
+	/**
+	 * Handle an error in the feed response.
+	 *
+	 * @param Response $response Response object.
+	 */
+	protected function handle_error( Response $response ): void {
+		/**
+		 * Fires when an error is encountered in the feed response.
+		 *
+		 * @param Response $response  Response object.
+		 * @param static   $extractor Extractor instance.
+		 */
+		do_action( 'feed_consumer_extractor_error', $response, $this );
 	}
 }

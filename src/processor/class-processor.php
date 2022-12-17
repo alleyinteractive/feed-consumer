@@ -158,9 +158,9 @@ abstract class Processor implements Contract {
 	/**
 	 * Getter for the interval to run the processor.
 	 *
-	 * @return int|\DateInterval|null
+	 * @return int
 	 */
-	public function frequency(): int|\DateInterval|null {
+	public function frequency(): int {
 		return HOUR_IN_SECONDS;
 	}
 }
