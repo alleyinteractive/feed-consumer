@@ -97,90 +97,126 @@ abstract class Processor implements Contract, With_Setting_Fields {
 		];
 	}
 
+	// /**
+	//  * Retrieve the stored settings for the processor.
+	//  *
+	//  * @param array|null $settings The settings to set, optional.
+	//  * @return array
+	//  */
+	// public function settings( ?array $settings = null ): array {
+	// 	if ( $settings ) {
+	// 		$this->settings = $settings;
+	// 	}
+
+	// 	return $this->settings;
+	// }
+
 	/**
 	 * Retrieve the stored settings for the processor.
 	 *
-	 * @param array|null $settings The settings to set, optional.
 	 * @return array
 	 */
-	public function settings( ?array $settings = null ): array {
-		if ( $settings ) {
-			$this->settings = $settings;
-		}
-
+	public function get_settings(): array {
 		return $this->settings;
 	}
 
 	/**
-	 * Retrieve or set the logger for the processor.
+	 * Set the settings for the processor.
 	 *
-	 * @param LoggerInterface $logger The logger to set, optional.
-	 * @return LoggerInterface
+	 * @param array|null $settings The settings to set.
 	 */
-	public function logger( ?LoggerInterface $logger = null ): ?LoggerInterface {
-		if ( $logger ) {
-			$this->logger = $logger;
-		}
+	public function set_settings( ?array $settings = null ): static {
+		$this->settings = $settings;
 
-		return $this->logger;
+		return $this;
 	}
 
 	/**
-	 * Retrieve or set the extractors for the processor.
+	 * Retrieve the extractor instance.
 	 *
-	 * @param Extractor $extractor The extractor to set, optional.
 	 * @return Extractor|null
 	 */
-	public function extractor( ?Extractor $extractor = null ): ?Extractor {
-		if ( $extractor ) {
-			$this->extractor = $extractor;
-		}
-
+	public function get_extractor(): ?Extractor {
 		return $this->extractor;
 	}
 
+	/**
+	 * Set the extractor instance.
+	 *
+	 * @param Extractor|null $extractor The extractor instance.
+	 */
+	public function set_extractor( ?Extractor $extractor = null ): static {
+		$this->extractor = $extractor;
+
+		return $this;
+	}
 
 	/**
-	 * Retrieve or set the transformer for the processor.
+	 * Retrieve the transformer instance.
 	 *
-	 * @param Transformer $transformer The transformer to set, optional.
 	 * @return Transformer|null
 	 */
-	public function transformer( ?Transformer $transformer = null ): ?Transformer {
-		if ( $transformer ) {
-			$this->transformer = $transformer;
-		}
-
+	public function get_transformer(): ?Transformer {
 		return $this->transformer;
 	}
 
 	/**
-	 * Retrieve or set the loaders for the processor.
+	 * Set the transformer instance.
 	 *
-	 * @param Loader $loader The loader to set, optional.
+	 * @param Transformer|null $transformer The transformer instance.
+	 */
+	public function set_transformer( ?Transformer $transformer = null ): static {
+		$this->transformer = $transformer;
+
+		return $this;
+	}
+
+	/**
+	 * Retrieve the loader instance.
+	 *
 	 * @return Loader|null
 	 */
-	public function loader( ?Loader $loader = null ): ?Loader {
-		if ( $loader ) {
-			$this->loader = $loader;
-		}
-
+	public function get_loader(): ?Loader {
 		return $this->loader;
 	}
 
 	/**
-	 * Retrieve or add loader middleware.
+	 * Set the loader instance.
 	 *
-	 * Middleware can be used to modify the content before and/or after it is
-	 * loaded to the site.
-	 *
-	 * @param callable $middleware The middleware to add.
+	 * @param Loader|null $loader The loader instance.
 	 */
-	public function middleware( ?callable $middleware = null ): array {
-		if ( $middleware ) {
-			$this->middleware[] = $middleware;
-		}
+	public function set_loader( ?Loader $loader = null ): static {
+		$this->loader = $loader;
 
+		return $this;
+	}
+
+	/**
+	 * Retrieve the logger instance.
+	 *
+	 * @return LoggerInterface|null
+	 */
+	public function get_logger(): ?LoggerInterface {
+		return $this->logger;
+	}
+
+	/**
+	 * Set the logger instance.
+	 *
+	 * @param LoggerInterface|null $logger The logger instance.
+	 */
+	public function set_logger( ?LoggerInterface $logger = null ): static {
+		$this->logger = $logger;
+
+		return $this;
+	}
+
+	/**
+	 * Retrieve the middleware stack.
+	 *
+	 * @return callable[]
+	 */
+	public function get_middleware(): array {
 		/**
 		 * Filters the middleware stack for the processor.
 		 *
@@ -188,6 +224,29 @@ abstract class Processor implements Contract, With_Setting_Fields {
 		 * @param Processor  $processor  The processor instance.
 		 */
 		return (array) apply_filters( 'feed_consumer_processor_middleware', $this->middleware, $this );
+	}
+
+	/**
+	 * Set the middleware stack.
+	 *
+	 * @param callable[] $middleware The middleware stack.
+	 */
+	public function set_middleware( ?array $middleware = null ): static {
+		$this->middleware = $middleware;
+
+		return $this;
+	}
+
+	/**
+	 * Push middleware onto the stack.
+	 *
+	 * @param callable $middleware The middleware to push.
+	 * @return static
+	 */
+	public function push_middleware( callable $middleware ): static {
+		$this->middleware[] = $middleware;
+
+		return $this;
 	}
 
 	/**
