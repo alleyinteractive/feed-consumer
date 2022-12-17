@@ -1,6 +1,6 @@
 <?php
 /**
- * Post_Type class file
+ * Settings class file
  *
  * @package feed-consumer
  */
@@ -274,6 +274,17 @@ class Settings {
 			'side',
 			'low',
 		);
+
+		if ( apply_filters( 'feed_consumer_debug_meta_box', true ) ) {
+			add_meta_box(
+				'feed-consumer-status',
+				__( 'Feed Debug Meta Box', 'feed-consumer' ),
+				[ $this, 'render_debug_meta_box' ],
+				static::POST_TYPE,
+				'normal',
+				'low',
+			);
+		}
 	}
 
 	/**
@@ -334,6 +345,63 @@ class Settings {
 				esc_attr( date_i18n( 'c', $last_run ) ),
 				esc_html( date_i18n( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), $last_run ) ),
 			);
+		}
+	}
+
+	/**
+	 * Feed Debug Meta Box
+	 *
+	 * The debug meta box displays the transformed feed data for help with
+	 * debugging XML paths.
+	 *
+	 * @param WP_Post $feed Feed post object.
+	 */
+	public function render_debug_meta_box( WP_Post $feed ) {
+		$data = get_post_meta( $feed->ID, '_transformer_debug', true );
+
+		if ( '' === $data ) {
+			try {
+				$processor = Runner::processor( $feed->ID );
+
+				$extractor = tap(
+					$processor->extractor(),
+					fn ( Extractor $e ) => $e->processor( $processor ),
+				);
+
+				$extractor->run();
+
+				$transformer = tap(
+					$processor->transformer(),
+					fn ( Transformer $t ) => $t->processor( $processor ),
+				);
+
+				$transformer->extractor( $extractor );
+
+				$data = $transformer->data();
+			} catch ( Throwable $e ) {
+				printf(
+					'<strong>%s</strong> %s',
+					/* translators: exception message */
+					esc_html__( 'Feed error:', 'feed-consumer' ),
+					esc_html( $e::class . ' - ' . $e->getMessage() )
+				);
+
+				$data = false;
+
+				return;
+			}
+
+			update_post_meta( $feed->ID, '_transformer_debug', $data );
+		}
+
+		if ( ! empty( $data ) ) {
+			printf(
+				'<p>%s</p><pre style="overflow: scroll; max-height: 500px;">%s</pre>',
+				esc_html__( 'Feed Transformer Output', 'feed-consumer' ),
+				esc_html( var_export( $data, true ) )
+			);
+		} else {
+			printf( '<strong>%s</strong>', esc_html__( 'No data to display.', 'feed-consumer' ) );
 		}
 	}
 
