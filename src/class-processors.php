@@ -24,6 +24,7 @@ class Processors {
 	 */
 	protected array $processors = [
 		\Feed_Consumer\Processor\RSS_Processor::class,
+		\Feed_Consumer\Processor\XML_Processor::class,
 	];
 
 	/**

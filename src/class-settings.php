@@ -367,6 +367,11 @@ class Settings {
 	 * @param WP_Post $feed Feed post object.
 	 */
 	public function render_debug_meta_box( WP_Post $feed ) {
+		if ( 'publish' !== $feed->post_status ) {
+			printf( '<strong>%s</strong>', esc_html__( 'Feed is not published.', 'feed-consumer' ) );
+			return;
+		}
+
 		$data = get_post_meta( $feed->ID, '_transformer_debug', true );
 
 		if ( '' === $data ) {
@@ -460,5 +465,7 @@ class Settings {
 		}
 
 		Runner::schedule_next_run( $post_id );
+
+		delete_post_meta( $post_id, '_transformer_debug' );
 	}
 }
