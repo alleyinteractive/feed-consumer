@@ -1,19 +1,19 @@
 {
     "name": "alleyinteractive/feed-consumer",
     "description": "Ingest external feeds and other data sources into WordPress",
+    "license": "GPL-2.0-or-later",
     "type": "wordpress-plugin",
     "keywords": [
         "alleyinteractive",
         "feed-consumer"
     ],
-    "homepage": "https://github.com/alleyinteractive/feed-consumer",
-    "license": "GPL-2.0-or-later",
     "authors": [
         {
             "name": "Alley Interactive",
             "email": "info@alley.com"
         }
     ],
+    "homepage": "https://github.com/alleyinteractive/feed-consumer",
     "require": {
         "php": "^8.0",
         "alleyinteractive/composer-wordpress-autoloader": "^1.0",
@@ -25,6 +25,11 @@
         "mantle-framework/testkit": "^0.9",
         "nunomaduro/collision": "^5.0"
     },
+    "suggest": {
+        "alleyinteractive/logger": "Allows for logging of output of feeds when processing"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "config": {
         "allow-plugins": {
             "alleyinteractive/composer-wordpress-autoloader": true,
@@ -43,8 +48,6 @@
             }
         }
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "scripts": {
         "phpcbf": "phpcbf .",
         "phpcs": "phpcs .",
