@@ -22,83 +22,6 @@ use SimpleXMLElement;
  */
 class XML_Transformer extends Transformer implements With_Setting_Fields {
 	/**
-	 * XPath key to the items.
-	 *
-	 * @var string
-	 */
-	public const PATH_ITEMS = 'path_items';
-
-	/**
-	 * XPath key to the item guid.
-	 *
-	 * @var string
-	 */
-	public const PATH_GUID = 'path_guid';
-
-	/**
-	 * XPath key to the item title.
-	 *
-	 * @var string
-	 */
-	public const PATH_TITLE = 'path_title';
-
-	/**
-	 * XPath key to the item link.
-	 *
-	 * @var string
-	 */
-	public const PATH_PERMALINK = 'path_permalink';
-
-	/**
-	 * XPath key to the item content.
-	 *
-	 * @var string
-	 */
-	public const PATH_CONTENT = 'path_content';
-
-	/**
-	 * XPath key to the item byline.
-	 *
-	 * @var string
-	 */
-	public const PATH_BYLINE = 'path_byline';
-
-	/**
-	 * XPath key to the item image URL.
-	 *
-	 * @var string
-	 */
-	public const PATH_IMAGE = 'path_image';
-
-	/**
-	 * XPath key to the item image description.
-	 *
-	 * @var string
-	 */
-	public const PATH_IMAGE_DESCRIPTION = 'path_image_description';
-
-	/**
-	 * XPath key to the item image caption.
-	 *
-	 * @var string
-	 */
-	public const PATH_IMAGE_CAPTION = 'path_image_caption';
-
-	/**
-	 * XPath key to the item image credit.
-	 *
-	 * @var string
-	 */
-	public const PATH_IMAGE_CREDIT = 'path_image_credit';
-
-	/**
-	 * Flag if the block converter should be used.
-	 *
-	 * @var bool
-	 */
-	public bool $convert_content_to_blocks = true;
-
-	/**
 	 * Settings to register.
 	 *
 	 * XML XPaths can be set with settings or presets from a extended class. If
@@ -171,7 +94,7 @@ class XML_Transformer extends Transformer implements With_Setting_Fields {
 		return array_map(
 			fn ( SimpleXMLElement $item ) => [
 				Post_Loader::BYLINE            => $this->extract_by_xpath( $item, $settings[ static::PATH_BYLINE ] ?? 'author' ),
-				Post_Loader::CONTENT           => $this->convert_content_to_blocks
+				Post_Loader::CONTENT           => empty( $settings[ static::DONT_CONVERT_TO_BLOCKS ] )
 					? (string) new Block_Converter( $this->extract_by_xpath( $item, $settings[ static::PATH_CONTENT ] ?? 'description' ) )
 					: $this->extract_by_xpath( $item, $settings[ static::PATH_CONTENT ] ?? 'description' ),
 				Post_Loader::GUID              => $this->extract_by_xpath( $item, $settings[ static::PATH_GUID ] ?? 'guid' ),
@@ -191,7 +114,7 @@ class XML_Transformer extends Transformer implements With_Setting_Fields {
 	 *
 	 * @param SimpleXMLElement $item XML element.
 	 * @param string|array     $xpath XPath or array of XPaths.
-	 * @return string|nulls
+	 * @return string|null
 	 */
 	protected function extract_by_xpath( SimpleXMLElement $item, string|array $xpath ): ?string {
 		if ( empty( $xpath ) ) {
