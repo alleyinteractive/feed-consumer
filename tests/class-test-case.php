@@ -30,7 +30,7 @@ abstract class Test_Case extends Testkit {
 			}
 		};
 
-		$instance->settings( $settings );
+		$instance->set_settings( $settings );
 
 		return $instance;
 	}
@@ -56,7 +56,8 @@ abstract class Test_Case extends Testkit {
 			 * @param Processor $processor Data processor instance.
 			 */
 			public function __construct( Processor $processor, mixed $response ) {
-				$this->processor = $processor;
+				$this->set_processor( $processor );
+
 				$this->response  = $response;
 			}
 
@@ -100,7 +101,10 @@ abstract class Test_Case extends Testkit {
 			$processor,
 			$extractor ?: $this->make_extractor( Mock_Http_Response::create(), $processor )
 		) extends \Feed_Consumer\Transformer\Transformer {
-			public function __construct( public mixed $data, protected Processor_Contract $processor, protected Extractor $extractor ) {}
+			public function __construct( public mixed $data, Processor_Contract $processor, Extractor $extractor ) {
+				$this->set_processor( $processor );
+				$this->set_extractor( $extractor );
+			}
 
 			public function data(): array {
 				return $this->data;
@@ -113,9 +117,9 @@ abstract class Test_Case extends Testkit {
 
 		$loader = new Post_Loader();
 
-		$loader->processor( $processor );
+		$loader->set_processor( $processor );
 
-		$loader->transformer(
+		$loader->set_transformer(
 			$this->make_transformer( $data, $processor ),
 		);
 

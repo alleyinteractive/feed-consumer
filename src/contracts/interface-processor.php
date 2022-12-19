@@ -23,53 +23,107 @@ interface Processor {
 	/**
 	 * Retrieve the stored settings for the processor.
 	 *
-	 * @param array|null $settings The settings to set, optional.
 	 * @return array
 	 */
-	public function settings( ?array $settings = null ): array;
+	public function get_settings(): array;
 
 	/**
-	 * Retrieve or set the logger for the processor.
+	 * Set the settings for the processor.
 	 *
-	 * @param LoggerInterface $logger The logger to set, optional.
-	 * @return LoggerInterface
+	 * @param array|null $settings The settings to set, optional.
+	 * @return static
 	 */
-	public function logger( ?LoggerInterface $logger = null ): ?LoggerInterface;
+	public function set_settings( ?array $settings = null ): static;
 
 	/**
-	 * Retrieve or set the extractors for the processor.
+	 * Retrieve the logger for the processor.
 	 *
-	 * @param Extractor $extractor The extractor to set, optional.
+	 * @return LoggerInterface|null
+	 */
+	public function get_logger(): ?LoggerInterface;
+
+	/**
+	 * Set the logger for the processor.
+	 *
+	 * @param LoggerInterface|null $logger The logger to set.
+	 * @return static
+	 */
+	public function set_logger( ?LoggerInterface $logger = null ): static;
+
+	/**
+	 * Retrieve the extractors for the processor.
+	 *
 	 * @return Extractor|null
 	 */
-	public function extractor( ?Extractor $extractor = null ): ?Extractor;
+	public function get_extractor(): ?Extractor;
 
 	/**
-	 * Retrieve or set the transformer for the processor.
+	 * Set the extractors for the processor.
 	 *
-	 * @param Transformer $transformers The transformers to set, optional.
+	 * @param Extractor|null $extractor The extractor to set.
+	 * @return static
+	 */
+	public function set_extractor( ?Extractor $extractor = null ): static;
+
+	/**
+	 * Retrieve the transformer for the processor.
+	 *
 	 * @return Transformer|null
 	 */
-	public function transformer( ?Transformer $transformers = null ): ?Transformer;
+	public function get_transformer(): ?Transformer;
 
 	/**
-	 * Retrieve or set the loaders for the processor.
+	 * Set the transformer for the processor.
 	 *
-	 * @param Loader $loaders The loaders to set, optional.
+	 * @param Transformer|null $transformer The transformers to set.
+	 * @return static
+	 */
+	public function set_transformer( ?Transformer $transformer = null ): static;
+
+	/**
+	 * Retrieve the loaders for the processor.
+	 *
 	 * @return Loader|null
 	 */
-	public function loader( ?Loader $loaders = null ): ?Loader;
+	public function get_loader(): ?Loader;
 
 	/**
-	 * Retrieve or add loader middleware.
+	 * Set the loaders for the processor.
+	 *
+	 * @param Loader|null $loader The loader to set.
+	 * @return static
+	 */
+	public function set_loader( ?Loader $loader = null ): static;
+
+	/**
+	 * Retrieve loader middleware.
 	 *
 	 * Middleware can be used to modify the content before and/or after it is
 	 * loaded to the site.
 	 *
-	 * @param callable $middleware The middleware to add.
 	 * @return callable[]
 	 */
-	public function middleware( ?callable $middleware = null ): array;
+	public function get_middleware(): array;
+
+	/**
+	 * Set the loader middleware.
+	 *
+	 * Middleware can be used to modify the content before and/or after it is
+	 * loaded to the site. This method will replace all existing middleware. Use
+	 * `push_middleware()` to add middleware to the stack.
+	 *
+	 * @param array $middleware The middleware to set.
+	 * @return static
+	 */
+	public function set_middleware( ?array $middleware = null ): static;
+
+	/**
+	 * Push middleware onto the loader stack
+	 *
+	 * @param callable $middleware The middleware to add.
+	 * @return static
+	 */
+	public function push_middleware( callable $middleware ): static;
 
 	/**
 	 * Clear the middleware stack.

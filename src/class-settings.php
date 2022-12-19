@@ -1,6 +1,6 @@
 <?php
 /**
- * Post_Type class file
+ * Settings class file
  *
  * @package feed-consumer
  */
@@ -206,23 +206,20 @@ class Settings {
 							$settings_groups = apply_filters(
 								'feed_consumer_processor_settings',
 								[
-									'extractor'   => $processor->extractor(),
-									'transformer' => $processor->transformer(),
-									'loader'      => $processor->loader(),
+									'extractor'   => $processor->get_extractor(),
+									'transformer' => $processor->get_transformer(),
+									'loader'      => $processor->get_loader(),
 								],
 								$processor,
 							);
 
 							$children = collect( $settings_groups )
+									->filter( fn ( $item ) => ! empty( $item ) && $item instanceof With_Setting_Fields )
 									->map_with_keys(
 										function ( object $object, string $type ) use ( $processor ): array {
-											if ( ! ( $object instanceof With_Setting_Fields ) ) {
-												return [];
-											}
-
 											// Pass along the processor to the object.
-											if ( method_exists( $object, 'processor' ) ) {
-												$object->processor( $processor );
+											if ( method_exists( $object, 'set_processor' ) ) {
+												$object->set_processor( $processor );
 											}
 
 											$fields = $object->setting_fields();
@@ -287,6 +284,17 @@ class Settings {
 			'side',
 			'low',
 		);
+
+		if ( apply_filters( 'feed_consumer_debug_meta_box', true ) ) {
+			add_meta_box(
+				'feed-consumer-status',
+				__( 'Feed Debug Meta Box', 'feed-consumer' ),
+				[ $this, 'render_debug_meta_box' ],
+				static::POST_TYPE,
+				'normal',
+				'low',
+			);
+		}
 	}
 
 	/**
@@ -347,6 +355,60 @@ class Settings {
 				esc_attr( date_i18n( 'c', $last_run ) ),
 				esc_html( date_i18n( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), $last_run ) ),
 			);
+		}
+	}
+
+	/**
+	 * Feed Debug Meta Box
+	 *
+	 * The debug meta box displays the transformed feed data for help with
+	 * debugging XML paths.
+	 *
+	 * @param WP_Post $feed Feed post object.
+	 */
+	public function render_debug_meta_box( WP_Post $feed ) {
+		$data = get_post_meta( $feed->ID, '_transformer_debug', true );
+
+		if ( '' === $data ) {
+			try {
+				$processor = Runner::processor( $feed->ID );
+
+				$extractor = $processor
+					->get_extractor()
+					->set_processor( $processor );
+
+				$extractor->run();
+
+				$transformer = $processor
+					->get_transformer()
+					->set_processor( $processor )
+					->set_extractor( $extractor );
+
+				$data = $transformer->data();
+			} catch ( Throwable $e ) {
+				printf(
+					'<strong>%s</strong> %s',
+					/* translators: exception message */
+					esc_html__( 'Feed error:', 'feed-consumer' ),
+					esc_html( $e::class . ' - ' . $e->getMessage() )
+				);
+
+				$data = false;
+
+				return;
+			}
+
+			update_post_meta( $feed->ID, '_transformer_debug', $data );
+		}
+
+		if ( ! empty( $data ) ) {
+			printf(
+				'<p>%s</p><pre style="overflow: scroll; max-height: 500px;">%s</pre>',
+				esc_html__( 'Feed Transformer Output', 'feed-consumer' ),
+				esc_html( var_export( $data, true ) ) // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_var_export
+			);
+		} else {
+			printf( '<strong>%s</strong>', esc_html__( 'No data to display.', 'feed-consumer' ) );
 		}
 	}
 

@@ -56,7 +56,7 @@ class Post_Loader_Test extends Test_Case {
 
 		register_post_type( 'test-post-type' );
 
-		$loader->processor()->settings(
+		$loader->get_processor()->set_settings(
 			[
 				'loader' => [
 					'post_type'   => 'test-post-type',
@@ -173,7 +173,7 @@ class Post_Loader_Test extends Test_Case {
 		$category_id = static::factory()->category->create();
 		$tag_id      = static::factory()->tag->create();
 
-		$loader->processor()->settings(
+		$loader->get_processor()->set_settings(
 			[
 				'loader' => [
 					'terms' => [
@@ -208,7 +208,7 @@ class Post_Loader_Test extends Test_Case {
 
 		$_SERVER['__middleware_applied'] = false;
 
-		$loader->processor()->middleware(
+		$loader->get_processor()->push_middleware(
 			function ( $args, $next ) {
 				$_SERVER['__middleware_applied'] = $args;
 

@@ -12,10 +12,17 @@ namespace Feed_Consumer\Contracts;
  */
 interface With_Extractor {
 	/**
-	 * Retrieve/set the extractor instance.
+	 * Retrieve the extractor instance.
 	 *
-	 * @param Extractor $extractor Extractor instance to set, optional.
 	 * @return Extractor
 	 */
-	public function extractor( ?Extractor $extractor = null ): Extractor;
+	public function get_extractor(): ?Extractor;
+
+	/**
+	 * Set the extractor instance.
+	 *
+	 * @param Extractor $extractor Extractor instance to set.
+	 * @return static
+	 */
+	public function set_extractor( ?Extractor $extractor = null ): static;
 }

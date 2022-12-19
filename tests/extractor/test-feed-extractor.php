@@ -30,7 +30,7 @@ class Feed_Extractor_Test extends Test_Case {
 
 		$extractor = tap(
 			new Feed_Extractor(),
-			fn ( Feed_Extractor $extractor ) => $extractor->processor( $processor ),
+			fn ( Feed_Extractor $extractor ) => $extractor->set_processor( $processor ),
 		)->run();
 
 		$data = $extractor->data();
@@ -60,7 +60,7 @@ class Feed_Extractor_Test extends Test_Case {
 
 		tap(
 			new Feed_Extractor(),
-			fn ( Feed_Extractor $extractor ) => $extractor->processor( $processor ),
+			fn ( Feed_Extractor $extractor ) => $extractor->set_processor( $processor ),
 		)->run();
 	}
 
@@ -92,7 +92,7 @@ class Feed_Extractor_Test extends Test_Case {
 
 		$extractor = tap(
 			new Feed_Extractor(),
-			fn ( Feed_Extractor $extractor ) => $extractor->processor( $processor ),
+			fn ( Feed_Extractor $extractor ) => $extractor->set_processor( $processor ),
 		)->run();
 
 		$data = $extractor->data();

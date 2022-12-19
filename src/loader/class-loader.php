@@ -41,31 +41,43 @@ abstract class Loader implements Contract {
 	protected Transformer $transformer;
 
 	/**
-	 * Retrieve/set the processor instance.
+	 * Retrieve the processor instance.
 	 *
-	 * @param Processor|null $processor Processor instance to set, optional.
 	 * @return Processor
 	 */
-	public function processor( ?Processor $processor = null ): Processor {
-		if ( $processor ) {
-			$this->processor = $processor;
-		}
-
+	public function get_processor(): ?Processor {
 		return $this->processor;
 	}
 
 	/**
-	 * Retrieve/set the transformer instance.
+	 * Set the processor instance.
 	 *
-	 * @param Transformer|null $transformer Transformer instance to set, optional.
+	 * @param Processor $processor Processor instance to set.
+	 * @return static
+	 */
+	public function set_processor( ?Processor $processor = null ): static {
+		$this->processor = $processor;
+		return $this;
+	}
+
+	/**
+	 * Retrieve the transformer instance.
+	 *
 	 * @return Transformer
 	 */
-	public function transformer( ?Transformer $transformer = null ): Transformer {
-		if ( $transformer ) {
-			$this->transformer = $transformer;
-		}
-
+	public function get_transformer(): ?Transformer {
 		return $this->transformer;
+	}
+
+	/**
+	 * Set the transformer instance.
+	 *
+	 * @param Transformer $transformer Transformer instance to set.
+	 * @return static
+	 */
+	public function set_transformer( ?Transformer $transformer = null ): static {
+		$this->transformer = $transformer;
+		return $this;
 	}
 
 	/**

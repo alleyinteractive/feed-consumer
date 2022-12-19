@@ -7,6 +7,7 @@
 
 namespace Feed_Consumer\Transformer;
 
+use Alley\WP\Block_Converter\Block_Converter;
 use Feed_Consumer\Contracts\With_Presets;
 use Feed_Consumer\Contracts\With_Setting_Fields;
 use Feed_Consumer\Loader\Post_Loader;
@@ -91,6 +92,13 @@ class XML_Transformer extends Transformer implements With_Setting_Fields {
 	public const PATH_IMAGE_CREDIT = 'path_image_credit';
 
 	/**
+	 * Flag if the block converter should be used.
+	 *
+	 * @var bool
+	 */
+	public bool $convert_content_to_blocks = true;
+
+	/**
 	 * Settings to register.
 	 *
 	 * XML XPaths can be set with settings or presets from a extended class. If
@@ -122,7 +130,7 @@ class XML_Transformer extends Transformer implements With_Setting_Fields {
 	 * @return array
 	 */
 	public function data(): array {
-		$settings = $this->processor->settings();
+		$settings = $this->processor->get_settings();
 
 		if ( $this instanceof With_Presets ) {
 			$settings = array_merge( $this->presets(), $settings );
@@ -130,7 +138,7 @@ class XML_Transformer extends Transformer implements With_Setting_Fields {
 
 		// Extract the items from the response.
 		if ( empty( $settings[ static::PATH_ITEMS ] ) ) {
-			$this->processor->logger()?->error(
+			$this->processor->get_logger()?->error(
 				'Missing required setting: ' . static::PATH_ITEMS,
 				[
 					'processor' => $this->processor->name(),
@@ -146,7 +154,7 @@ class XML_Transformer extends Transformer implements With_Setting_Fields {
 		try {
 			$items = $response->xml( $settings[ static::PATH_ITEMS ] );
 		} catch ( \Throwable $e ) {
-			$this->processor->logger()?->error(
+			$this->processor->get_logger()?->error(
 				'Error parsing XML response: ' . $e->getMessage(),
 				[
 					'exception' => $e,
@@ -161,10 +169,11 @@ class XML_Transformer extends Transformer implements With_Setting_Fields {
 		}
 
 		return array_map(
-			// todo: convert to a DTO.
 			fn ( SimpleXMLElement $item ) => [
 				Post_Loader::BYLINE            => $this->extract_by_xpath( $item, $settings[ static::PATH_BYLINE ] ?? 'author' ),
-				Post_Loader::CONTENT           => $this->extract_by_xpath( $item, $settings[ static::PATH_CONTENT ] ?? 'description' ),
+				Post_Loader::CONTENT           => $this->convert_content_to_blocks
+					? (string) new Block_Converter( $this->extract_by_xpath( $item, $settings[ static::PATH_CONTENT ] ?? 'description' ) )
+					: $this->extract_by_xpath( $item, $settings[ static::PATH_CONTENT ] ?? 'description' ),
 				Post_Loader::GUID              => $this->extract_by_xpath( $item, $settings[ static::PATH_GUID ] ?? 'guid' ),
 				Post_Loader::IMAGE             => $this->extract_by_xpath( $item, $settings[ static::PATH_IMAGE ] ?? 'image' ),
 				Post_Loader::IMAGE_CAPTION     => $this->extract_by_xpath( $item, $settings[ static::PATH_IMAGE_CAPTION ] ?? 'image_caption' ),

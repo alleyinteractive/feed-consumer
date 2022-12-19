@@ -23,17 +23,23 @@ abstract class Extractor implements Contract {
 	protected ?Processor $processor = null;
 
 	/**
-	 * Retrieve/set the processor instance.
+	 * Retrieve the processor instance.
 	 *
-	 * @param Processor $processor Processor instance to set, optional.
 	 * @return Processor
 	 */
-	public function processor( ?Processor $processor = null ): Processor {
-		if ( $processor ) {
-			$this->processor = $processor;
-		}
-
+	public function get_processor(): ?Processor {
 		return $this->processor;
+	}
+
+	/**
+	 * Set the processor instance.
+	 *
+	 * @param Processor $processor Processor instance to set, optional.
+	 * @return static
+	 */
+	public function set_processor( ?Processor $processor = null ): static {
+		$this->processor = $processor;
+		return $this;
 	}
 
 	/**

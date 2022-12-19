@@ -75,7 +75,7 @@ class Runner {
 			throw new RuntimeException( 'Processor must implement Contracts\Processor.' );
 		}
 
-		$processor->settings( $settings[ Settings::escape_setting_name( $settings['processor'] ) ] ?? [] );
+		$processor->set_settings( $settings[ Settings::escape_setting_name( $settings['processor'] ) ] ?? [] );
 
 		return $processor;
 	}
@@ -190,11 +190,10 @@ class Runner {
 		$this->logger?->info( 'Run started.' );
 
 		try {
-			$extractor = $processor->extractor();
-
-			$extractor->processor( $processor );
-
-			$extractor->run();
+			$extractor = $processor
+				->get_extractor()
+				->set_processor( $processor )
+				->run();
 		} catch ( Throwable $e ) {
 			$this->logger?->error( 'Error running feed extractor', [ 'exception' => $e ] );
 
@@ -216,12 +215,12 @@ class Runner {
 
 		// Pass the data to the transformer.
 		try {
-			$transformer = $processor->transformer();
+			$transformer = $processor->get_transformer();
 
-			$transformer->processor( $processor );
-			$transformer->extractor( $extractor );
-
-			$transformed_data = $transformer->data();
+			$transformed_data = $transformer
+				->set_processor( $processor )
+				->set_extractor( $extractor )
+				->data();
 		} catch ( Throwable $e ) {
 			$this->logger?->error( 'Error running feed transformer', [ 'exception' => $e ] );
 
@@ -253,12 +252,11 @@ class Runner {
 
 		// Pass the data to the loader.
 		try {
-			$loader = $processor->loader();
-
-			$loader->processor( $processor );
-			$loader->transformer( $transformer );
-
-			$loaded_data = $loader->load();
+			$loaded_data = $processor
+				->get_loader()
+				->set_processor( $processor )
+				->set_transformer( $transformer )
+				->load();
 		} catch ( Throwable $e ) {
 			$this->logger?->error( 'Error running feed loader', [ 'exception' => $e ] );
 

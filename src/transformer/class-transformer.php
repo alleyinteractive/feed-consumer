@@ -20,42 +20,54 @@ abstract class Transformer implements With_Extractor, With_Processor, Contract {
 	/**
 	 * Processor instance.
 	 *
-	 * @var Processor
+	 * @var Processor|null
 	 */
-	protected Processor $processor;
+	protected ?Processor $processor;
 
 	/**
 	 * Extractor instance.
 	 *
-	 * @var Extractor
+	 * @var Extractor|null
 	 */
-	protected Extractor $extractor;
+	protected ?Extractor $extractor;
 
 	/**
-	 * Retrieve/set the processor instance.
+	 * Retrieve the processor instance.
 	 *
-	 * @param Processor $processor Processor instance to set, optional.
-	 * @return Processor
+	 * @return Processor|null
 	 */
-	public function processor( ?Processor $processor = null ): Processor {
-		if ( $processor ) {
-			$this->processor = $processor;
-		}
-
+	public function get_processor(): ?Processor {
 		return $this->processor;
 	}
 
 	/**
-	 * Retrieve/set the extractor instance.
+	 * Set the processor instance.
 	 *
-	 * @param Extractor $extractor Extractor instance to set, optional.
-	 * @return Extractor
+	 * @param Processor $processor Processor instance to set.
+	 * @return static
 	 */
-	public function extractor( ?Extractor $extractor = null ): Extractor {
-		if ( $extractor ) {
-			$this->extractor = $extractor;
-		}
+	public function set_processor( ?Processor $processor = null ): static {
+		$this->processor = $processor;
+		return $this;
+	}
 
+	/**
+	 * Retrieve the extractor instance.
+	 *
+	 * @return Extractor|null
+	 */
+	public function get_extractor(): ?Extractor {
 		return $this->extractor;
+	}
+
+	/**
+	 * Set the extractor instance.
+	 *
+	 * @param Extractor $extractor Extractor instance to set.
+	 * @return static
+	 */
+	public function set_extractor( ?Extractor $extractor = null ): static {
+		$this->extractor = $extractor;
+		return $this;
 	}
 }

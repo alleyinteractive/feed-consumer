@@ -113,7 +113,7 @@ class Post_Loader extends Loader implements With_Setting_Fields {
 			return [];
 		}
 
-		$loader_settings = $this->processor->settings()['loader'] ?? [];
+		$loader_settings = $this->processor->get_settings()['loader'] ?? [];
 
 		if ( $this instanceof With_Presets ) {
 			$loader_settings = array_merge( $this->presets(), $loader_settings );
@@ -168,7 +168,7 @@ class Post_Loader extends Loader implements With_Setting_Fields {
 
 					return ( new Pipeline() )
 						->send( $postarr )
-						->through( $this->processor()->middleware() )
+						->through( $this->get_processor()->get_middleware() )
 						->then(
 							function ( array $postarr ) use ( $loader_settings ) {
 								/**
