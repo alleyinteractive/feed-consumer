@@ -10,11 +10,13 @@ namespace Feed_Consumer\Loader;
 use Feed_Consumer\Contracts\With_Presets;
 use Feed_Consumer\Contracts\With_Settings;
 use Fieldmanager_Autocomplete;
+use Fieldmanager_Checkbox;
 use Fieldmanager_Datasource_Term;
 use Fieldmanager_Select;
 use InvalidArgumentException;
 use Mantle\Support\Pipeline;
 
+use function Feed_Consumer\create_or_get_attachment_from_url;
 use function Mantle\Support\Helpers\collect;
 
 /**
@@ -22,10 +24,79 @@ use function Mantle\Support\Helpers\collect;
  *
  * Loader that takes transformer data and loads it into the system as a post.
  *
- * @todo Add support for featured image.
  * @todo Add support for bylines.
  */
 class Post_Loader extends Loader implements With_Settings {
+	/**
+	 * Key for storing the post's byline.
+	 *
+	 * @var string
+	 */
+	public const BYLINE = 'byline';
+
+	/**
+	 * Key for storing the post's content.
+	 *
+	 * @var string
+	 */
+	public const CONTENT = 'post_content';
+
+	/**
+	 * Key for storing the post's guid.
+	 *
+	 * @var string
+	 */
+	public const GUID = 'guid';
+
+	/**
+	 * Key for storing the post's image URL.
+	 *
+	 * @var string
+	 */
+	public const IMAGE = 'image';
+
+	/**
+	 * Key for storing the post image's alt text.
+	 *
+	 * @var string
+	 */
+	public const IMAGE_ALT = 'image_alt';
+
+	/**
+	 * Key for storing the post image's caption.
+	 *
+	 * @var string
+	 */
+	public const IMAGE_CAPTION = 'image_caption';
+
+	/**
+	 * Key for storing the post image's credit.
+	 *
+	 * @var string
+	 */
+	public const IMAGE_CREDIT = 'image_credit';
+
+	/**
+	 * Key for storing the post image's description.
+	 *
+	 * @var string
+	 */
+	public const IMAGE_DESCRIPTION = 'image_description';
+
+	/**
+	 * Key for storing the post's permalink.
+	 *
+	 * @var string
+	 */
+	public const PERMALINK = 'permalink';
+
+	/**
+	 * Key for storing the post's title.
+	 *
+	 * @var string
+	 */
+	public const TITLE = 'post_title';
+
 	/**
 	 * Load the data
 	 *
@@ -102,6 +173,17 @@ class Post_Loader extends Loader implements With_Settings {
 						->through( $this->processor()->middleware() )
 						->then(
 							function ( array $postarr ) use ( $loader_settings ) {
+								/**
+								 * Filter to prevent the post from being loaded.
+								 *
+								 * @param bool        $prevent  Whether to prevent the post from being loaded, default false.
+								 * @param array       $postarr  The post array.
+								 * @param Post_Loader $loader   The post loader.
+								 */
+								if ( true === apply_filters( 'feed_consumer_prevent_post_load', false, $postarr, $this ) ) {
+									return null;
+								}
+
 								// Attempt to insert or update the post.
 								if ( ! empty( $postarr['ID'] ) ) {
 									$post_id = wp_update_post( $postarr, true );
@@ -111,6 +193,11 @@ class Post_Loader extends Loader implements With_Settings {
 
 								if ( is_wp_error( $post_id ) ) {
 									throw new InvalidArgumentException( $post_id->get_error_message() );
+								}
+
+								// Assign the post's featured image if set.
+								if ( ! empty( $loader_settings['ingest_images'] ) && ! empty( $postarr[ static::IMAGE ] ) ) {
+									$this->assign_featured_image( $postarr, $post_id );
 								}
 
 								// Process any terms that need to be set on the post.
@@ -144,7 +231,7 @@ class Post_Loader extends Loader implements With_Settings {
 	 */
 	protected function base_settings(): array {
 		return [
-			'post_type'   => new Fieldmanager_Select(
+			'post_type'     => new Fieldmanager_Select(
 				[
 					'label'   => __( 'Post Type', 'feed-consumer' ),
 					'options' => collect( get_post_types( [ 'public' => true ], 'objects' ) )
@@ -152,13 +239,18 @@ class Post_Loader extends Loader implements With_Settings {
 						->all(),
 				],
 			),
-			'post_status' => new Fieldmanager_Select(
+			'post_status'   => new Fieldmanager_Select(
 				[
 					'label'   => __( 'Post Status', 'feed-consumer' ),
 					'options' => get_post_statuses(),
 				]
 			),
-			'terms'       => new Fieldmanager_Autocomplete(
+			'ingest_images' => new Fieldmanager_Checkbox(
+				[
+					'label' => __( 'Ingest Featured Images from the Feed', 'feed-consumer' ),
+				]
+			),
+			'terms'         => new Fieldmanager_Autocomplete(
 				[
 					'label'          => __( 'Terms', 'feed-consumer' ),
 					'datasource'     => new Fieldmanager_Datasource_Term(
@@ -172,7 +264,6 @@ class Post_Loader extends Loader implements With_Settings {
 			),
 		];
 	}
-
 
 	/**
 	 * Assign terms to a post from the loader's settings.
@@ -198,5 +289,39 @@ class Post_Loader extends Loader implements With_Settings {
 		foreach ( $taxonomy_map as $taxonomy => $term_ids ) {
 			wp_set_post_terms( $post_id, $term_ids, $taxonomy, true );
 		}
+	}
+
+	/**
+	 * Assign a featured image to a post.
+	 *
+	 * @param array $postarr Post array.
+	 * @param int   $post_id Post ID.
+	 */
+	protected function assign_featured_image( array $postarr, int $post_id ): void {
+		/**
+		 * Filter the meta key used to store the image credit.
+		 *
+		 * @param string $credit_meta_key Meta key to store the image credit.
+		 */
+		$credit_meta_key = apply_filters( 'feed_consumer_image_credit_meta_key', 'credit' );
+
+		$attachment_id = create_or_get_attachment_from_url(
+			$postarr[ static::IMAGE ],
+			[
+				'alt'            => $postarr[ static::IMAGE_ALT ] ?? '',
+				'caption'        => $postarr[ static::IMAGE_CAPTION ] ?? '',
+				'description'    => $postarr[ static::IMAGE_DESCRIPTION ] ?? '',
+				'parent_post_id' => $post_id,
+				'meta'           => [
+					$credit_meta_key => $postarr[ static::IMAGE_CREDIT ] ?? '',
+				],
+			]
+		);
+
+		if ( ! $attachment_id ) {
+			return;
+		}
+
+		set_post_thumbnail( $post_id, $attachment_id );
 	}
 }
