@@ -56,3 +56,11 @@ function main() {
 	}
 }
 main();
+
+/**
+ * Boot the available integrations.
+ */
+function boot_integrations() {
+	new Integrations\Byline_Manager();
+}
+add_action( 'plugins_loaded', __NAMESPACE__ . '\boot_integrations' );

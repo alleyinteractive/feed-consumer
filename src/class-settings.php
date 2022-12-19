@@ -7,10 +7,8 @@
 
 namespace Feed_Consumer;
 
-use Feed_Consumer\Contracts\Extractor;
-use Feed_Consumer\Contracts\Loader;
+use Mantle\Support\Str;
 use Feed_Consumer\Contracts\Processor;
-use Feed_Consumer\Contracts\Transformer;
 use Feed_Consumer\Contracts\With_Setting_Fields;
 use Fieldmanager_Group;
 use Fieldmanager_Select;
@@ -194,16 +192,30 @@ class Settings {
 					// processor's extractor, transformer, and loader.
 					collect( $processors )->map_with_keys(
 						function ( Processor $processor ) {
-							$children = collect(
+							/**
+							 * Filter the setting groups for a processor.
+							 *
+							 * Each child is converted to a Fieldmanager Group
+							 * for the respective class type (extractor, transformer, loader).
+							 *
+							 * Plugins can use this filter to add settings to a processor in their own group.
+							 *
+							 * @param array     $settings_groups The settings groups for the processor.
+							 * @param Processor $processor       The processor.
+							 */
+							$settings_groups = apply_filters(
+								'feed_consumer_processor_settings',
 								[
-									'processor'   => $processor,
 									'extractor'   => $processor->extractor(),
 									'transformer' => $processor->transformer(),
 									'loader'      => $processor->loader(),
-								]
-							)
+								],
+								$processor,
+							);
+
+							$children = collect( $settings_groups )
 									->map_with_keys(
-										function ( Processor|Extractor|Transformer|Loader $object, string $type ) use ( $processor ): array {
+										function ( object $object, string $type ) use ( $processor ): array {
 											if ( ! ( $object instanceof With_Setting_Fields ) ) {
 												return [];
 											}
@@ -226,7 +238,7 @@ class Settings {
 														'label'    => sprintf(
 															/* translators: %s: The type of settings (extractor/transformer/loader). */
 															__( '%s Settings', 'feed-consumer' ),
-															ucfirst( $type ),
+															Str::headline( $type ),
 														),
 														'children' => $fields,
 													]

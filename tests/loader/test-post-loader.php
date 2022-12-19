@@ -288,18 +288,4 @@ class Post_Loader_Test extends Test_Case {
 		$this->assertEquals( 'Image Description', $attachment->post_content );
 		$this->assertEquals( 'Image Caption', $attachment->post_excerpt );
 	}
-
-	protected function make_loader( mixed $data, array $settings = [] ): Post_Loader {
-		$processor = $this->make_processor( $settings );
-
-		$loader = new Post_Loader();
-
-		$loader->processor( $processor );
-
-		$loader->transformer(
-			$this->make_transformer( $data, $processor ),
-		);
-
-		return $loader;
-	}
 }
