@@ -8,7 +8,7 @@
 namespace Feed_Consumer\Extractor;
 
 use Feed_Consumer\Contracts\Processor;
-use Feed_Consumer\Contracts\With_Settings;
+use Feed_Consumer\Contracts\With_Setting_Fields;
 use Mantle\Http_Client\Pending_Request;
 use Mantle\Http_Client\Response;
 use RuntimeException;
@@ -19,7 +19,7 @@ use RuntimeException;
  * Used to fetch common feeds and extract the data. Supports basic HTTP
  * authentication.
  */
-class Feed_Extractor extends Extractor implements With_Settings {
+class Feed_Extractor extends Extractor implements With_Setting_Fields {
 	/**
 	 * Setting for the feed URL.
 	 *
@@ -51,7 +51,7 @@ class Feed_Extractor extends Extractor implements With_Settings {
 	/**
 	 * Settings to register.
 	 */
-	public function settings(): array {
+	public function setting_fields(): array {
 		return [
 			static::SETTING_FEED_URL => new \Fieldmanager_TextField( __( 'Feed URL', 'feed-consumer' ) ),
 			static::SETTING_USERNAME => new \Fieldmanager_TextField( __( 'Username (optional)', 'feed-consumer' ) ),
@@ -117,14 +117,5 @@ class Feed_Extractor extends Extractor implements With_Settings {
 	 */
 	public function data(): Response {
 		return $this->response;
-	}
-
-	/**
-	 * Getter for the cursor for the extractor.
-	 *
-	 * @return string|null Cursor if set, null otherwise.
-	 */
-	public function cursor(): ?string {
-		return null;
 	}
 }

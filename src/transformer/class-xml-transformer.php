@@ -8,7 +8,7 @@
 namespace Feed_Consumer\Transformer;
 
 use Feed_Consumer\Contracts\With_Presets;
-use Feed_Consumer\Contracts\With_Settings;
+use Feed_Consumer\Contracts\With_Setting_Fields;
 use Feed_Consumer\Loader\Post_Loader;
 use Fieldmanager_TextField;
 use SimpleXMLElement;
@@ -19,7 +19,7 @@ use SimpleXMLElement;
  * Transform the extracted content into an array of items by their XPath.
  * Designed for feeds of content to be converted into multiple posts.
  */
-class XML_Transformer extends Transformer implements With_Settings {
+class XML_Transformer extends Transformer implements With_Setting_Fields {
 	/**
 	 * XPath key to the items.
 	 *
@@ -97,7 +97,7 @@ class XML_Transformer extends Transformer implements With_Settings {
 	 * the class doesn't have any presets the settings will presented to the
 	 * user when creating a new feed loader.
 	 */
-	public function settings(): array {
+	public function setting_fields(): array {
 		if ( $this instanceof With_Presets ) {
 			return [];
 		}

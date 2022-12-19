@@ -11,7 +11,7 @@ use Feed_Consumer\Contracts\Extractor;
 use Feed_Consumer\Contracts\Loader;
 use Feed_Consumer\Contracts\Processor;
 use Feed_Consumer\Contracts\Transformer;
-use Feed_Consumer\Contracts\With_Settings;
+use Feed_Consumer\Contracts\With_Setting_Fields;
 use Fieldmanager_Group;
 use Fieldmanager_Select;
 use Mantle\Support\Traits\Singleton;
@@ -58,6 +58,7 @@ class Settings {
 		add_action( 'init', [ $this, 'register_post_type' ] );
 		add_action( 'fm_post_' . static::POST_TYPE, [ $this, 'register_fields' ] );
 		add_action( 'add_meta_boxes_' . static::POST_TYPE, [ $this, 'add_meta_boxes' ] );
+		add_action( 'save_post', [ $this, 'on_save_post' ], 99, 2 ); // Uses 'save_post' action to save settings because Fieldmanager does.
 	}
 
 	/**
@@ -203,7 +204,7 @@ class Settings {
 							)
 									->map_with_keys(
 										function ( Processor|Extractor|Transformer|Loader $object, string $type ) use ( $processor ): array {
-											if ( ! ( $object instanceof With_Settings ) ) {
+											if ( ! ( $object instanceof With_Setting_Fields ) ) {
 												return [];
 											}
 
@@ -212,10 +213,10 @@ class Settings {
 												$object->processor( $processor );
 											}
 
-											$settings = $object->settings();
+											$fields = $object->setting_fields();
 
 											// If the settings are empty, return null.
-											if ( empty( $settings ) ) {
+											if ( empty( $fields ) ) {
 												return [];
 											}
 
@@ -227,7 +228,7 @@ class Settings {
 															__( '%s Settings', 'feed-consumer' ),
 															ucfirst( $type ),
 														),
-														'children' => $settings,
+														'children' => $fields,
 													]
 												),
 											];
@@ -367,5 +368,23 @@ class Settings {
 		}
 
 		return $value;
+	}
+
+	/**
+	 * On save_post, reschedule the feed to run according to the new settings.
+	 *
+	 * @param int     $post_id Post ID.
+	 * @param WP_Post $post    Post object.
+	 */
+	public function on_save_post( $post_id, $post ) {
+		if ( static::POST_TYPE !== $post->post_type ) {
+			return;
+		}
+
+		if ( wp_next_scheduled( Runner::CRON_HOOK, [ $post_id ] ) ) {
+			wp_clear_scheduled_hook( Runner::CRON_HOOK, [ $post_id ] );
+		}
+
+		Runner::schedule_next_run( $post_id );
 	}
 }

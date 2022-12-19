@@ -11,12 +11,20 @@ use Feed_Consumer\Contracts\Processor as Contract;
 use Feed_Consumer\Contracts\Extractor;
 use Feed_Consumer\Contracts\Transformer;
 use Feed_Consumer\Contracts\Loader;
+use Feed_Consumer\Contracts\With_Setting_Fields;
 use Psr\Log\LoggerInterface;
 
 /**
  * Abstract Processor
  */
-abstract class Processor implements Contract {
+abstract class Processor implements Contract, With_Setting_Fields {
+	/**
+	 * Setting for the interval to poll the feed.
+	 *
+	 * @var string
+	 */
+	public const SETTING_INTERVAL = 'interval';
+
 	/**
 	 * Extractor instance.
 	 *
@@ -58,6 +66,36 @@ abstract class Processor implements Contract {
 	 * @var array
 	 */
 	protected array $settings = [];
+
+	/**
+	 * Settings fields for the processor.
+	 *
+	 * @return array
+	 */
+	public function setting_fields(): array {
+		return [
+			static::SETTING_INTERVAL => new \Fieldmanager_Select(
+				[
+					'label'         => __( 'Polling Interval', 'feed-consumer' ),
+					'default_value' => HOUR_IN_SECONDS,
+					/**
+					 * Filter the polling intervals for the feed extractor.
+					 *
+					 * @param array $intervals Intervals to use.
+					 */
+					'options'       => (array) apply_filters(
+						'feed_consumer_feed_extractor_intervals',
+						[
+							HOUR_IN_SECONDS      => __( 'Hourly', 'feed-consumer' ),
+							12 * HOUR_IN_SECONDS => __( 'Twice Daily', 'feed-consumer' ),
+							DAY_IN_SECONDS       => __( 'Daily', 'feed-consumer' ),
+							WEEK_IN_SECONDS      => __( 'Weekly', 'feed-consumer' ),
+						]
+					),
+				],
+			),
+		];
+	}
 
 	/**
 	 * Retrieve the stored settings for the processor.
@@ -167,6 +205,6 @@ abstract class Processor implements Contract {
 	 * @return int
 	 */
 	public function frequency(): int {
-		return HOUR_IN_SECONDS;
+		return $this->settings['processor'][ static::SETTING_INTERVAL ] ?? HOUR_IN_SECONDS;
 	}
 }
