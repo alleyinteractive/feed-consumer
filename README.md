@@ -66,6 +66,12 @@ extractor, transformer, and loader.
 Processors are the core of Feed Consumer. They define the extractor,
 transformer, and loader to use for the feed.
 
+Out of the box, Feed Consumer includes the following processors:
+
+- **JSON Processor**: Extracts data from a JSON feed into WordPress posts.
+- **RSS Processor**: Extracts data from an RSS feed into WordPress posts.
+- **XML Processor**: Extracts data from an XML feed into WordPress posts.
+
 ### Creating a Processor
 
 ```php
