@@ -20,7 +20,7 @@
         "mantle-framework/support": "^0.9.1"
     },
     "require-dev": {
-        "alleyinteractive/alley-coding-standards": "^0.3",
+        "alleyinteractive/alley-coding-standards": "^1.0",
         "mantle-framework/testkit": "^0.9",
         "nunomaduro/collision": "^5.0"
     },
