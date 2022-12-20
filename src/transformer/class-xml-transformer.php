@@ -130,7 +130,7 @@ class XML_Transformer extends Transformer implements With_Setting_Fields {
 	 * @return array
 	 */
 	public function data(): array {
-		$settings = $this->processor->get_settings();
+		$settings = $this->processor->get_settings()['transformer'] ?? [];
 
 		if ( $this instanceof With_Presets ) {
 			$settings = array_merge( $this->presets(), $settings );
@@ -194,6 +194,10 @@ class XML_Transformer extends Transformer implements With_Setting_Fields {
 	 * @return string|nulls
 	 */
 	protected function extract_by_xpath( SimpleXMLElement $item, string|array $xpath ): ?string {
+		if ( empty( $xpath ) ) {
+			return null;
+		}
+
 		if ( is_array( $xpath ) ) {
 			foreach ( $xpath as $path ) {
 				$value = $this->extract_by_xpath( $item, $path );
