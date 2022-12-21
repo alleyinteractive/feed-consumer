@@ -8,7 +8,6 @@
 namespace Feed_Consumer\Transformer;
 
 use Alley\WP\Block_Converter\Block_Converter;
-use Carbon\Carbon;
 use Feed_Consumer\Contracts\With_Cursor;
 use Feed_Consumer\Contracts\With_Presets;
 use Feed_Consumer\Contracts\With_Setting_Fields;
@@ -104,7 +103,7 @@ class XML_Transformer extends Transformer implements With_Setting_Fields {
 			if ( ! is_null( $processor_cursor ) && is_numeric( $processor_cursor ) ) {
 				$processor_cursor = (int) $processor_cursor;
 			} elseif ( ! is_null( $processor_cursor ) ) {
-				$processor_cursor = Carbon::parse( $processor_cursor );
+				$processor_cursor = strtotime( $processor_cursor );
 			}
 		}
 
@@ -138,7 +137,7 @@ class XML_Transformer extends Transformer implements With_Setting_Fields {
 					}
 
 					// Check if the item's cursor is newer than the processor's cursor.
-					$cursor = is_numeric( $item['cursor'] ) ? (int) $item['cursor'] : Carbon::parse( $item['cursor'] );
+					$cursor = is_numeric( $item['cursor'] ) ? (int) $item['cursor'] : strtotime( $item['cursor'] );
 
 					return $cursor > $processor_cursor;
 				}
