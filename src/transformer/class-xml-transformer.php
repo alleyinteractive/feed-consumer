@@ -8,6 +8,7 @@
 namespace Feed_Consumer\Transformer;
 
 use Alley\WP\Block_Converter\Block_Converter;
+use Carbon\Carbon;
 use Feed_Consumer\Contracts\With_Cursor;
 use Feed_Consumer\Contracts\With_Presets;
 use Feed_Consumer\Contracts\With_Setting_Fields;
@@ -36,6 +37,7 @@ class XML_Transformer extends Transformer implements With_Setting_Fields {
 
 		return [
 			static::PATH_ITEMS             => new Fieldmanager_TextField( __( 'XPath to items', 'feed-consumer' ) ),
+			static::PATH_CURSOR            => new Fieldmanager_TextField( __( 'XPath to cursor field (date)', 'feed-consumer' ) ),
 			static::PATH_GUID              => new Fieldmanager_TextField( __( 'XPath to guid', 'feed-consumer' ) ),
 			static::PATH_TITLE             => new Fieldmanager_TextField( __( 'XPath to title', 'feed-consumer' ) ),
 			static::PATH_PERMALINK         => new Fieldmanager_TextField( __( 'XPath to permalink', 'feed-consumer' ) ),
@@ -92,23 +94,57 @@ class XML_Transformer extends Transformer implements With_Setting_Fields {
 			return [];
 		}
 
-		$items = array_map(
-			fn ( SimpleXMLElement $item ) => [
-				'cursor'                       => $this->extract_by_xpath( $item, $settings[ static::PATH_CURSOR ] ?? '' ),
-				Post_Loader::BYLINE            => $this->extract_by_xpath( $item, $settings[ static::PATH_BYLINE ] ?? 'author' ),
-				Post_Loader::CONTENT           => empty( $settings[ static::DONT_CONVERT_TO_BLOCKS ] )
-					? (string) new Block_Converter( $this->extract_by_xpath( $item, $settings[ static::PATH_CONTENT ] ?? 'description' ) )
-					: $this->extract_by_xpath( $item, $settings[ static::PATH_CONTENT ] ?? 'description' ),
-				Post_Loader::GUID              => $this->extract_by_xpath( $item, $settings[ static::PATH_GUID ] ?? 'guid' ),
-				Post_Loader::IMAGE             => $this->extract_by_xpath( $item, $settings[ static::PATH_IMAGE ] ?? 'image' ),
-				Post_Loader::IMAGE_CAPTION     => $this->extract_by_xpath( $item, $settings[ static::PATH_IMAGE_CAPTION ] ?? 'image_caption' ),
-				Post_Loader::IMAGE_CREDIT      => $this->extract_by_xpath( $item, $settings[ static::PATH_IMAGE_CREDIT ] ?? 'image_credit' ),
-				Post_Loader::IMAGE_DESCRIPTION => $this->extract_by_xpath( $item, $settings[ static::PATH_IMAGE_DESCRIPTION ] ?? 'image_description' ),
-				Post_Loader::PERMALINK         => $this->extract_by_xpath( $item, $settings[ static::PATH_PERMALINK ] ?? 'link' ),
-				Post_Loader::TITLE             => $this->extract_by_xpath( $item, $settings[ static::PATH_TITLE ] ?? 'title' ),
-			],
-			(array) $items,
-		);
+		$processor_cursor = null;
+
+		// Determine the processor's cursor timestamp.
+		if ( $this->processor && $this->processor instanceof With_Cursor ) {
+			$processor_cursor = $this->processor->get_cursor();
+
+			// Support a numeric cursor OR a date cursor.
+			if ( ! is_null( $processor_cursor ) && is_numeric( $processor_cursor ) ) {
+				$processor_cursor = (int) $processor_cursor;
+			} elseif ( ! is_null( $processor_cursor ) ) {
+				$processor_cursor = Carbon::parse( $processor_cursor );
+			}
+		}
+
+		$items = collect( (array) $items )
+			->map(
+				fn ( SimpleXMLElement $item ) => [
+					'cursor'                       => $this->extract_by_xpath( $item, $settings[ static::PATH_CURSOR ] ?? '' ),
+					Post_Loader::BYLINE            => $this->extract_by_xpath( $item, $settings[ static::PATH_BYLINE ] ?? 'author' ),
+					Post_Loader::CONTENT           => empty( $settings[ static::DONT_CONVERT_TO_BLOCKS ] )
+						? (string) new Block_Converter( $this->extract_by_xpath( $item, $settings[ static::PATH_CONTENT ] ?? 'description' ) )
+						: $this->extract_by_xpath( $item, $settings[ static::PATH_CONTENT ] ?? 'description' ),
+					Post_Loader::GUID              => $this->extract_by_xpath( $item, $settings[ static::PATH_GUID ] ?? 'guid' ),
+					Post_Loader::IMAGE             => $this->extract_by_xpath( $item, $settings[ static::PATH_IMAGE ] ?? 'image' ),
+					Post_Loader::IMAGE_CAPTION     => $this->extract_by_xpath( $item, $settings[ static::PATH_IMAGE_CAPTION ] ?? 'image_caption' ),
+					Post_Loader::IMAGE_CREDIT      => $this->extract_by_xpath( $item, $settings[ static::PATH_IMAGE_CREDIT ] ?? 'image_credit' ),
+					Post_Loader::IMAGE_DESCRIPTION => $this->extract_by_xpath( $item, $settings[ static::PATH_IMAGE_DESCRIPTION ] ?? 'image_description' ),
+					Post_Loader::PERMALINK         => $this->extract_by_xpath( $item, $settings[ static::PATH_PERMALINK ] ?? 'link' ),
+					Post_Loader::TITLE             => $this->extract_by_xpath( $item, $settings[ static::PATH_TITLE ] ?? 'title' ),
+				],
+			)
+			->filter(
+				function ( array $item ) use ( $processor_cursor ) {
+					// Check if the processor supports a cursor or if one is set.
+					if ( is_null( $processor_cursor ) ) {
+						return true;
+					}
+
+					// Check if the item has a cursor set.
+					if ( ! isset( $item['cursor'] ) ) {
+						return true;
+					}
+
+					// Check if the item's cursor is newer than the processor's cursor.
+					$cursor = is_numeric( $item['cursor'] ) ? (int) $item['cursor'] : Carbon::parse( $item['cursor'] );
+
+					return $cursor > $processor_cursor;
+				}
+			)
+			->values()
+			->all();
 
 		// Update the processor's cursor if supported.
 		if ( $this->processor && $this->processor instanceof With_Cursor ) {

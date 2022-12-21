@@ -10,6 +10,7 @@ namespace Feed_Consumer\Transformer;
 use Feed_Consumer\Contracts\Extractor;
 use Feed_Consumer\Contracts\Processor;
 use Feed_Consumer\Contracts\Transformer as Contract;
+use Feed_Consumer\Contracts\With_Cursor;
 use Feed_Consumer\Contracts\With_Extractor;
 use Feed_Consumer\Contracts\With_Processor;
 
@@ -111,7 +112,7 @@ abstract class Transformer implements With_Extractor, With_Processor, Contract {
 	/**
 	 * Processor instance.
 	 *
-	 * @var Processor|null
+	 * @var Processor|With_Cursor|null
 	 */
 	protected ?Processor $processor;
 
