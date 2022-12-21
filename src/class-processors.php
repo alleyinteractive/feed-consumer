@@ -23,6 +23,7 @@ class Processors {
 	 * @var array
 	 */
 	protected array $processors = [
+		\Feed_Consumer\Processor\JSON_Processor::class,
 		\Feed_Consumer\Processor\RSS_Processor::class,
 		\Feed_Consumer\Processor\XML_Processor::class,
 	];

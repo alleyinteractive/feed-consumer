@@ -18,6 +18,90 @@ use Feed_Consumer\Contracts\With_Processor;
  */
 abstract class Transformer implements With_Extractor, With_Processor, Contract {
 	/**
+	 * XPath key to the items.
+	 *
+	 * @var string
+	 */
+	public const PATH_ITEMS = 'path_items';
+
+	/**
+	 * XPath key to the item guid.
+	 *
+	 * @var string
+	 */
+	public const PATH_GUID = 'path_guid';
+
+	/**
+	 * XPath key to the item title.
+	 *
+	 * @var string
+	 */
+	public const PATH_TITLE = 'path_title';
+
+	/**
+	 * XPath key to the item link.
+	 *
+	 * @var string
+	 */
+	public const PATH_PERMALINK = 'path_permalink';
+
+	/**
+	 * XPath key to the item content.
+	 *
+	 * @var string
+	 */
+	public const PATH_CONTENT = 'path_content';
+
+	/**
+	 * XPath key to the item excerpt.
+	 *
+	 * @var string
+	 */
+	public const PATH_EXCERPT = 'path_excerpt';
+
+	/**
+	 * XPath key to the item byline.
+	 *
+	 * @var string
+	 */
+	public const PATH_BYLINE = 'path_byline';
+
+	/**
+	 * XPath key to the item image URL.
+	 *
+	 * @var string
+	 */
+	public const PATH_IMAGE = 'path_image';
+
+	/**
+	 * XPath key to the item image description.
+	 *
+	 * @var string
+	 */
+	public const PATH_IMAGE_DESCRIPTION = 'path_image_description';
+
+	/**
+	 * XPath key to the item image caption.
+	 *
+	 * @var string
+	 */
+	public const PATH_IMAGE_CAPTION = 'path_image_caption';
+
+	/**
+	 * XPath key to the item image credit.
+	 *
+	 * @var string
+	 */
+	public const PATH_IMAGE_CREDIT = 'path_image_credit';
+
+	/**
+	 * Settings key to not convert to Gutenberg blocks.
+	 *
+	 * @var string
+	 */
+	public const DONT_CONVERT_TO_BLOCKS = 'dont_convert_to_blocks';
+
+	/**
 	 * Processor instance.
 	 *
 	 * @var Processor|null
