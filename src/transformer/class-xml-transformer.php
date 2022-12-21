@@ -137,7 +137,9 @@ class XML_Transformer extends Transformer implements With_Setting_Fields {
 					}
 
 					// Check if the item's cursor is newer than the processor's cursor.
-					$cursor = is_numeric( $item['cursor'] ) ? (int) $item['cursor'] : strtotime( $item['cursor'] );
+					$cursor = is_numeric( $item['cursor'] )
+						? (int) $item['cursor']
+						: strtotime( $item['cursor'] );
 
 					return $cursor > $processor_cursor;
 				}
