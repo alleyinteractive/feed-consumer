@@ -26,7 +26,7 @@ class JSON_Transformer extends Transformer implements With_Setting_Fields {
 	/**
 	 * Settings to register.
 	 *
-	 * XML XPaths can be set with settings or presets from a extended class. If
+	 * JSON paths can be set with settings or presets from a extended class. If
 	 * the class doesn't have any presets the settings will presented to the
 	 * user when creating a new feed loader.
 	 */
@@ -69,7 +69,7 @@ class JSON_Transformer extends Transformer implements With_Setting_Fields {
 			);
 		} catch ( \Throwable $e ) {
 			$this->processor->get_logger()?->error(
-				'Error parsing XML response: ' . $e->getMessage(),
+				'Error parsing JSON response: ' . $e->getMessage(),
 				[
 					'exception' => $e,
 				]
