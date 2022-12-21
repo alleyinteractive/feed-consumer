@@ -15,6 +15,8 @@ use Feed_Consumer\Loader\Post_Loader;
 use Fieldmanager_TextField;
 use SimpleXMLElement;
 
+use function Mantle\Support\Helpers\collect;
+
 /**
  * XML Transformer
  *
@@ -144,19 +146,18 @@ class XML_Transformer extends Transformer implements With_Setting_Fields {
 					return $cursor > $processor_cursor;
 				}
 			)
-			->values()
-			->all();
+			->values();
 
 		// Update the processor's cursor if supported.
 		if ( $this->processor && $this->processor instanceof With_Cursor ) {
-			$last_item = end( $items );
+			$last_item = $items->last();
 
 			if ( ! empty( $last_item['cursor'] ) ) {
 				$this->processor->set_cursor( $last_item['cursor'] );
 			}
 		}
 
-		return $items;
+		return $items->all();
 	}
 
 	/**
