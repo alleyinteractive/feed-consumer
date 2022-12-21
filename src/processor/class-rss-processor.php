@@ -7,6 +7,7 @@
 
 namespace Feed_Consumer\Processor;
 
+use Feed_Consumer\Contracts\With_Cursor;
 use Feed_Consumer\Extractor\Feed_Extractor;
 use Feed_Consumer\Loader\Post_Loader;
 use Feed_Consumer\Transformer\RSS_Transformer;
@@ -16,7 +17,9 @@ use Feed_Consumer\Transformer\RSS_Transformer;
  *
  * Extracts an array of items from an RSS feed.
  */
-class RSS_Processor extends Processor {
+class RSS_Processor extends Processor implements With_Cursor {
+	use Cursor;
+
 	/**
 	 * Constructor.
 	 */

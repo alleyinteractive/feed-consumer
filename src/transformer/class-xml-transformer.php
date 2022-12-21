@@ -8,6 +8,7 @@
 namespace Feed_Consumer\Transformer;
 
 use Alley\WP\Block_Converter\Block_Converter;
+use Feed_Consumer\Contracts\With_Cursor;
 use Feed_Consumer\Contracts\With_Presets;
 use Feed_Consumer\Contracts\With_Setting_Fields;
 use Feed_Consumer\Loader\Post_Loader;
@@ -91,8 +92,9 @@ class XML_Transformer extends Transformer implements With_Setting_Fields {
 			return [];
 		}
 
-		return array_map(
+		$items = array_map(
 			fn ( SimpleXMLElement $item ) => [
+				'cursor'                       => $this->extract_by_xpath( $item, $settings[ static::PATH_CURSOR ] ?? '' ),
 				Post_Loader::BYLINE            => $this->extract_by_xpath( $item, $settings[ static::PATH_BYLINE ] ?? 'author' ),
 				Post_Loader::CONTENT           => empty( $settings[ static::DONT_CONVERT_TO_BLOCKS ] )
 					? (string) new Block_Converter( $this->extract_by_xpath( $item, $settings[ static::PATH_CONTENT ] ?? 'description' ) )
@@ -107,6 +109,17 @@ class XML_Transformer extends Transformer implements With_Setting_Fields {
 			],
 			(array) $items,
 		);
+
+		// Update the processor's cursor if supported.
+		if ( $this->processor && $this->processor instanceof With_Cursor ) {
+			$last_item = end( $items );
+
+			if ( ! empty( $last_item['cursor'] ) ) {
+				$this->processor->set_cursor( $last_item['cursor'] );
+			}
+		}
+
+		return $items;
 	}
 
 	/**

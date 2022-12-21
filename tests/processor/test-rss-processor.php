@@ -57,6 +57,8 @@ class RSS_Processor_Test extends Test_Case {
 				]
 			);
 
+		$this->assertNull( Runner::processor( $feed_id )->get_cursor() );
+
 		Runner::run_scheduled( $feed_id );
 
 		$this->assertPostExists(
@@ -69,6 +71,8 @@ class RSS_Processor_Test extends Test_Case {
 		$this->assertNotEmpty( get_post_meta( $feed_id, Runner::LAST_RUN_META_KEY, true ) );
 
 		$this->assertInCronQueue( Runner::CRON_HOOK, [ $feed_id ] );
+
+		$this->assertNotNull( Runner::processor( $feed_id )->get_cursor() );
 	}
 
 	public function test_handle_rss_feed_error() {

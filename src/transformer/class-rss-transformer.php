@@ -28,6 +28,7 @@ class RSS_Transformer extends XML_Transformer implements With_Presets {
 		return (array) apply_filters(
 			'feed_consumer_rss_transformer_presets',
 			[
+				static::PATH_CURSOR            => 'pubDate',
 				static::PATH_ITEMS             => '/rss/channel/item',
 				static::PATH_GUID              => 'guid',
 				static::PATH_TITLE             => 'title',
