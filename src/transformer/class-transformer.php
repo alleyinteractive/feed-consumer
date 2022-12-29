@@ -10,6 +10,7 @@ namespace Feed_Consumer\Transformer;
 use Feed_Consumer\Contracts\Extractor;
 use Feed_Consumer\Contracts\Processor;
 use Feed_Consumer\Contracts\Transformer as Contract;
+use Feed_Consumer\Contracts\With_Cursor;
 use Feed_Consumer\Contracts\With_Extractor;
 use Feed_Consumer\Contracts\With_Processor;
 
@@ -95,6 +96,13 @@ abstract class Transformer implements With_Extractor, With_Processor, Contract {
 	public const PATH_IMAGE_CREDIT = 'path_image_credit';
 
 	/**
+	 * XPath key for the item cursor (date or ID).
+	 *
+	 * @var string
+	 */
+	public const PATH_CURSOR = 'path_cursor';
+
+	/**
 	 * Settings key to not convert to Gutenberg blocks.
 	 *
 	 * @var string
@@ -104,7 +112,7 @@ abstract class Transformer implements With_Extractor, With_Processor, Contract {
 	/**
 	 * Processor instance.
 	 *
-	 * @var Processor|null
+	 * @var Processor|With_Cursor|null
 	 */
 	protected ?Processor $processor;
 

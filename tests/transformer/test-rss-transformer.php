@@ -64,4 +64,27 @@ class RSS_Transformer_Test extends Test_Case {
 
 		$this->assertCount( 0, $data );
 	}
+
+	public function test_rss_transformer_with_cursor() {
+		$processor = $this->make_processor();
+
+		// Setting the cursor relative to the 3rd item in the feed (it should only include 1-2).
+		$processor->set_cursor( 'Fri, 08 Apr 2022 19:18:04 +0000' );
+
+		$extractor = $this->make_extractor(
+			Mock_Http_Response::create()
+				->with_header( 'Content-Type', 'application/rss+xml' )
+				->with_body( file_get_contents( __DIR__ . '/../fixtures/rss-feed.xml' ) ),
+			$processor,
+		);
+
+		$transformer = new RSS_Transformer( $processor, $extractor );
+
+		$transformer->set_processor( $processor );
+		$transformer->set_extractor( $extractor );
+
+		$data = $transformer->data();
+
+		$this->assertCount( 2, $data );
+	}
 }

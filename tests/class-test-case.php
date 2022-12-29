@@ -4,7 +4,9 @@ namespace Feed_Consumer\Tests;
 use Feed_Consumer\Contracts\Extractor;
 use Feed_Consumer\Contracts\Processor as Processor_Contract;
 use Feed_Consumer\Contracts\Transformer;
+use Feed_Consumer\Contracts\With_Cursor;
 use Feed_Consumer\Loader\Post_Loader;
+use Feed_Consumer\Processor\Cursor;
 use Feed_Consumer\Processor\Processor;
 use Mantle\Http_Client\Response;
 use Mantle\Testing\Concerns\With_Faker;
@@ -24,7 +26,9 @@ abstract class Test_Case extends Testkit {
 	}
 
 	protected function make_processor( array $settings = [] ): Processor {
-		$instance = new class() extends Processor {
+		$instance = new class() extends Processor implements With_Cursor {
+			use Cursor;
+
 			public function name(): string {
 				return 'Test Processor';
 			}

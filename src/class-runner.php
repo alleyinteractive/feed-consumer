@@ -7,6 +7,7 @@
 
 namespace Feed_Consumer;
 
+use Feed_Consumer\Contracts\With_Cursor;
 use Monolog\Logger;
 use Psr\Log\LoggerInterface;
 use RuntimeException;
@@ -76,6 +77,15 @@ class Runner {
 		}
 
 		$processor->set_settings( $settings[ Settings::escape_setting_name( $settings['processor'] ) ] ?? [] );
+
+		// Instantiate the processor's cursor if supported.
+		if ( $processor instanceof With_Cursor ) {
+			$cursor = get_post_meta( $feed_id, With_Cursor::CURSOR_META_KEY, true );
+
+			if ( ! is_null( $cursor ) && '' !== $cursor ) {
+				$processor->set_cursor( (string) $cursor );
+			}
+		}
 
 		return $processor;
 	}
@@ -287,6 +297,17 @@ class Runner {
 		 * @param string $processor The processor class.
 		 */
 		do_action( 'feed_consumer_run_complete', $this->feed_id, $loaded_data, $processor::class );
+
+		// Store the cursor of the processor.
+		if ( $processor instanceof With_Cursor ) {
+			$cursor = $processor->get_cursor();
+
+			if ( is_null( $cursor ) ) {
+				delete_post_meta( $this->feed_id, With_Cursor::CURSOR_META_KEY );
+			} else {
+				update_post_meta( $this->feed_id, With_Cursor::CURSOR_META_KEY, $cursor );
+			}
+		}
 
 		// Update the last run time of the feed.
 		update_post_meta( $this->feed_id, static::LAST_RUN_META_KEY, current_time( 'timestamp' ) ); // phpcs:ignore WordPress.DateTime.CurrentTimeTimestamp.Requested
