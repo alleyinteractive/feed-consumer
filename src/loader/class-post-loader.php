@@ -232,9 +232,12 @@ class Post_Loader extends Loader implements With_Setting_Fields {
 			'post_type'     => new Fieldmanager_Select(
 				[
 					'label'   => __( 'Post Type', 'feed-consumer' ),
-					'options' => collect( get_post_types( [ 'public' => true ], 'objects' ) )
-						->pluck( 'label', 'name' )
-						->all(),
+					'options' => apply_filters(
+						'feed_consumer_post_types',
+						collect( get_post_types( [ 'public' => true ], 'objects' ) )
+							->pluck( 'label', 'name' )
+							->all()
+					),
 				],
 			),
 			'post_status'   => new Fieldmanager_Select(
