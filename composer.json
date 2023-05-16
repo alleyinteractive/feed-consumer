@@ -18,6 +18,7 @@
         "php": "^8.0",
         "alleyinteractive/composer-wordpress-autoloader": "^1.0",
         "alleyinteractive/wp-block-converter": "^1.0",
+        "mantle-framework/http-client": "^0.9.1",
         "mantle-framework/support": "^0.9.1"
     },
     "require-dev": {
