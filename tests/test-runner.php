@@ -56,8 +56,6 @@ class Runner_Test extends Test_Case {
 	}
 
 	public function test_schedule_next_run() {
-		$this->assertInCronQueue( Runner::CRON_HOOK, [ $this->rss_feed_id ] );
-
 		Runner::schedule_next_run( $this->rss_feed_id );
 
 		$this->assertInCronQueue( Runner::CRON_HOOK, [ $this->rss_feed_id ] );

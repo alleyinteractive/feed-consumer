@@ -139,7 +139,7 @@ class Post_Loader_Test extends Test_Case {
 			]
 		)->create(
 			[
-				'post_title' => 'Original Post',
+				'title' => 'Original Post to Update',
 			]
 		);
 
@@ -149,7 +149,7 @@ class Post_Loader_Test extends Test_Case {
 
 		$this->assertPostDoesNotExists(
 			[
-				'post_title' => 'Original Post',
+				'title' => 'Original Post to Update',
 			]
 		);
 	}
