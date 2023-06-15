@@ -115,7 +115,7 @@ class XML_Transformer extends Transformer implements With_Setting_Fields {
 					'cursor'                       => $this->extract_by_xpath( $item, $settings[ static::PATH_CURSOR ] ?? '' ),
 					Post_Loader::BYLINE            => $this->extract_by_xpath( $item, $settings[ static::PATH_BYLINE ] ?? 'author' ),
 					Post_Loader::CONTENT           => empty( $settings[ static::DONT_CONVERT_TO_BLOCKS ] )
-						? (string) new Block_Converter( $this->extract_by_xpath( $item, $settings[ static::PATH_CONTENT ] ?? 'description' ) )
+						? (string) new Block_Converter( $this->extract_by_xpath( $item, $settings[ static::PATH_CONTENT ] ?? 'description' ) ?? '' )
 						: $this->extract_by_xpath( $item, $settings[ static::PATH_CONTENT ] ?? 'description' ),
 					Post_Loader::GUID              => $this->extract_by_xpath( $item, $settings[ static::PATH_GUID ] ?? 'guid' ),
 					Post_Loader::IMAGE             => $this->extract_by_xpath( $item, $settings[ static::PATH_IMAGE ] ?? 'image' ),
