@@ -21,8 +21,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// Check if Composer is installed (remove if Composer is not required for your plugin).
-if ( ! file_exists( __DIR__ . '/vendor/wordpress-autoload.php' ) ) {
+// Check if Composer is installed.
+if ( file_exists( __DIR__ . '/vendor/wordpress-autoload.php' ) ) {
+	require_once __DIR__ . '/vendor/wordpress-autoload.php';
+/*
+ * Check for an existing Composer autoloader in case the plugin is loaded as a Composer
+ * dependency within a larger project.
+ */
+} elseif ( ! class_exists( \Composer\InstalledVersions::class ) ) {
 	\add_action(
 		'admin_notices',
 		function() {
@@ -36,9 +42,6 @@ if ( ! file_exists( __DIR__ . '/vendor/wordpress-autoload.php' ) ) {
 
 	return;
 }
-
-// Load Composer dependencies.
-require_once __DIR__ . '/vendor/wordpress-autoload.php';
 
 /**
  * Instantiate the plugin.
