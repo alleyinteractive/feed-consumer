@@ -99,6 +99,8 @@ class Byline_Manager implements With_Setting_Fields {
 		}
 
 		$middleware[] = function ( array $item, Closure $next ) use ( $settings ): ?WP_Post {
+			$byline = [];
+
 			// Use the default byline from settings if configured.
 			if ( empty( $settings[ static::SETTING_USE_FEED_AUTHOR ] ) && ! empty( $settings[ static::SETTING_DEFAULT_BYLINE ] ) ) {
 				$byline = [
