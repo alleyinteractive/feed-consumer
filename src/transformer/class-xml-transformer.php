@@ -184,6 +184,13 @@ class XML_Transformer extends Transformer implements With_Setting_Fields {
 			return null;
 		}
 
-		return trim( $item->xpath( $xpath )[0] ?? null ) ?: null;
+		$value = null;
+		$item  = $item->xpath( $xpath );
+
+		if ( count( $item ) > 0 ) {
+			$value = trim( (string) $item[0] );
+		}
+
+		return $value;
 	}
 }
