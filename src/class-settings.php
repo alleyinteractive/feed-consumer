@@ -54,6 +54,7 @@ class Settings {
 	protected function __construct() {
 		add_action( 'init', [ $this, 'on_init' ] );
 		add_action( 'init', [ $this, 'register_post_type' ] );
+		add_filter( 'post_updated_messages', [ $this, 'set_post_updated_messages' ] );
 		add_action( 'fm_post_' . static::POST_TYPE, [ $this, 'register_fields' ] );
 		add_action( 'add_meta_boxes_' . static::POST_TYPE, [ $this, 'add_meta_boxes' ] );
 		add_action( 'save_post', [ $this, 'on_save_post' ], 99, 2 ); // Uses 'save_post' action to save settings because Fieldmanager does.
@@ -85,21 +86,37 @@ class Settings {
 			[
 				'label'              => __( 'Feeds', 'feed-consumer' ),
 				'labels'             => [
-					'add_new_item'               => __( 'Add New Feed', 'feed-consumer' ),
-					'add_or_remove_items'        => __( 'Add or remove feeds', 'feed-consumer' ),
-					'all_items'                  => __( 'All Feeds', 'feed-consumer' ),
-					'choose_from_most_used'      => __( 'Choose from the most used feeds', 'feed-consumer' ),
-					'edit_item'                  => __( 'Edit Feed', 'feed-consumer' ),
-					'menu_name'                  => __( 'Feeds', 'feed-consumer' ),
-					'name'                       => __( 'Feeds', 'feed-consumer' ),
-					'new_item_name'              => __( 'New Feed Name', 'feed-consumer' ),
-					'not_found'                  => __( 'No feeds found.', 'feed-consumer' ),
-					'parent_item_colon'          => __( 'Parent Feed:', 'feed-consumer' ),
-					'parent_item'                => __( 'Parent Feed', 'feed-consumer' ),
-					'search_items'               => __( 'Search Feeds', 'feed-consumer' ),
-					'separate_items_with_commas' => __( 'Separate feeds with commas', 'feed-consumer' ),
-					'singular_name'              => __( 'Feed', 'feed-consumer' ),
-					'update_item'                => __( 'Update Feed', 'feed-consumer' ),
+					'name'                     => __( 'Feeds', 'feed-consumer' ),
+					'singular_name'            => __( 'Feed', 'feed-consumer' ),
+					'add_new'                  => __( 'Add New Feed', 'feed-consumer' ),
+					'add_new_item'             => __( 'Add New Feed', 'feed-consumer' ),
+					'edit_item'                => __( 'Edit Feed', 'feed-consumer' ),
+					'new_item'                 => __( 'New Feed', 'feed-consumer' ),
+					'view_item'                => __( 'View Feed', 'feed-consumer' ),
+					'view_items'               => __( 'View Feeds', 'feed-consumer' ),
+					'search_items'             => __( 'Search Feeds', 'feed-consumer' ),
+					'not_found'                => __( 'No feeds found', 'feed-consumer' ),
+					'not_found_in_trash'       => __( 'No feeds found in Trash', 'feed-consumer' ),
+					'parent_item_colon'        => __( 'Parent Feed:', 'feed-consumer' ),
+					'all_items'                => __( 'All Feeds', 'feed-consumer' ),
+					'archives'                 => __( 'Feed Archives', 'feed-consumer' ),
+					'attributes'               => __( 'Feed Attributes', 'feed-consumer' ),
+					'insert_into_item'         => __( 'Insert into feed', 'feed-consumer' ),
+					'uploaded_to_this_item'    => __( 'Uploaded to this feed', 'feed-consumer' ),
+					'featured_image'           => __( 'Featured image', 'feed-consumer' ),
+					'set_featured_image'       => __( 'Set featured image', 'feed-consumer' ),
+					'remove_featured_image'    => __( 'Remove featured image', 'feed-consumer' ),
+					'use_featured_image'       => __( 'Use as featured image', 'feed-consumer' ),
+					'filter_items_list'        => __( 'Filter feeds list', 'feed-consumer' ),
+					'items_list_navigation'    => __( 'Feeds list navigation', 'feed-consumer' ),
+					'items_list'               => __( 'Feeds list', 'feed-consumer' ),
+					'item_published'           => __( 'Feed published.', 'feed-consumer' ),
+					'item_published_privately' => __( 'Feed published privately.', 'feed-consumer' ),
+					'item_reverted_to_draft'   => __( 'Feed reverted to draft.', 'feed-consumer' ),
+					'item_trashed'             => __( 'Feed trashed.', 'feed-consumer' ),
+					'item_scheduled'           => __( 'Feed scheduled.', 'feed-consumer' ),
+					'item_updated'             => __( 'Feed updated.', 'feed-consumer' ),
+					'menu_name'                => __( 'Feeds', 'feed-consumer' ),
 				],
 				'menu_icon'          => 'dashicons-rss',
 				'public'             => true,
@@ -111,6 +128,79 @@ class Settings {
 				'show_ui'            => true,
 			]
 		);
+	}
+
+	/**
+	 * Set post type updated messages.
+	 *
+	 * The messages are as follows:
+	 *
+	 *   1 => "Post updated. {View Post}"
+	 *   2 => "Custom field updated."
+	 *   3 => "Custom field deleted."
+	 *   4 => "Post updated."
+	 *   5 => "Post restored to revision from [date]."
+	 *   6 => "Post published. {View post}"
+	 *   7 => "Post saved."
+	 *   8 => "Post submitted. {Preview post}"
+	 *   9 => "Post scheduled for: [date]. {Preview post}"
+	 *  10 => "Post draft updated. {Preview post}"
+	 *
+	 * (Via https://github.com/johnbillion/extended-cpts.)
+	 *
+	 * @param array $messages An associative array of post updated messages with post type as keys.
+	 * @return array Updated array of post updated messages.
+	 */
+	public function set_post_updated_messages( $messages ) {
+		global $post;
+
+		$preview_url    = get_preview_post_link( $post );
+		$permalink      = get_permalink( $post );
+		$scheduled_date = date_i18n( 'M j, Y @ H:i', strtotime( $post->post_date ) );
+
+		$preview_post_link_html   = '';
+		$scheduled_post_link_html = '';
+		$view_post_link_html      = '';
+
+		if ( is_post_type_viewable( static::POST_TYPE ) ) {
+			// Preview-post link.
+			$preview_post_link_html = sprintf(
+				' <a target="_blank" href="%1$s">%2$s</a>',
+				esc_url( $preview_url ),
+				__( 'Preview feed', 'feed-consumer' )
+			);
+
+			// Scheduled post preview link.
+			$scheduled_post_link_html = sprintf(
+				' <a target="_blank" href="%1$s">%2$s</a>',
+				esc_url( $permalink ),
+				__( 'Preview feed', 'feed-consumer' )
+			);
+
+			// View-post link.
+			$view_post_link_html = sprintf(
+				' <a href="%1$s">%2$s</a>',
+				esc_url( $permalink ),
+				__( 'View feed', 'feed-consumer' )
+			);
+		}
+
+		$messages[ static::POST_TYPE ] = [
+			1  => __( 'Feed updated.', 'feed-consumer' ) . $view_post_link_html,
+			2  => __( 'Custom field updated.', 'feed-consumer' ),
+			3  => __( 'Custom field updated.', 'feed-consumer' ),
+			4  => __( 'Feed updated.', 'feed-consumer' ),
+			/* translators: %s: date and time of the revision */
+			5  => isset( $_GET['revision'] ) ? sprintf( __( 'Feed restored to revision from %s.', 'feed-consumer' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false, // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			6  => __( 'Feed published.', 'feed-consumer' ) . $view_post_link_html,
+			7  => __( 'Feed saved.', 'feed-consumer' ),
+			8  => __( 'Feed submitted.', 'feed-consumer' ) . $preview_post_link_html,
+			/* translators: %s: date on which the feed is currently scheduled to be published */
+			9  => sprintf( __( 'Feed scheduled for: %s.', 'feed-consumer' ), '<strong>' . $scheduled_date . '</strong>' ) . $scheduled_post_link_html,
+			10 => __( 'Feed draft updated.', 'feed-consumer' ) . $preview_post_link_html,
+		];
+
+		return $messages;
 	}
 
 	/**
