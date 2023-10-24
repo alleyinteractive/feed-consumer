@@ -68,7 +68,6 @@ class Feed_Extractor_Test extends Test_Case {
 		$_SERVER['__did_auth'] = false;
 
 		$this->fake_request(
-			'https://alley.com/feed/',
 			function ( string $url, array $args ) {
 				if ( ! empty( $args['headers']['Authorization'] ) ) {
 					$_SERVER['__did_auth'] = 'Basic ' . base64_encode( 'username:password' ) === $args['headers']['Authorization'];

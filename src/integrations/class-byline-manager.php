@@ -98,7 +98,9 @@ class Byline_Manager implements With_Setting_Fields {
 			return $middleware;
 		}
 
-		$middleware[] = function ( array $item, Closure $next ) use ( $settings ): WP_Post {
+		$middleware[] = function ( array $item, Closure $next ) use ( $settings ): ?WP_Post {
+			$byline = [];
+
 			// Use the default byline from settings if configured.
 			if ( empty( $settings[ static::SETTING_USE_FEED_AUTHOR ] ) && ! empty( $settings[ static::SETTING_DEFAULT_BYLINE ] ) ) {
 				$byline = [
@@ -140,7 +142,9 @@ class Byline_Manager implements With_Setting_Fields {
 
 			$post = $next( $item );
 
-			Utils::set_post_byline( $post->ID, $byline );
+			if ( $post instanceof WP_Post ) {
+				Utils::set_post_byline( $post->ID, $byline );
+			}
 
 			return $post;
 		};

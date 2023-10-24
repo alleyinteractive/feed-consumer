@@ -18,12 +18,12 @@
         "php": "^8.0",
         "alleyinteractive/composer-wordpress-autoloader": "^1.0",
         "alleyinteractive/wp-block-converter": "^1.0",
-        "mantle-framework/http-client": "^0.11",
-        "mantle-framework/support": "^0.11"
+        "mantle-framework/http-client": "^0.12",
+        "mantle-framework/support": "^0.12"
     },
     "require-dev": {
         "alleyinteractive/alley-coding-standards": "^1.0",
-        "mantle-framework/testkit": "^0.11",
+        "mantle-framework/testkit": "^0.12",
         "nunomaduro/collision": "^5.0"
     },
     "suggest": {
