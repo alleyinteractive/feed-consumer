@@ -229,7 +229,6 @@ class Post_Loader_Test extends Test_Case {
 
 	public function test_image_on_posts() {
 		$this->fake_request(
-			'https://example.com/image.jpg',
 			function ( string $url, array $args ) {
 				$contents = file_get_contents( __DIR__ . '/../fixtures/alley.jpg' );
 
