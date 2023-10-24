@@ -377,7 +377,7 @@ class Settings {
 
 		if ( apply_filters( 'feed_consumer_debug_meta_box', true ) ) {
 			add_meta_box(
-				'feed-consumer-status',
+				'feed-consumer-debug',
 				__( 'Feed Debug Meta Box', 'feed-consumer' ),
 				[ $this, 'render_debug_meta_box' ],
 				static::POST_TYPE,
