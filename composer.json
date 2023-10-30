@@ -24,7 +24,7 @@
     "require-dev": {
         "alleyinteractive/alley-coding-standards": "^1.0",
         "mantle-framework/testkit": "^0.12",
-        "nunomaduro/collision": "^5.0"
+        "nunomaduro/collision": "^6.4"
     },
     "suggest": {
         "alleyinteractive/logger": "Allows for logging of output of feeds when processing"
