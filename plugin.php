@@ -7,7 +7,7 @@
  * Author: Sean Fisher
  * Author URI: https://github.com/alleyinteractive/feed-consumer
  * Requires at least: 5.9
- * Tested up to: 6.2.2
+ * Tested up to: 6.4
  *
  * Text Domain: feed-consumer
  * Domain Path: /languages/
