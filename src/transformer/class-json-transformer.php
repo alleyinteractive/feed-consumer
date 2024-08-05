@@ -85,7 +85,7 @@ class JSON_Transformer extends Transformer implements With_Setting_Fields {
 		return array_map(
 			fn ( array $item ) => [
 				Post_Loader::BYLINE            => $this->extract_by_path( $item, $settings[ static::PATH_BYLINE ] ?? 'author' ),
-				Post_Loader::CONTENT           => empty( $settings[ static::DONT_CONVERT_TO_BLOCKS] )
+				Post_Loader::CONTENT           => empty( $settings[ static::DONT_CONVERT_TO_BLOCKS ] )
 					? (string) new Block_Converter( $this->extract_by_path( $item, $settings[ static::PATH_CONTENT ] ?? 'description' ) )
 					: $this->extract_by_path( $item, $settings[ static::PATH_CONTENT ] ?? 'description' ),
 				Post_Loader::GUID              => $this->extract_by_path( $item, $settings[ static::PATH_GUID ] ?? 'guid' ),
