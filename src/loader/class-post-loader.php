@@ -96,6 +96,13 @@ class Post_Loader extends Loader implements With_Setting_Fields {
 	public const TITLE = 'post_title';
 
 	/**
+	 * Storage of attachment IDs that were created.
+	 *
+	 * @var int[]
+	 */
+	protected array $created_attachment_ids = [];
+
+	/**
 	 * Load the data
 	 *
 	 * @throws InvalidArgumentException When the data from the transformer is not an array.
@@ -182,6 +189,17 @@ class Post_Loader extends Loader implements With_Setting_Fields {
 									return null;
 								}
 
+								$this->listen_for_attachment_creation();
+
+								// Ensure 'post_content' is a string. This is more than
+								// likely a "Block_Converter" instance. Converting is
+								// here allows us to wrap the creation of attachments
+								// in the content and then properly set the post parent
+								// for them.
+								if ( ! is_string( $postarr['post_content'] ) ) {
+									$postarr['post_content'] = (string) $postarr['post_content'];
+								}
+
 								// Attempt to insert or update the post.
 								if ( ! empty( $postarr['ID'] ) ) {
 									$post_id = wp_update_post( $postarr, true );
@@ -189,8 +207,21 @@ class Post_Loader extends Loader implements With_Setting_Fields {
 									$post_id = wp_insert_post( $postarr, true );
 								}
 
+								$this->detach_attachment_creation_listener();
+
+
 								if ( is_wp_error( $post_id ) ) {
 									throw new InvalidArgumentException( esc_html( $post_id->get_error_message() ) );
+								}
+
+								// Assign any attachments to the newly created post.
+								if ( ! empty( $this->created_attachment_ids ) ) {
+									foreach ( $this->created_attachment_ids as $attachment_id ) {
+										wp_update_post( [
+											'ID'          => $attachment_id,
+											'post_parent' => $post_id,
+										] );
+									}
 								}
 
 								// Assign the post's featured image if set.
@@ -324,5 +355,30 @@ class Post_Loader extends Loader implements With_Setting_Fields {
 		}
 
 		set_post_thumbnail( $post_id, $attachment_id );
+	}
+
+	/**
+	 * Listen for the creation of attachments.
+	 */
+	public function listen_for_attachment_creation(): void {
+		$this->created_attachment_ids = [];
+
+		add_action( 'add_attachment', [ $this, 'track_attachment_creation' ] );
+	}
+
+	/**
+	 * Detach the attachment creation listener.
+	 */
+	public function detach_attachment_creation_listener(): void {
+		remove_action( 'add_attachment', [ $this, 'track_attachment_creation' ] );
+	}
+
+	/**
+	 * Track the creation of an attachment.
+	 *
+	 * @param int $attachment_id Attachment ID.
+	 */
+	public function track_attachment_creation( int $attachment_id ): void {
+		$this->created_attachment_ids[] = $attachment_id;
 	}
 }
