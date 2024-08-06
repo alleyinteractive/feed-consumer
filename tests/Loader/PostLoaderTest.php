@@ -4,14 +4,13 @@ namespace Feed_Consumer\Tests\Loader;
 
 use Feed_Consumer\Loader\Loader;
 use Feed_Consumer\Loader\Post_Loader;
-use Feed_Consumer\Tests\Test_Case;
+use Feed_Consumer\Tests\TestCase;
 use Mantle\Testing\Concerns\Refresh_Database;
 use Mantle\Testing\Mock_Http_Response;
+use PHPUnit\Framework\Attributes\Group;
 
-/**
- * @group loader
- */
-class Post_Loader_Test extends Test_Case {
+#[Group('loader')]
+class PostLoaderTest extends TestCase {
 	use Refresh_Database;
 
 	public function test_load_posts_as_drafts() {

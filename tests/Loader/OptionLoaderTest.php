@@ -5,15 +5,14 @@ namespace Feed_Consumer\Tests\Loader;
 use Feed_Consumer\Loader\Loader;
 use Feed_Consumer\Loader\Option_Loader;
 use Feed_Consumer\Loader\Post_Loader;
-use Feed_Consumer\Tests\Test_Case;
+use Feed_Consumer\Tests\TestCase;
 use InvalidArgumentException;
 use Mantle\Testing\Concerns\Refresh_Database;
 use Mantle\Testing\Mock_Http_Response;
+use PHPUnit\Framework\Attributes\Group;
 
-/**
- * @group loader
- */
-class Option_Loader_Test extends Test_Case {
+#[Group('loader')]
+class OptionLoaderTest extends TestCase {
 	use Refresh_Database;
 
 	public function test_load_from_constructor() {

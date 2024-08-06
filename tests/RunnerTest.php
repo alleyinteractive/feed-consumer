@@ -5,7 +5,7 @@ use Feed_Consumer\Processor\RSS_Processor;
 use Feed_Consumer\Runner;
 use Feed_Consumer\Settings;
 
-class Runner_Test extends Test_Case {
+class RunnerTest extends TestCase {
 	protected int $rss_feed_id;
 
 	public function setUp(): void {

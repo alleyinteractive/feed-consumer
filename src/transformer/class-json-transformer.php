@@ -124,6 +124,8 @@ class JSON_Transformer extends Transformer implements With_Setting_Fields {
 			return null;
 		}
 
-		return trim( data_get( $item, $path, null ) );
+		$result = data_get( $item, $path, null );
+
+		return is_null( $result ) ? null : trim( $result );
 	}
 }

@@ -16,7 +16,7 @@ use Mantle\Testkit\Test_Case as Testkit;
 /**
  * Feed Consumer Base Test Case
  */
-abstract class Test_Case extends Testkit {
+abstract class TestCase extends Testkit {
 	use With_Faker;
 
 	public function setUp(): void {

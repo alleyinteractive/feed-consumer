@@ -1,14 +1,13 @@
 <?php
 namespace Feed_Consumer\Tests\Transformer;
 
-use Feed_Consumer\Tests\Test_Case;
+use Feed_Consumer\Tests\TestCase;
 use Feed_Consumer\Transformer\RSS_Transformer;
 use Mantle\Testing\Mock_Http_Response;
+use PHPUnit\Framework\Attributes\Group;
 
-/**
- * @group transformer
- */
-class RSS_Transformer_Test extends Test_Case {
+#[Group('transformer')]
+class RssTransformerTest extends TestCase {
 	public function test_rss_transformation() {
 		$processor = $this->make_processor();
 

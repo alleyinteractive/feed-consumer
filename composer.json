@@ -42,10 +42,12 @@
         "wordpress-autoloader": {
             "autoload": {
                 "Feed_Consumer\\": "src"
-            },
-            "autoload-dev": {
-                "Feed_Consumer\\Tests\\": "tests"
             }
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Feed_Consumer\\Tests\\": "tests"
         }
     },
     "scripts": {
