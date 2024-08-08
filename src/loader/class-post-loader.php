@@ -192,7 +192,7 @@ class Post_Loader extends Loader implements With_Setting_Fields {
 								$this->listen_for_attachment_creation();
 
 								// Ensure 'post_content' is a string. This is more than
-								// likely a "Block_Converter" instance. Converting is
+								// likely a "Block_Converter" instance. Converting this
 								// here allows us to wrap the creation of attachments
 								// in the content and then properly set the post parent
 								// for them.
