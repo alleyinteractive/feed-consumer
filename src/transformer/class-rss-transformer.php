@@ -33,7 +33,7 @@ class RSS_Transformer extends XML_Transformer implements With_Presets {
 				static::PATH_GUID              => 'guid',
 				static::PATH_TITLE             => 'title',
 				static::PATH_PERMALINK         => 'link',
-				static::PATH_CONTENT           => 'description',
+				static::PATH_CONTENT           => [ 'content:encoded', 'description' ],
 				static::PATH_BYLINE            => [ 'dc:creator', 'author' ],
 				static::PATH_IMAGE             => [ 'media:content/@url', 'media:thumbnail' ],
 				static::PATH_IMAGE_DESCRIPTION => 'media:content/media:description',

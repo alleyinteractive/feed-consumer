@@ -30,11 +30,9 @@ class RssTransformerTest extends TestCase {
 		$item = $data[0];
 
 		$this->assertEquals( 'Brandon Fields', $item['byline'] );
-		$this->assertEquals(
-			'<!-- wp:paragraph --><p>One of the reasons I love Alley is because they provide opportunities for you to attend incredible conferences like RenderATL.</p><!-- /wp:paragraph -->
-
-<!-- wp:paragraph --><p>The post <a rel="nofollow" href="https://alley.com/news/a-renderatl-welcome-into-the-tech-world/"> A RenderATL Welcome into the Tech World</a> appeared first on <a rel="nofollow" href="https://alley.com">Alley</a>.</p><!-- /wp:paragraph -->',
-			$item['post_content'],
+		$this->assertStringStartsWith(
+			'<!-- wp:paragraph --><p>One of the reasons I love Alley is because they provide opportunities for you to attend incredible conferences like <a href="https://www.renderatl.com/about-us">RenderATL</a>, my first technology conference in Atlanta, GA. Render was a four-day conference featuring 50+ expert speakers in tech covering software engineering practices, web3, engineering leadership, accessibility practices, and more. Its attendees and speakers were an intersectional of race, gender and age. It exceeded my expectations, the session speakers were unmatched and the food embodied southern hospitality. The only problem I had was that I could not attend every session—I’m excited to share my favorite speakers so you can follow them and make sure not to miss this next year! </p><!-- /wp:paragraph -->',
+			(string) $item['post_content'],
 		);
 		$this->assertEquals( 'https://alley.com/?p=6191', $item['guid'] );
 		$this->assertEquals( 'Example image description', $item['image_description'] );

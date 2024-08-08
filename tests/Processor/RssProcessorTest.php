@@ -23,8 +23,13 @@ class RssProcessorTest extends TestCase {
 			'https://alley.com/feed/',
 			Mock_Http_Response::create()
 				->with_header( 'Content-Type', 'application/rss+xml' )
-				->with_body( file_get_contents( __DIR__ . '/../fixtures/rss-feed.xml' ) )
+				->with_body( file_get_contents( __DIR__ . '/../fixtures/rss-feed.xml' ) ),
 		);
+
+		$this
+			->fake_request( 'https://alley.com/wp-content/uploads/2022/01/Screen-Shot-2022-01-19-at-2.51.37-PM.png' )
+			->with_body( file_get_contents( __DIR__ . '/../fixtures/alley.jpg' ) )
+			->with_header( 'Content-Type', 'image/jpeg' );
 
 		$this->assertPostDoesNotExists(
 			[
@@ -62,7 +67,7 @@ class RssProcessorTest extends TestCase {
 
 		$this->assertPostExists(
 			[
-				'post_title'  => 'A RenderATL Welcome into the Tech World',
+				'post_title'  => 'The Product Development of Helperbot',
 				'post_status' => 'publish',
 			],
 		);
@@ -72,6 +77,16 @@ class RssProcessorTest extends TestCase {
 		$this->assertInCronQueue( Runner::CRON_HOOK, [ $feed_id ] );
 
 		$this->assertNotNull( Runner::processor( $feed_id )->get_cursor() );
+
+		// Check if the post has child attachments (images imported should be
+		// attached to the post).
+		$posts = get_posts( [ 'title' => 'The Product Development of Helperbot' ] );
+		$this->assertCount( 1, $posts );
+
+		$this->assertPostExists( [
+			'post_parent' => $posts[0]->ID,
+			'post_type'   => 'attachment',
+		] );
 	}
 
 	public function test_handle_rss_feed_error() {

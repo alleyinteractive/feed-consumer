@@ -285,5 +285,6 @@ class PostLoaderTest extends TestCase {
 
 		$this->assertEquals( 'Image Description', $attachment->post_content );
 		$this->assertEquals( 'Image Caption', $attachment->post_excerpt );
+		$this->assertEquals( $posts[0]->ID, $attachment->post_parent );
 	}
 }

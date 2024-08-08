@@ -2,6 +2,13 @@
 
 All notable changes to `Feed Consumer` will be documented in this file.
 
+## Unreleased
+
+### Changed
+
+- Imported images with the `Post_Loader` are properly attached to the parent post.
+- RSS Transformer will use `content:encoded` first and then fallback to `description` if `content:encoded` is not available.
+
 ## 1.0.0 - 2024-08-05
 
 - Stable release.
