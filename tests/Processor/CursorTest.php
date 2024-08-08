@@ -2,18 +2,11 @@
 
 namespace Feed_Consumer\Tests\Processor;
 
-use Feed_Consumer\Loader\Post_Loader;
-use Feed_Consumer\Processor\RSS_Processor;
-use Feed_Consumer\Runner;
-use Feed_Consumer\Settings;
-use Feed_Consumer\Tests\Test_Case;
-use Mantle\Testing\Concerns\Refresh_Database;
-use Mantle\Testing\Mock_Http_Response;
+use Feed_Consumer\Tests\TestCase;
+use PHPUnit\Framework\Attributes\Group;
 
-/**
- * @group processor
- */
-class Cursor_Test extends Test_Case {
+#[Group('processor')]
+class CursorTest extends TestCase {
 	public function get_default_cursor() {
 		$processor = $this->make_processor();
 

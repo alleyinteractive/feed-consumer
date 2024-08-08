@@ -15,16 +15,15 @@
     ],
     "homepage": "https://github.com/alleyinteractive/feed-consumer",
     "require": {
-        "php": "^8.0",
+        "php": "^8.1",
         "alleyinteractive/composer-wordpress-autoloader": "^1.0",
         "alleyinteractive/wp-block-converter": "^1.0",
-        "mantle-framework/http-client": "^0.12",
-        "mantle-framework/support": "^0.12"
+        "mantle-framework/http-client": "^1.0",
+        "mantle-framework/support": "^1.0"
     },
     "require-dev": {
-        "alleyinteractive/alley-coding-standards": "^1.0",
-        "mantle-framework/testkit": "^0.12",
-        "nunomaduro/collision": "^5.0"
+        "alleyinteractive/alley-coding-standards": "^2.0",
+        "mantle-framework/testkit": "^1.0"
     },
     "suggest": {
         "alleyinteractive/logger": "Allows for logging of output of feeds when processing"
@@ -43,10 +42,12 @@
         "wordpress-autoloader": {
             "autoload": {
                 "Feed_Consumer\\": "src"
-            },
-            "autoload-dev": {
-                "Feed_Consumer\\Tests\\": "tests"
             }
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Feed_Consumer\\Tests\\": "tests"
         }
     },
     "scripts": {

@@ -3,13 +3,12 @@ namespace Feed_Consumer\Tests\Integrations;
 
 use Byline_Manager\Utils;
 use Feed_Consumer\Integrations\Byline_Manager;
-use Feed_Consumer\Tests\Test_Case;
+use Feed_Consumer\Tests\TestCase;
 use Mantle\Testing\Concerns\Refresh_Database;
+use PHPUnit\Framework\Attributes\Group;
 
-/**
- * @group integrations
- */
-class Byline_Manager_Test extends Test_Case {
+#[Group('integrations')]
+class BylineManagerTest extends TestCase {
 	use Refresh_Database;
 
 	public function setUp(): void {

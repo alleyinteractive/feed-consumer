@@ -3,15 +3,14 @@ namespace Feed_Consumer\Tests\Extractor;
 
 use Feed_Consumer\Extractor\Extractor_Exception;
 use Feed_Consumer\Extractor\Feed_Extractor;
-use Feed_Consumer\Tests\Test_Case;
+use Feed_Consumer\Tests\TestCase;
 use Mantle\Testing\Mock_Http_Response;
+use PHPUnit\Framework\Attributes\Group;
 
 use function Mantle\Support\Helpers\tap;
 
-/**
- * @group extractor
- */
-class Feed_Extractor_Test extends Test_Case {
+#[Group('extractor')]
+class FeedExtractorTest extends TestCase {
 	public function test_extract_feed() {
 		$this->fake_request(
 			'https://alley.com/feed/',

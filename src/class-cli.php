@@ -20,9 +20,8 @@ class CLI {
 	 * : Feed ID to run.
 	 *
 	 * @param array $args Positional arguments.
-	 * @param array $assoc_args Associative arguments.
 	 */
-	public function run( array $args, array $assoc_args ) {
+	public function run( array $args ) {
 		[ $feed_id ] = $args;
 
 		$feed = get_post( $feed_id );

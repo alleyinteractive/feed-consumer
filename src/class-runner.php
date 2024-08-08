@@ -63,11 +63,11 @@ class Runner {
 		$processors = Processors::instance()->processors();
 
 		if ( empty( $processors[ $settings['processor'] ] ) ) {
-			throw new RuntimeException( 'Processor not registered: ' . $settings['processor'] );
+			throw new RuntimeException( esc_html( 'Processor not registered: ' . $settings['processor'] ) );
 		}
 
 		if ( ! class_exists( $processors[ $settings['processor'] ] ) ) {
-			throw new RuntimeException( 'Processor class not found: ' . $processors[ $settings['processor'] ] );
+			throw new RuntimeException( esc_html( 'Processor class not found: ' . $processors[ $settings['processor'] ] ) );
 		}
 
 		$processor = new $processors[ $settings['processor'] ]();
