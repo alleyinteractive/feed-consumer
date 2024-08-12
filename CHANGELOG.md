@@ -2,27 +2,26 @@
 
 All notable changes to `Feed Consumer` will be documented in this file.
 
-## Unreleased
+## v1.0.1
+
+- Re-issuing release for an underlying update to [wp-block-converter](https://github.com/alleyinteractive/wp-block-converter/releases/tag/v1.5.0).
+## v1.0.0
 
 ### Changed
 
 - Imported images with the `Post_Loader` are properly attached to the parent post.
 - RSS Transformer will use `content:encoded` first and then fallback to `description` if `content:encoded` is not available.
-
-## 1.0.0 - 2024-08-05
-
-- Stable release.
 - Bumps minimum requirement to PHP 8.1.
 
-## 0.1.2 - 2023-05-16
+## v0.1.2 - 2023-05-16
 
 - Require `mantle-framework/http-client`.
 
-## 0.1.1 - 2023-05-12
+## v0.1.1 - 2023-05-12
 
 - Upgrades to WordPress 6.2
 - Post Type Select Filter by @nikkifurls
 
-## 0.1.0 - 2022
+## v0.1.0 - 2022
 
 - Initial release
