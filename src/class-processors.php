@@ -26,6 +26,7 @@ class Processors {
 		\Feed_Consumer\Processor\JSON_Processor::class,
 		\Feed_Consumer\Processor\RSS_Processor::class,
 		\Feed_Consumer\Processor\XML_Processor::class,
+		\Feed_Consumer\Processor\Graphql_Processor::class,
 	];
 
 	/**
