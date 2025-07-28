@@ -2,6 +2,10 @@
 
 All notable changes to `Feed Consumer` will be documented in this file.
 
+## v1.0.2
+
+- Fix bug where Processor settings fields (Polling Interval) were not loaded on the edit screen.
+
 ## v1.0.1
 
 - Re-issuing release for an underlying update to [wp-block-converter](https://github.com/alleyinteractive/wp-block-converter/releases/tag/v1.5.0).

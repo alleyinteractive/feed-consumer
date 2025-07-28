@@ -299,6 +299,7 @@ class Settings {
 									'extractor'   => $processor->get_extractor(),
 									'transformer' => $processor->get_transformer(),
 									'loader'      => $processor->get_loader(),
+									'processor'   => $processor,
 								],
 								$processor,
 							);
