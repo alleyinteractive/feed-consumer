@@ -156,7 +156,7 @@ class Runner {
 	/**
 	 * Run a feed with the configured settings.
 	 */
-	public function run() {
+	public function run(): void {
 		$feed = get_post( $this->feed_id );
 
 		if ( empty( $feed ) ) {
@@ -206,20 +206,7 @@ class Runner {
 				->run();
 		} catch ( Throwable $e ) {
 			$this->logger?->error( 'Error running feed extractor', [ 'exception' => $e ] );
-
-			// Schedule the next run of the feed to try again.
-			static::schedule_next_run( $this->feed_id );
-
-			static::$current_feed_id = null;
-
-			return;
-		}
-
-		if ( empty( $extractor ) ) {
-			$this->logger?->info( 'No extracted data found' );
-
-			static::$current_feed_id = null;
-
+			$this->after_run();
 			return;
 		}
 
@@ -233,12 +220,7 @@ class Runner {
 				->data();
 		} catch ( Throwable $e ) {
 			$this->logger?->error( 'Error running feed transformer', [ 'exception' => $e ] );
-
-			// Schedule the next run of the feed to try again.
-			static::schedule_next_run( $this->feed_id );
-
-			static::$current_feed_id = null;
-
+			$this->after_run();
 			return;
 		}
 
@@ -252,14 +234,6 @@ class Runner {
 		 */
 		$transformed_data = apply_filters( 'feed_consumer_transformed_data', $transformed_data, $this->feed_id, $transformer, $extractor );
 
-		if ( empty( $transformed_data ) ) {
-			$this->logger?->info( 'No transformed data found' );
-
-			static::$current_feed_id = null;
-
-			return;
-		}
-
 		// Pass the data to the loader.
 		try {
 			$loaded_data = $processor
@@ -269,12 +243,7 @@ class Runner {
 				->load();
 		} catch ( Throwable $e ) {
 			$this->logger?->error( 'Error running feed loader', [ 'exception' => $e ] );
-
-			// Schedule the next run of the feed to try again.
-			static::schedule_next_run( $this->feed_id );
-
-			static::$current_feed_id = null;
-
+			$this->after_run();
 			return;
 		}
 
@@ -309,6 +278,13 @@ class Runner {
 			}
 		}
 
+		$this->after_run();
+	}
+
+	/**
+	 * Actions to perform after the feed has run.
+	 */
+	protected function after_run(): void {
 		// Update the last run time of the feed.
 		update_post_meta( $this->feed_id, static::LAST_RUN_META_KEY, current_time( 'timestamp' ) ); // phpcs:ignore WordPress.DateTime.CurrentTimeTimestamp.Requested
 

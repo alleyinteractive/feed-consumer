@@ -2,6 +2,10 @@
 
 All notable changes to `Feed Consumer` will be documented in this file.
 
+## Unreleased
+
+- Reschedule feeds and record their last run time regardless of the outcome of the feed execution.
+
 ## v1.0.1
 
 - Re-issuing release for an underlying update to [wp-block-converter](https://github.com/alleyinteractive/wp-block-converter/releases/tag/v1.5.0).
