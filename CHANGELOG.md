@@ -2,7 +2,7 @@
 
 All notable changes to `Feed Consumer` will be documented in this file.
 
-## Unreleased
+## v1.0.2
 
 - Reschedule feeds and record their last run time regardless of the outcome of the feed execution.
 
