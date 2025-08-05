@@ -209,7 +209,6 @@ class Post_Loader extends Loader implements With_Setting_Fields {
 
 								$this->detach_attachment_creation_listener();
 
-
 								if ( is_wp_error( $post_id ) ) {
 									throw new InvalidArgumentException( esc_html( $post_id->get_error_message() ) );
 								}

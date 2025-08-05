@@ -11,6 +11,7 @@ use Alley\WP\Block_Converter\Block_Converter;
 use Feed_Consumer\Contracts\With_Presets;
 use Feed_Consumer\Contracts\With_Setting_Fields;
 use Feed_Consumer\Loader\Post_Loader;
+use Fieldmanager_Checkbox;
 use Fieldmanager_TextField;
 
 use function Mantle\Support\Helpers\data_get;
@@ -32,7 +33,11 @@ class JSON_Transformer extends Transformer implements With_Setting_Fields {
 	 */
 	public function setting_fields(): array {
 		if ( $this instanceof With_Presets ) {
-			return [];
+			return [
+				static::SIDELOAD_IMAGES => new Fieldmanager_Checkbox( __( 'Sideload images', 'feed-consumer' ), [
+					'description' => __( 'Download images to the media library and attach them to the ingested post.', 'feed-consumer' ),
+				] ),
+			];
 		}
 
 		return [
@@ -46,6 +51,9 @@ class JSON_Transformer extends Transformer implements With_Setting_Fields {
 			static::PATH_IMAGE_DESCRIPTION => new Fieldmanager_TextField( __( 'Path to image description', 'feed-consumer' ) ),
 			static::PATH_IMAGE_CAPTION     => new Fieldmanager_TextField( __( 'Path to image caption', 'feed-consumer' ) ),
 			static::PATH_IMAGE_CREDIT      => new Fieldmanager_TextField( __( 'Path to image credit', 'feed-consumer' ) ),
+			static::SIDELOAD_IMAGES        => new Fieldmanager_Checkbox( __( 'Sideload images', 'feed-consumer' ), [
+				'description' => __( 'Download images to the media library and attach them to the ingested post.', 'feed-consumer' ),
+			] ),
 		];
 	}
 
@@ -82,11 +90,13 @@ class JSON_Transformer extends Transformer implements With_Setting_Fields {
 			return [];
 		}
 
+		$sideload_images = ! empty( $settings[ static::SIDELOAD_IMAGES ] );
+
 		return array_map(
 			fn ( array $item ) => [
 				Post_Loader::BYLINE            => $this->extract_by_path( $item, $settings[ static::PATH_BYLINE ] ?? 'author' ),
 				Post_Loader::CONTENT           => empty( $settings[ static::DONT_CONVERT_TO_BLOCKS ] )
-					? (string) new Block_Converter( $this->extract_by_path( $item, $settings[ static::PATH_CONTENT ] ?? 'description' ) )
+					? (string) new Block_Converter( $this->extract_by_path( $item, $settings[ static::PATH_CONTENT ] ?? 'description' ), $sideload_images, $this->processor->get_logger() )
 					: $this->extract_by_path( $item, $settings[ static::PATH_CONTENT ] ?? 'description' ),
 				Post_Loader::GUID              => $this->extract_by_path( $item, $settings[ static::PATH_GUID ] ?? 'guid' ),
 				Post_Loader::IMAGE             => $this->extract_by_path( $item, $settings[ static::PATH_IMAGE ] ?? 'image' ),

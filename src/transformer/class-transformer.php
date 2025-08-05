@@ -110,6 +110,13 @@ abstract class Transformer implements With_Extractor, With_Processor, Contract {
 	public const DONT_CONVERT_TO_BLOCKS = 'dont_convert_to_blocks';
 
 	/**
+	 * Settings key to sideload images.
+	 *
+	 * @var string
+	 */
+	public const SIDELOAD_IMAGES = 'sideload_images';
+
+	/**
 	 * Processor instance.
 	 *
 	 * @var Processor|With_Cursor|null

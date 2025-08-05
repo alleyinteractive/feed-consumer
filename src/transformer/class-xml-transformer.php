@@ -12,6 +12,7 @@ use Feed_Consumer\Contracts\With_Cursor;
 use Feed_Consumer\Contracts\With_Presets;
 use Feed_Consumer\Contracts\With_Setting_Fields;
 use Feed_Consumer\Loader\Post_Loader;
+use Fieldmanager_Checkbox;
 use Fieldmanager_TextField;
 use SimpleXMLElement;
 
@@ -33,7 +34,11 @@ class XML_Transformer extends Transformer implements With_Setting_Fields {
 	 */
 	public function setting_fields(): array {
 		if ( $this instanceof With_Presets ) {
-			return [];
+			return [
+				static::SIDELOAD_IMAGES => new Fieldmanager_Checkbox( __( 'Sideload images', 'feed-consumer' ), [
+					'description' => __( 'Download images to the media library and attach them to the ingested post.', 'feed-consumer' ),
+				] ),
+			];
 		}
 
 		return [
@@ -48,6 +53,9 @@ class XML_Transformer extends Transformer implements With_Setting_Fields {
 			static::PATH_IMAGE_DESCRIPTION => new Fieldmanager_TextField( __( 'XPath to image description', 'feed-consumer' ) ),
 			static::PATH_IMAGE_CAPTION     => new Fieldmanager_TextField( __( 'XPath to image caption', 'feed-consumer' ) ),
 			static::PATH_IMAGE_CREDIT      => new Fieldmanager_TextField( __( 'XPath to image credit', 'feed-consumer' ) ),
+			static::SIDELOAD_IMAGES        => new Fieldmanager_Checkbox( __( 'Sideload images', 'feed-consumer' ), [
+				'description' => __( 'Download images to the media library and attach them to the ingested post.', 'feed-consumer' ),
+			] ),
 		];
 	}
 
@@ -109,13 +117,15 @@ class XML_Transformer extends Transformer implements With_Setting_Fields {
 			}
 		}
 
+		$sideload_images = ! empty( $settings[ static::SIDELOAD_IMAGES ] );
+
 		$items = collect( (array) $items )
 			->map(
 				fn ( SimpleXMLElement $item ) => [
 					'cursor'                       => $this->extract_by_xpath( $item, $settings[ static::PATH_CURSOR ] ?? '' ),
 					Post_Loader::BYLINE            => $this->extract_by_xpath( $item, $settings[ static::PATH_BYLINE ] ?? 'author' ),
 					Post_Loader::CONTENT           => empty( $settings[ static::DONT_CONVERT_TO_BLOCKS ] )
-						? new Block_Converter( $this->extract_by_xpath( $item, $settings[ static::PATH_CONTENT ] ?? 'description' ) ?? '' )
+						? new Block_Converter( $this->extract_by_xpath( $item, $settings[ static::PATH_CONTENT ] ?? 'description' ) ?? '', $sideload_images, $this->processor->get_logger() )
 						: $this->extract_by_xpath( $item, $settings[ static::PATH_CONTENT ] ?? 'description' ),
 					Post_Loader::GUID              => $this->extract_by_xpath( $item, $settings[ static::PATH_GUID ] ?? 'guid' ),
 					Post_Loader::IMAGE             => $this->extract_by_xpath( $item, $settings[ static::PATH_IMAGE ] ?? 'image' ),

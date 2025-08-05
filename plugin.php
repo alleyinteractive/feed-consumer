@@ -3,14 +3,11 @@
  * Plugin Name: Feed Consumer
  * Plugin URI: https://github.com/alleyinteractive/feed-consumer
  * Description: Ingest external feeds and other data sources into WordPress
- * Version: 1.0.2
+ * Version: 1.1.0
  * Author: Sean Fisher
  * Author URI: https://github.com/alleyinteractive/feed-consumer
- * Requires at least: 5.9
- * Tested up to: 6.4.3
- *
- * Text Domain: feed-consumer
- * Domain Path: /languages/
+ * Requires at least: 6.5
+ * Tested up to: 6.8
  *
  * @package feed-consumer
  */
