@@ -5,6 +5,7 @@ All notable changes to `Feed Consumer` will be documented in this file.
 ## v1.1.0
 
 - Bump minimum requirement to PHP 8.2.
+- Allow opt-in sideloading of images for XML/RSS/JSON transformers.
 
 ## v1.0.2
 

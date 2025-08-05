@@ -7,6 +7,7 @@ use Feed_Consumer\Processor\RSS_Processor;
 use Feed_Consumer\Runner;
 use Feed_Consumer\Settings;
 use Feed_Consumer\Tests\TestCase;
+use Feed_Consumer\Transformer\RSS_Transformer;
 use Mantle\Testing\Concerns\Refresh_Database;
 use Mantle\Testing\Mock_Http_Response;
 use PHPUnit\Framework\Attributes\Group;
@@ -27,16 +28,19 @@ class RssProcessorTest extends TestCase {
 		);
 
 		$this
-			->fake_request( 'https://alley.com/wp-content/uploads/2022/01/Screen-Shot-2022-01-19-at-2.51.37-PM.png' )
+			->fake_request( 'https://alley.com/wp-content/uploads/*' )
 			->with_body( file_get_contents( __DIR__ . '/../fixtures/alley.jpg' ) )
 			->with_header( 'Content-Type', 'image/jpeg' );
 
-		$this->assertPostDoesNotExists(
-			[
-				'post_title'  => 'A RenderATL Welcome into the Tech World',
-				'post_status' => 'publish',
-			],
-		);
+		$this
+			->fake_request( 'https://lh3.googleusercontent.com/*' )
+			->with_body( file_get_contents( __DIR__ . '/../fixtures/alley.jpg' ) )
+			->with_header( 'Content-Type', 'image/jpeg' );
+
+		$this->assertPostDoesNotExists( [
+			'post_title'  => 'A RenderATL Welcome into the Tech World',
+			'post_status' => 'publish',
+		] );
 
 		// Create the RSS feed.
 		$feed_id = static::factory()->post
@@ -51,15 +55,14 @@ class RssProcessorTest extends TestCase {
 							'loader'    => [
 								'post_status' => 'publish',
 							],
+							'transformer' => [
+								RSS_Transformer::SIDELOAD_IMAGES => '1',
+							],
 						],
 					],
 				]
 			)
-			->create(
-				[
-					'post_type' => Settings::POST_TYPE,
-				]
-			);
+			->create( [ 'post_type' => Settings::POST_TYPE ] );
 
 		$this->assertNull( Runner::processor( $feed_id )->get_cursor() );
 
@@ -86,6 +89,7 @@ class RssProcessorTest extends TestCase {
 		$this->assertPostExists( [
 			'post_parent' => $posts[0]->ID,
 			'post_type'   => 'attachment',
+			'post_status' => 'inherit',
 		] );
 	}
 
