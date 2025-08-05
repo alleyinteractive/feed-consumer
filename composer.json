@@ -55,6 +55,7 @@
         "phpcs": "phpcs .",
         "phpunit": "phpunit",
         "phpunit:coverage": "phpunit --coverage-html .coverage",
+        "release": "npx @alleyinteractive/create-release@latest",
         "test": [
             "@phpcs",
             "@phpunit"

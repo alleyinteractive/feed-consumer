@@ -4,13 +4,13 @@ Contributors: srtfisher
 
 Tags: alleyinteractive, feed-consumer, wordpress-plugin
 
-Stable tag: 1.0.2
+Stable tag: 1.1.0
 
-Requires at least: 5.9
+Requires at least: 6.5
 
 Tested up to: 6.0
 
-Requires PHP: 8.0
+Requires PHP: 8.2
 
 License: GPL v2 or later
 
