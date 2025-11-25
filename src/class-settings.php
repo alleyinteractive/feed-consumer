@@ -412,7 +412,7 @@ class Settings {
 		}
 
 		if ( $next_run ) {
-			if ( $next_run > current_time( 'timestamp', true ) ) { // phpcs:ignore WordPress.DateTime.CurrentTimeTimestamp.Requested
+			if ( $next_run > time() ) {
 				printf(
 					'<strong>%s</strong> <time datetime="%s">%s</time>',
 					esc_html__( 'Next run:', 'feed-consumer' ),
@@ -421,7 +421,7 @@ class Settings {
 						sprintf(
 							/* translators: %s: Human readable time difference. */
 							__( '%s from now', 'feed-consumer' ),
-							human_time_diff( $next_run, current_time( 'timestamp', true ) ), // phpcs:ignore WordPress.DateTime.CurrentTimeTimestamp.Requested
+							human_time_diff( $next_run, time() ),
 						),
 					),
 				);

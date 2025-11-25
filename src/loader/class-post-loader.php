@@ -216,10 +216,12 @@ class Post_Loader extends Loader implements With_Setting_Fields {
 								// Assign any attachments to the newly created post.
 								if ( ! empty( $this->created_attachment_ids ) ) {
 									foreach ( $this->created_attachment_ids as $attachment_id ) {
-										wp_update_post( [
-											'ID'          => $attachment_id,
-											'post_parent' => $post_id,
-										] );
+										wp_update_post(
+											[
+												'ID' => $attachment_id,
+												'post_parent' => $post_id,
+											] 
+										);
 									}
 								}
 

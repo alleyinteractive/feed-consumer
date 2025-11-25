@@ -35,9 +35,12 @@ class XML_Transformer extends Transformer implements With_Setting_Fields {
 	public function setting_fields(): array {
 		if ( $this instanceof With_Presets ) {
 			return [
-				static::SIDELOAD_IMAGES => new Fieldmanager_Checkbox( __( 'Sideload images', 'feed-consumer' ), [
-					'description' => __( 'Download images to the media library and attach them to the ingested post.', 'feed-consumer' ),
-				] ),
+				static::SIDELOAD_IMAGES => new Fieldmanager_Checkbox(
+					__( 'Sideload images', 'feed-consumer' ),
+					[
+						'description' => __( 'Download images to the media library and attach them to the ingested post.', 'feed-consumer' ),
+					] 
+				),
 			];
 		}
 
@@ -53,9 +56,12 @@ class XML_Transformer extends Transformer implements With_Setting_Fields {
 			static::PATH_IMAGE_DESCRIPTION => new Fieldmanager_TextField( __( 'XPath to image description', 'feed-consumer' ) ),
 			static::PATH_IMAGE_CAPTION     => new Fieldmanager_TextField( __( 'XPath to image caption', 'feed-consumer' ) ),
 			static::PATH_IMAGE_CREDIT      => new Fieldmanager_TextField( __( 'XPath to image credit', 'feed-consumer' ) ),
-			static::SIDELOAD_IMAGES        => new Fieldmanager_Checkbox( __( 'Sideload images', 'feed-consumer' ), [
-				'description' => __( 'Download images to the media library and attach them to the ingested post.', 'feed-consumer' ),
-			] ),
+			static::SIDELOAD_IMAGES        => new Fieldmanager_Checkbox(
+				__( 'Sideload images', 'feed-consumer' ),
+				[
+					'description' => __( 'Download images to the media library and attach them to the ingested post.', 'feed-consumer' ),
+				] 
+			),
 		];
 	}
 
