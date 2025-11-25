@@ -2,6 +2,10 @@
 
 All notable changes to `Feed Consumer` will be documented in this file.
 
+## v1.1.1
+
+- Fix timezone issue when displaying next feed run time.
+
 ## v1.1.0
 
 - Bump minimum requirement to PHP 8.2.
