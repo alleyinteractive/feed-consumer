@@ -206,7 +206,7 @@ class Runner {
 				->run();
 		} catch ( Throwable $e ) {
 			$this->logger?->error( 'Error running feed extractor', [ 'exception' => $e ] );
-			$this->after_run();
+			$this->after_run( false );
 			return;
 		}
 
@@ -220,7 +220,7 @@ class Runner {
 				->data();
 		} catch ( Throwable $e ) {
 			$this->logger?->error( 'Error running feed transformer', [ 'exception' => $e ] );
-			$this->after_run();
+			$this->after_run( false );
 			return;
 		}
 
@@ -243,7 +243,7 @@ class Runner {
 				->load();
 		} catch ( Throwable $e ) {
 			$this->logger?->error( 'Error running feed loader', [ 'exception' => $e ] );
-			$this->after_run();
+			$this->after_run( false );
 			return;
 		}
 
@@ -278,15 +278,19 @@ class Runner {
 			}
 		}
 
-		$this->after_run();
+		$this->after_run( true );
 	}
 
 	/**
 	 * Actions to perform after the feed has run.
+	 *
+	 * @param bool $successful Whether the run was successful.
 	 */
-	protected function after_run(): void {
-		// Update the last run time of the feed.
-		update_post_meta( $this->feed_id, static::LAST_RUN_META_KEY, current_time( 'timestamp' ) ); // phpcs:ignore WordPress.DateTime.CurrentTimeTimestamp.Requested
+	protected function after_run( bool $successful ): void {
+		if ( $successful ) {
+			// Update the last run time of the feed.
+			update_post_meta( $this->feed_id, static::LAST_RUN_META_KEY, current_time( 'timestamp' ) ); // phpcs:ignore WordPress.DateTime.CurrentTimeTimestamp.Requested
+		}
 
 		// Schedule the next run of the feed.
 		static::schedule_next_run( $this->feed_id );
