@@ -2,6 +2,10 @@
 
 All notable changes to `Feed Consumer` will be documented in this file.
 
+## v1.1.2
+
+- Only update last run time on successful run.
+
 ## v1.1.1
 
 - Fix timezone issue when displaying next feed run time.
