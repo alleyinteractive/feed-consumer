@@ -32,6 +32,13 @@ class Runner {
 	public const LAST_RUN_META_KEY = 'feed_consumer_last_run';
 
 	/**
+	 * Meta key to store the last successful run time.
+	 *
+	 * @var string
+	 */
+	public const LAST_SUCCESSFUL_RUN_META_KEY = 'feed_consumer_last_successful_run';
+
+	/**
 	 * Cron hook of the runner.
 	 *
 	 * @var string
@@ -206,7 +213,7 @@ class Runner {
 				->run();
 		} catch ( Throwable $e ) {
 			$this->logger?->error( 'Error running feed extractor', [ 'exception' => $e ] );
-			$this->after_run();
+			$this->after_run( false );
 			return;
 		}
 
@@ -220,7 +227,7 @@ class Runner {
 				->data();
 		} catch ( Throwable $e ) {
 			$this->logger?->error( 'Error running feed transformer', [ 'exception' => $e ] );
-			$this->after_run();
+			$this->after_run( false );
 			return;
 		}
 
@@ -243,7 +250,7 @@ class Runner {
 				->load();
 		} catch ( Throwable $e ) {
 			$this->logger?->error( 'Error running feed loader', [ 'exception' => $e ] );
-			$this->after_run();
+			$this->after_run( false );
 			return;
 		}
 
@@ -278,15 +285,34 @@ class Runner {
 			}
 		}
 
-		$this->after_run();
+		$this->after_run( true );
 	}
 
 	/**
 	 * Actions to perform after the feed has run.
+	 *
+	 * @param bool $successful Whether the run was successful.
 	 */
-	protected function after_run(): void {
+	protected function after_run( bool $successful ): void {
 		// Update the last run time of the feed.
-		update_post_meta( $this->feed_id, static::LAST_RUN_META_KEY, current_time( 'timestamp' ) ); // phpcs:ignore WordPress.DateTime.CurrentTimeTimestamp.Requested
+		$timestamp = time();
+		update_post_meta( $this->feed_id, static::LAST_RUN_META_KEY, $timestamp );
+
+		// Update the last successful run time of the feed.
+		if ( $successful ) {
+			update_post_meta( $this->feed_id, static::LAST_SUCCESSFUL_RUN_META_KEY, $timestamp );
+		}
+
+		/**
+		 * Fires when feed run completed.
+		 *
+		 * @since 1.1.2
+		 *
+		 * @param int  $feed_id The feed id.
+		 * @param bool $successful Whether or not the run was successful.
+		 * @param int  $timestamp The current timestamp that will be stored in meta keys.
+		 */
+		do_action( 'feed_consumer_feed_termination', $this->feed_id, $successful, $timestamp );
 
 		// Schedule the next run of the feed.
 		static::schedule_next_run( $this->feed_id );
