@@ -295,11 +295,12 @@ class Runner {
 	 */
 	protected function after_run( bool $successful ): void {
 		// Update the last run time of the feed.
-		update_post_meta( $this->feed_id, static::LAST_RUN_META_KEY, current_time( 'timestamp' ) ); // phpcs:ignore WordPress.DateTime.CurrentTimeTimestamp.Requested
+		$timestamp = time();
+		update_post_meta( $this->feed_id, static::LAST_RUN_META_KEY, $timestamp );
 
 		// Update the last successful run time of the feed.
 		if ( $successful ) {
-			update_post_meta( $this->feed_id, static::LAST_SUCCESSFUL_RUN_META_KEY, current_time( 'timestamp' ) ); // phpcs:ignore WordPress.DateTime.CurrentTimeTimestamp.Requested
+			update_post_meta( $this->feed_id, static::LAST_SUCCESSFUL_RUN_META_KEY, $timestamp );
 		}
 
 		/**
@@ -311,7 +312,7 @@ class Runner {
 		 * @param bool $successful Whether or not the run was successful.
 		 * @param int  $timestamp The current timestamp that will be stored in meta keys.
 		 */
-		do_action( 'feed_consumer_feed_termination', $this->feed_id, $successful, current_time( 'timestamp' ) ); // phpcs:ignore WordPress.DateTime.CurrentTimeTimestamp.Requested
+		do_action( 'feed_consumer_feed_termination', $this->feed_id, $successful, $timestamp );
 
 		// Schedule the next run of the feed.
 		static::schedule_next_run( $this->feed_id );

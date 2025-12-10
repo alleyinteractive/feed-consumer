@@ -2,9 +2,11 @@
 
 All notable changes to `Feed Consumer` will be documented in this file.
 
-## v1.1.2
+## v1.2.0
 
-- Only update last run time on successful run.
+- Store new meta key for last successful run time.
+- Add `feed_consumer_feed_termination` action after feed is finished running.
+- Last run time now uses `time()` instead of `current_time( 'timestamp' )`.
 
 ## v1.1.1
 
