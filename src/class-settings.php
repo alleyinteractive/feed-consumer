@@ -397,6 +397,7 @@ class Settings {
 			printf( '<strong>%s</strong>', esc_html__( 'Feed is not published.', 'feed-consumer' ) );
 			return;
 		}
+		$gmt_offset = get_option( 'gmt_offset' );
 
 		// Fetch the next run time and display it.
 		try {
@@ -443,7 +444,7 @@ class Settings {
 				'<p><strong>%s</strong> <time datetime="%s">%s</time></p>',
 				esc_html__( 'Last run:', 'feed-consumer' ),
 				esc_attr( date_i18n( 'c', $last_run ) ),
-				esc_html( date_i18n( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), $last_run ) ),
+				esc_html( date_i18n( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), $last_run + $gmt_offset * HOUR_IN_SECONDS ) ),
 			);
 		}
 	}
