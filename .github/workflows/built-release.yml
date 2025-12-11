@@ -18,3 +18,5 @@ jobs:
       - uses: alleyinteractive/action-release@develop
         with:
           php-version: '8.2'
+          use-changelog-notes: 'false'
+
