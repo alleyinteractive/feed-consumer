@@ -2,6 +2,10 @@
 
 All notable changes to `Feed Consumer` will be documented in this file.
 
+## v1.2.1.
+
+- Rollback to [wp-block-converter v1.7.0](https://github.com/alleyinteractive/wp-block-converter/releases/tag/v1.7.0)
+
 ## v1.2.0
 
 - Store new meta key for last successful run time.
