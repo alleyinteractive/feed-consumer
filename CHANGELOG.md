@@ -2,6 +2,10 @@
 
 All notable changes to `Feed Consumer` will be documented in this file.
 
+## v1.2.1
+
+- Bump `alleyinteractive/wp-block-converter` dependency to v1.8.2.
+
 ## v1.2.0
 
 - Store new meta key for last successful run time.
