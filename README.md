@@ -4,7 +4,7 @@ Contributors: srtfisher
 
 Tags: alleyinteractive, feed-consumer, wordpress-plugin
 
-Stable tag: 1.1.0
+Stable tag: 1.2.1
 
 Requires at least: 6.5
 
