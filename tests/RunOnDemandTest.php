@@ -1,8 +1,6 @@
 <?php
 namespace Feed_Consumer\Tests;
 
-use Feed_Consumer\Run_On_Demand;
-use Feed_Consumer\Runner;
 use Feed_Consumer\Settings;
 
 class RunOnDemandTest extends TestCase {
@@ -20,17 +18,17 @@ class RunOnDemandTest extends TestCase {
 	}
 
 	public function test_ajax_action_is_registered(): void {
-		$this->assertTrue( has_action( 'wp_ajax_' . Run_On_Demand::AJAX_ACTION ) );
+		$this->assertTrue( has_action( 'wp_ajax_' . Settings::RUN_NOW_AJAX_ACTION ) );
 	}
 
 	public function test_meta_box_is_registered_for_published_feed(): void {
 		$post = get_post( $this->feed_id );
 		$this->assertNotNull( $post );
 
-		Run_On_Demand::instance()->add_meta_boxes( $post );
+		Settings::instance()->add_meta_boxes( $post );
 
 		global $wp_meta_boxes;
-		$this->assertArrayHasKey( Run_On_Demand::META_BOX_ID, $wp_meta_boxes[ Settings::POST_TYPE ]['side']['low'] );
+		$this->assertArrayHasKey( Settings::RUN_NOW_META_BOX_ID, $wp_meta_boxes[ Settings::POST_TYPE ]['side']['low'] );
 	}
 
 	public function test_meta_box_not_registered_for_draft(): void {
@@ -46,10 +44,10 @@ class RunOnDemandTest extends TestCase {
 
 		// Reset meta boxes.
 		global $wp_meta_boxes;
-		unset( $wp_meta_boxes[ Settings::POST_TYPE ]['side']['low'][ Run_On_Demand::META_BOX_ID ] );
+		unset( $wp_meta_boxes[ Settings::POST_TYPE ]['side']['low'][ Settings::RUN_NOW_META_BOX_ID ] );
 
-		Run_On_Demand::instance()->add_meta_boxes( $post );
+		Settings::instance()->add_meta_boxes( $post );
 
-		$this->assertArrayNotHasKey( Run_On_Demand::META_BOX_ID, $wp_meta_boxes[ Settings::POST_TYPE ]['side']['low'] ?? [] );
+		$this->assertArrayNotHasKey( Settings::RUN_NOW_META_BOX_ID, $wp_meta_boxes[ Settings::POST_TYPE ]['side']['low'] ?? [] );
 	}
 }
