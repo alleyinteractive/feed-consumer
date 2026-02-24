@@ -2,6 +2,11 @@
 
 All notable changes to `Feed Consumer` will be documented in this file.
 
+## Unreleased
+
+- Add feed locking.
+- Add "Run Feed Now" button to admin.
+
 ## v1.2.1
 
 - Bump `alleyinteractive/wp-block-converter` dependency to v1.8.2.
