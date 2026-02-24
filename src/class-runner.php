@@ -39,6 +39,20 @@ class Runner {
 	public const LAST_SUCCESSFUL_RUN_META_KEY = 'feed_consumer_last_successful_run';
 
 	/**
+	 * Lock meta key.
+	 *
+	 * @var string
+	 */
+	public const LOCK_META_KEY = 'feed_consumer_lock';
+
+	/**
+	 * Default lock duration in seconds (30 minutes).
+	 *
+	 * @var int
+	 */
+	public const LOCK_DURATION = 1800;
+
+	/**
 	 * Cron hook of the runner.
 	 *
 	 * @var string
@@ -152,6 +166,51 @@ class Runner {
 	}
 
 	/**
+	 * Check if a feed is currently locked.
+	 *
+	 * @param int $feed_id Feed ID.
+	 * @return bool
+	 */
+	public static function is_locked( int $feed_id ): bool {
+		$lock = get_post_meta( $feed_id, static::LOCK_META_KEY, true );
+
+		if ( empty( $lock ) ) {
+			return false;
+		}
+
+		// The lock value is an expiration timestamp; if it has passed, the lock is expired.
+		return time() < (int) $lock;
+	}
+
+	/**
+	 * Acquire a lock for a feed.
+	 *
+	 * @param int $feed_id Feed ID.
+	 * @return void
+	 */
+	public static function acquire_lock( int $feed_id ): void {
+		/**
+		 * Filters the lock duration in seconds.
+		 *
+		 * @param int $duration Lock duration in seconds. Default 1800 (30 minutes).
+		 * @param int $feed_id  Feed ID.
+		 */
+		$duration = (int) apply_filters( 'feed_consumer_lock_duration', static::LOCK_DURATION, $feed_id );
+
+		update_post_meta( $feed_id, static::LOCK_META_KEY, time() + $duration );
+	}
+
+	/**
+	 * Release the lock for a feed.
+	 *
+	 * @param int $feed_id Feed ID.
+	 * @return void
+	 */
+	public static function release_lock( int $feed_id ): void {
+		delete_post_meta( $feed_id, static::LOCK_META_KEY );
+	}
+
+	/**
 	 * Constructor.
 	 *
 	 * @param integer              $feed_id Feed post ID.
@@ -159,6 +218,13 @@ class Runner {
 	 */
 	public function __construct( protected int $feed_id, protected ?LoggerInterface $logger = null ) {
 	}
+
+	/**
+	 * Whether this runner instance acquired the lock.
+	 *
+	 * @var bool
+	 */
+	protected bool $lock_acquired = false;
 
 	/**
 	 * Run a feed with the configured settings.
@@ -189,6 +255,19 @@ class Runner {
 
 			return;
 		}
+
+		// Check if the feed is locked to prevent overlapping runs.
+		if ( static::is_locked( $this->feed_id ) ) {
+			$this->logger?->info( 'Feed is locked, skipping run to prevent overlapping execution.' );
+
+			static::$current_feed_id = null;
+
+			return;
+		}
+
+		// Acquire the lock for this feed run.
+		static::acquire_lock( $this->feed_id );
+		$this->lock_acquired = true;
 
 		// Track to New Relic if configured.
 		if ( extension_loaded( 'newrelic' ) ) {
@@ -294,6 +373,12 @@ class Runner {
 	 * @param bool $successful Whether the run was successful.
 	 */
 	protected function after_run( bool $successful ): void {
+		// Release the lock only if this runner instance acquired it.
+		if ( $this->lock_acquired ) {
+			static::release_lock( $this->feed_id );
+			$this->lock_acquired = false;
+		}
+
 		// Update the last run time of the feed.
 		$timestamp = time();
 		update_post_meta( $this->feed_id, static::LAST_RUN_META_KEY, $timestamp );
