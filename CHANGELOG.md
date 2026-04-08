@@ -4,6 +4,10 @@ All notable changes to `Feed Consumer` will be documented in this file.
 
 ## Unreleased
 
+Nothing yet.
+
+## v1.3.0
+
 - Add feed locking.
 - Add "Run Feed Now" button to admin.
 
