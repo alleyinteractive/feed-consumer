@@ -4,6 +4,7 @@ All notable changes to `Feed Consumer` will be documented in this file.
 
 ## Unreleased
 
+- Removes typehints on first args of filter callbacks in Byline Manager integration.
 - Restrict the `feed_consumer` post type to the admin area by default (`public` and `show_in_rest` now `false`) so feed configuration posts no longer leak into search results or to the REST API.
 
 ## v1.3.0

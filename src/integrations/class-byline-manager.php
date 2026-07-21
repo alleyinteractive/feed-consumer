@@ -53,7 +53,7 @@ class Byline_Manager implements With_Setting_Fields {
 	 * @param array $settings_groups Settings groups to modify.
 	 * @return array
 	 */
-	public function register_settings( array $settings_groups ): array {
+	public function register_settings( $settings_groups ): array {
 		$settings_groups['byline_manager'] = $this;
 
 		return $settings_groups;
@@ -90,7 +90,7 @@ class Byline_Manager implements With_Setting_Fields {
 	 * @param callable[] $middleware Middleware stack.
 	 * @param Processor  $processor  Processor instance.
 	 */
-	public function register_middleware( array $middleware, Processor $processor ) {
+	public function register_middleware( $middleware, Processor $processor ) {
 		$settings = $processor->get_settings()['byline_manager'] ?? [];
 
 		// Bail if the processor doesn't have any configured settings.
