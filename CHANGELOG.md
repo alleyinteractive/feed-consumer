@@ -4,7 +4,7 @@ All notable changes to `Feed Consumer` will be documented in this file.
 
 ## Unreleased
 
-Nothing yet.
+- Removes typehints on first args of filter callbacks in Byline Manager integration.
 
 ## v1.3.0
 
