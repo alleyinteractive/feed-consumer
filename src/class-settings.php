@@ -106,8 +106,8 @@ class Settings {
 		register_post_type( // phpcs:ignore WordPress.NamingConventions.ValidPostTypeSlug.NotStringLiteral
 			static::POST_TYPE,
 			[
-				'label'              => __( 'Feeds', 'feed-consumer' ),
-				'labels'             => [
+				'label'        => __( 'Feeds', 'feed-consumer' ),
+				'labels'       => [
 					'name'                     => __( 'Feeds', 'feed-consumer' ),
 					'singular_name'            => __( 'Feed', 'feed-consumer' ),
 					'add_new'                  => __( 'Add New Feed', 'feed-consumer' ),
@@ -140,14 +140,13 @@ class Settings {
 					'item_updated'             => __( 'Feed updated.', 'feed-consumer' ),
 					'menu_name'                => __( 'Feeds', 'feed-consumer' ),
 				],
-				'menu_icon'          => 'dashicons-rss',
-				'public'             => true,
-				'publicly_queryable' => false,
-				'show_in_rest'       => true,
-				'supports'           => [
+				'menu_icon'    => 'dashicons-rss',
+				'public'       => false,
+				'show_in_rest' => false,
+				'supports'     => [
 					'title',
 				],
-				'show_ui'            => true,
+				'show_ui'      => true,
 			]
 		);
 	}
