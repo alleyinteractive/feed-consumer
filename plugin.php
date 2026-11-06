@@ -7,7 +7,7 @@
  * Author: Sean Fisher
  * Author URI: https://github.com/alleyinteractive/feed-consumer
  * Requires at least: 6.5
- * Requires PHP: 8.4
+ * Requires PHP: 8.3
  * Tested up to: 7.1
  *
  * @package feed-consumer

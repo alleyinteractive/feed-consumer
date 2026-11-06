@@ -10,7 +10,7 @@ Requires at least: 6.5
 
 Tested up to: 7.1
 
-Requires PHP: 8.4
+Requires PHP: 8.3
 
 License: GPL v2 or later
 
