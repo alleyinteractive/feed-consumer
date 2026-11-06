@@ -46,7 +46,7 @@ abstract class TestCase extends Testkit {
 	 * @param Processor                   $processor
 	 * @return Extractor
 	 */
-	protected function make_extractor( Mock_Http_Response|Response $response, Processor $processor = null ): Extractor {
+	protected function make_extractor( Mock_Http_Response|Response $response, ?Processor $processor = null ): Extractor {
 		if ( $response instanceof Mock_Http_Response ) {
 			$response = new Response( $response->to_array() );
 		}
@@ -95,8 +95,8 @@ abstract class TestCase extends Testkit {
 	 */
 	protected function make_transformer(
 		mixed $data,
-		Processor $processor = null,
-		Extractor $extractor = null
+		?Processor $processor = null,
+		?Extractor $extractor = null
 	): Transformer {
 		$processor ??= $this->make_processor();
 
