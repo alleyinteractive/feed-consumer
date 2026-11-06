@@ -15,7 +15,7 @@
     ],
     "homepage": "https://github.com/alleyinteractive/feed-consumer",
     "require": {
-        "php": "^8.1",
+        "php": "^8.4",
         "alleyinteractive/composer-wordpress-autoloader": "^1.0",
         "alleyinteractive/wp-block-converter": "^1.8.2",
         "mantle-framework/http-client": "^1.0",
