@@ -3,11 +3,12 @@
  * Plugin Name: Feed Consumer
  * Plugin URI: https://github.com/alleyinteractive/feed-consumer
  * Description: Ingest external feeds and other data sources into WordPress
- * Version: 1.3.0
+ * Version: 1.4.0
  * Author: Sean Fisher
  * Author URI: https://github.com/alleyinteractive/feed-consumer
  * Requires at least: 6.5
- * Tested up to: 6.8
+ * Requires PHP: 8.3
+ * Tested up to: 7.1
  *
  * @package feed-consumer
  */
@@ -30,7 +31,7 @@ if ( file_exists( __DIR__ . '/vendor/wordpress-autoload.php' ) ) {
 		function () {
 			?>
 			<div class="notice notice-error">
-				<p><?php esc_html_e( 'Composer is not installed and feed-consumer cannot load. Try using a `*-built` branch if the plugin is being loaded as a submodule.', 'plugin_domain' ); ?></p>
+				<p><?php esc_html_e( 'Composer is not installed and feed-consumer cannot load. Try using a `*-built` branch if the plugin is being loaded as a submodule.', 'feed-consumer' ); ?></p>
 			</div>
 			<?php
 		}
