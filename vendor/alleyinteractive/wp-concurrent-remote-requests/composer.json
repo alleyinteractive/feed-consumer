@@ -1,0 +1,46 @@
+{
+    "name": "alleyinteractive/wp-concurrent-remote-requests",
+    "description": "Feature plugin for concurrent HTTP remote requests",
+    "license": "GPL-2.0-or-later",
+    "type": "library",
+    "keywords": [
+        "alleyinteractive",
+        "wp-concurrent-remote-requests"
+    ],
+    "authors": [
+        {
+            "name": "Sean Fisher",
+            "email": "srtfisher@gmail.com"
+        }
+    ],
+    "homepage": "https://github.com/alleyinteractive/wp-concurrent-remote-requests",
+    "require": {
+        "php": "^7.4 || ^8.0"
+    },
+    "require-dev": {
+        "alleyinteractive/alley-coding-standards": "*"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "allow-plugins": {
+            "alleyinteractive/composer-wordpress-autoloader": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        },
+        "sort-packages": true
+    },
+    "autoload": {
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "scripts": {
+        "phpcbf": "phpcbf --standard=./phpcs.xml.dist .",
+        "phpcs": "phpcs --standard=./phpcs.xml.dist .",
+        "phpunit": "cd tests && composer phpunit",
+        "test": [
+            "@phpcs",
+            "@phpunit"
+        ]
+    }
+}
