@@ -61,7 +61,7 @@ class OptionLoaderTest extends TestCase {
 		$loader->load();
 	}
 
-	protected function make_option_loader( mixed $data, array $settings = [], string $option_name = null ): Option_Loader {
+	protected function make_option_loader( mixed $data, array $settings = [], ?string $option_name = null ): Option_Loader {
 		$processor = $this->make_processor( $settings );
 
 		$loader = new Option_Loader( $option_name );

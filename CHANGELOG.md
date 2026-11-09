@@ -2,8 +2,9 @@
 
 All notable changes to `Feed Consumer` will be documented in this file.
 
-## Unreleased
+## v1.4.0 - 2026-11-06
 
+- Require PHP 8.3 or newer and test against PHP 8.3 through 8.5 and WordPress 7.1.
 - Removes typehints on first args of filter callbacks in Byline Manager integration.
 - Restrict the `feed_consumer` post type to the admin area by default (`public` and `show_in_rest` now `false`) so feed configuration posts no longer leak into search results or to the REST API.
 
